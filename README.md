@@ -12,9 +12,9 @@
 </p>
 
 <p align="center">
-  <a href="https://t.me/your_username"><img alt="Telegram" src="https://img.shields.io/badge/Telegram-7f1d1d?style=for-the-badge&logo=telegram&logoColor=white" /></a>
-  <a href="https://linkedin.com/in/your_username"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-b91c1c?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
-  <a href="mailto:your_email@example.com"><img alt="Email" src="https://img.shields.io/badge/Email-dc2626?style=for-the-badge&logo=gmail&logoColor=white" /></a>
+  <a href="https://t.me/Abdullox_2117"><img alt="Telegram" src="https://img.shields.io/badge/Telegram-7f1d1d?style=for-the-badge&logo=telegram&logoColor=white" /></a>
+  <a href="https://www.linkedin.com/in/abdullox-rustambekov-686174282/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-b91c1c?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
+  <a href="mailto:abdullox.2117.ru@gmil.com"><img alt="Email" src="https://img.shields.io/badge/Email-dc2626?style=for-the-badge&logo=gmail&logoColor=white" /></a>
 </p>
 
 <p align="center">
