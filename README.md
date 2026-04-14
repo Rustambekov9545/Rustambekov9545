@@ -1,5 +1,5 @@
 <!-- =========================================================
-  ABDULLOH RUSTAMBEKOV • Frontend Developer
+  ABDULLOH RUSTAMBEKOV • Fulstack Developer
   Theme: dark-red neon • clean • premium
 ========================================================= -->
 
