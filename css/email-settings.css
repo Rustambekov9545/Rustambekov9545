@@ -4484,3 +4484,52 @@ input.es-input,
     margin: 0 !important;
     transform: translate(-50%, -50%) rotate(45deg) scale(0.62) !important;
 }
+
+/* FINAL DEFAULT-ZOOM FREEZE FOR DROPDOWN ICON:
+   caret size follows --u only, so browser zoom does not visually change icon size. */
+.settings-page .es-select-field .es-caret,
+.settings-page .es-select-field.open .es-caret,
+.settings-page .es-select-field.open-up .es-caret,
+.settings-page .es-select-field.open:focus-visible .es-caret,
+.settings-page .es-select-field.open-up:focus-visible .es-caret,
+.settings-page.is-text-zoomed .es-select-field .es-caret,
+.settings-page.is-text-zoomed .es-select-field.open .es-caret,
+.settings-page.is-text-zoomed .es-select-field.open-up .es-caret {
+    width: calc(16 * var(--u)) !important;
+    height: calc(16 * var(--u)) !important;
+    min-width: calc(16 * var(--u)) !important;
+    min-height: calc(16 * var(--u)) !important;
+    right: calc(14 * var(--u)) !important;
+    top: 50% !important;
+    margin-top: 0 !important;
+    transform: translateY(-50%) rotate(0deg) !important;
+    transform-origin: center center !important;
+}
+
+.settings-page .es-select-field.has-clear .es-caret,
+.settings-page.is-text-zoomed .es-select-field.has-clear .es-caret {
+    right: calc(48 * var(--u)) !important;
+}
+
+.settings-page .es-select-field.open .es-caret,
+.settings-page .es-select-field.open-up .es-caret,
+.settings-page.is-text-zoomed .es-select-field.open .es-caret,
+.settings-page.is-text-zoomed .es-select-field.open-up .es-caret {
+    transform: translateY(-50%) rotate(180deg) !important;
+}
+
+.settings-page .es-select-field .es-caret::before,
+.settings-page .es-select-field.open .es-caret::before,
+.settings-page .es-select-field.open-up .es-caret::before,
+.settings-page.is-text-zoomed .es-select-field .es-caret::before,
+.settings-page.is-text-zoomed .es-select-field.open .es-caret::before,
+.settings-page.is-text-zoomed .es-select-field.open-up .es-caret::before {
+    width: calc(16 * var(--u)) !important;
+    height: calc(16 * var(--u)) !important;
+    border-right: calc(1.2 * var(--u)) solid #B7C694 !important;
+    border-bottom: calc(1.2 * var(--u)) solid #B7C694 !important;
+    top: 50% !important;
+    left: 50% !important;
+    margin: 0 !important;
+    transform: translate(-50%, -50%) rotate(45deg) scale(0.62) !important;
+}

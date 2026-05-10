@@ -64,11 +64,17 @@
     var firefoxLastDefaultZoomRatio = 1;
     var firefoxBaseDevicePixelRatio = 0;
     var firefoxLastCaretInverseCss = '1';
+    var firefoxDefaultZoomPendingRatio = 1;
+    var firefoxDefaultZoomPendingCount = 0;
     var firefoxTextOnlyHintUntil = 0;
     var firefoxTextOnlyActive = false;
     var firefoxTextOnlyOffStableCount = 0;
     var firefoxDefaultZoomSettlingUntil = 0;
+    var firefoxLastCompensatedLayoutWidth = 0;
+    var firefoxLastLayoutSyncKey = '';
+    var firefoxLastObservedLayoutWidth = 0;
     var pageBottomLayoutRaf = 0;
+    var pageBottomLastHeightPx = NaN;
     var zoomFreezeTimer = 0;
 
     document.addEventListener('DOMContentLoaded', function () {
@@ -500,15 +506,25 @@
         var rafId = 0;
         var isDisposed = false;
         var pollTimer = 0;
+        var burstRafId = 0;
+        var burstUntil = 0;
 
-        function applyFirefoxDefaultZoomNeutral(body, canvas) {
-            var currentLayoutWidth = Number.isFinite(window.innerWidth) && window.innerWidth > 0
+        function getCurrentLayoutWidth() {
+            var width = Number.isFinite(window.innerWidth) && window.innerWidth > 0
                 ? window.innerWidth
                 : (window.visualViewport && Number.isFinite(window.visualViewport.width) && window.visualViewport.width > 0
                     ? window.visualViewport.width
                     : (document.documentElement && document.documentElement.clientWidth
                         ? document.documentElement.clientWidth
                         : 0));
+            if (Number.isFinite(width) && width > 0) {
+                return Math.round(width * 100) / 100;
+            }
+            return 0;
+        }
+
+        function applyFirefoxDefaultZoomNeutral(body, canvas) {
+            var currentLayoutWidth = getCurrentLayoutWidth();
             var currentDpr = Number(window.devicePixelRatio);
             if (!firefoxBaseDevicePixelRatio && Number.isFinite(currentDpr) && currentDpr > 0) {
                 firefoxBaseDevicePixelRatio = currentDpr;
@@ -517,44 +533,37 @@
             if (!firefoxBaseDesignUnit && firefoxBaseLayoutWidth > 0) {
                 firefoxBaseDesignUnit = firefoxBaseLayoutWidth / 1920;
             }
-            var baseUnitPx = firefoxBaseDesignUnit;
-            if (!Number.isFinite(baseUnitPx) || baseUnitPx <= 0) {
-                baseUnitPx = currentLayoutWidth > 0 ? (currentLayoutWidth / 1920) : 0;
-            }
-            if (Number.isFinite(baseUnitPx) && baseUnitPx > 0) {
-                var baseUnitCss = baseUnitPx.toFixed(4) + 'px';
-                if (baseUnitCss !== firefoxLastFrozenUnitCss) {
-                    document.documentElement.style.setProperty('--u', baseUnitCss);
-                    body.style.setProperty('--u', baseUnitCss);
-                    canvas.style.setProperty('--u', baseUnitCss);
-                    firefoxLastFrozenUnitCss = baseUnitCss;
-                }
-                if (!firefoxLastFrozenUnitPx || Math.abs(firefoxLastFrozenUnitPx - baseUnitPx) > 0.0015) {
-                    firefoxLastFrozenUnitPx = baseUnitPx;
-                    updateMailListLayout();
-                    schedulePageBottomLayout();
-                }
-            }
+            document.documentElement.style.removeProperty('--u');
+            body.style.removeProperty('--u');
+            canvas.style.removeProperty('--u');
+            firefoxLastFrozenUnitCss = '';
+            firefoxLastFrozenUnitPx = 0;
 
             body.style.setProperty('--es-default-zoom-inverse', '1');
             canvas.style.setProperty('--es-default-zoom-inverse', '1');
             body.style.setProperty('--es-caret-default-zoom-inverse', '1');
             canvas.style.setProperty('--es-caret-default-zoom-inverse', '1');
             firefoxLastCaretInverseCss = '1';
-            firefoxLastDefaultZoomRatio = 1;
+
+            if (!firefoxLastCompensatedLayoutWidth || Math.abs(firefoxLastCompensatedLayoutWidth - currentLayoutWidth) > 0.5) {
+                firefoxLastCompensatedLayoutWidth = currentLayoutWidth;
+                updateMailListLayout();
+                schedulePageBottomLayout();
+            }
         }
 
         function isFirefoxTextOnlyZoomActive(currentLayoutWidth) {
             if (!/firefox/i.test(navigator.userAgent || '')) return false;
+            var defaultZoomRatio = detectFirefoxDefaultZoomRatio(currentLayoutWidth || 0);
+            // Priority: if browser Default zoom is changed, this is NOT text-only zoom.
+            // This prevents temporary enlargement/shrink before compensation kicks in.
+            if (Math.abs(defaultZoomRatio - 1) > 0.015) return false;
+            // While default-zoom is settling, avoid false positives from text probes.
+            if (Date.now() < firefoxDefaultZoomSettlingUntil) return false;
             if (Date.now() < firefoxTextOnlyHintUntil) return true;
             if (firefoxTextOnlyActive) return true;
             if (Math.abs(firefoxLastAppliedRatio - 1) > 0.015) return true;
             if (document.body && document.body.classList.contains('is-text-zoomed')) return true;
-            // While default-zoom is settling, avoid false positives from text probes.
-            if (Date.now() < firefoxDefaultZoomSettlingUntil) return false;
-
-            var defaultZoomRatio = detectFirefoxDefaultZoomRatio(currentLayoutWidth || 0);
-            if (Math.abs(defaultZoomRatio - 1) > 0.015) return false;
 
             var ratio = detectFirefoxTextZoomRatio();
             if (!Number.isFinite(ratio) || ratio <= 0) return false;
@@ -566,18 +575,29 @@
             var body = document.body;
             var canvas = document.querySelector('.settings-canvas');
             if (!body || !canvas) return;
-            var currentLayoutWidth = Number.isFinite(window.innerWidth) && window.innerWidth > 0
-                ? window.innerWidth
-                : (window.visualViewport && Number.isFinite(window.visualViewport.width) && window.visualViewport.width > 0
-                    ? window.visualViewport.width
-                    : (document.documentElement && document.documentElement.clientWidth
-                        ? document.documentElement.clientWidth
-                        : 0));
+            var currentLayoutWidth = getCurrentLayoutWidth();
+            if (!firefoxLastObservedLayoutWidth && currentLayoutWidth > 0) {
+                firefoxLastObservedLayoutWidth = currentLayoutWidth;
+            }
+            if (currentLayoutWidth > 0 && firefoxLastObservedLayoutWidth > 0 && Math.abs(currentLayoutWidth - firefoxLastObservedLayoutWidth) > 0.5) {
+                firefoxDefaultZoomSettlingUntil = Date.now() + 700;
+                markZoomFreeze();
+            }
+            firefoxLastObservedLayoutWidth = currentLayoutWidth;
             if (isFirefoxTextOnlyZoomActive(currentLayoutWidth)) {
                 applyFirefoxDefaultZoomNeutral(body, canvas);
-                return;
+            } else {
+                applyFirefoxCaretDefaultZoomCompensation(body, canvas);
             }
-            applyFirefoxCaretDefaultZoomCompensation(body, canvas);
+
+            var syncWidth = currentLayoutWidth > 0 ? currentLayoutWidth : 0;
+            var syncDpr = Number(window.devicePixelRatio);
+            var syncKey = (Math.round(syncWidth * 2) / 2).toFixed(1) + '|' + (Number.isFinite(syncDpr) && syncDpr > 0 ? syncDpr.toFixed(3) : '0') + '|' + (firefoxTextOnlyActive ? 't' : 'n');
+            if (syncKey !== firefoxLastLayoutSyncKey) {
+                firefoxLastLayoutSyncKey = syncKey;
+                updateMailListLayout();
+                schedulePageBottomLayout();
+            }
         }
 
         function scheduleDefaultZoomCompensation() {
@@ -589,6 +609,21 @@
             });
         }
 
+        function scheduleBurstCompensation(durationMs) {
+            if (isDisposed) return;
+            burstUntil = Math.max(burstUntil, Date.now() + Math.max(120, durationMs || 0));
+            if (burstRafId) return;
+            var tick = function () {
+                burstRafId = 0;
+                if (isDisposed) return;
+                applyDefaultZoomNow();
+                if (Date.now() < burstUntil) {
+                    burstRafId = window.requestAnimationFrame(tick);
+                }
+            };
+            burstRafId = window.requestAnimationFrame(tick);
+        }
+
         function onZoomHotkey(event) {
             if (!(event.ctrlKey || event.metaKey)) return;
             var key = String(event.key || '').toLowerCase();
@@ -597,6 +632,7 @@
             markZoomFreeze();
             scheduleDefaultZoomCompensation();
             window.requestAnimationFrame(scheduleDefaultZoomCompensation);
+            scheduleBurstCompensation(520);
         }
 
         function onWheel(event) {
@@ -605,6 +641,7 @@
             markZoomFreeze();
             scheduleDefaultZoomCompensation();
             window.requestAnimationFrame(scheduleDefaultZoomCompensation);
+            scheduleBurstCompensation(520);
         }
 
         window.addEventListener('resize', scheduleDefaultZoomCompensation);
@@ -633,13 +670,17 @@
                 window.clearInterval(pollTimer);
                 pollTimer = 0;
             }
+            if (burstRafId) {
+                window.cancelAnimationFrame(burstRafId);
+                burstRafId = 0;
+            }
         });
 
         // Browser toolbar zoom buttons may not emit key/wheel reliably in all cases.
         pollTimer = window.setInterval(function () {
             if (isDisposed || document.hidden) return;
             scheduleDefaultZoomCompensation();
-        }, 40);
+        }, 20);
 
         applyDefaultZoomNow();
         scheduleDefaultZoomCompensation();
@@ -793,8 +834,18 @@
             ratioFromWidth = firefoxBaseLayoutWidth / currentLayoutWidth;
         }
 
-        // Prefer DPR-based ratio: it is stable and independent from scrollbar/layout changes.
-        var ratio = Number.isFinite(ratioFromDpr) && ratioFromDpr > 0 ? ratioFromDpr : ratioFromWidth;
+        var hasDprRatio = Number.isFinite(ratioFromDpr) && ratioFromDpr > 0;
+        var hasWidthRatio = Number.isFinite(ratioFromWidth) && ratioFromWidth > 0;
+        var ratio = 1;
+
+        if (hasWidthRatio) {
+            // Width ratio tracks browser Default zoom in all supported desktop browsers,
+            // and avoids DPR drift on some Chrome/OS setups.
+            ratio = ratioFromWidth;
+        } else if (hasDprRatio) {
+            ratio = ratioFromDpr;
+        }
+
         if (!Number.isFinite(ratio) || ratio <= 0) ratio = 1;
 
         ratio = Math.max(0.01, Math.min(100, ratio));
@@ -804,7 +855,32 @@
         if (firefoxLastDefaultZoomRatio && Math.abs(ratio - firefoxLastDefaultZoomRatio) <= 0.035) {
             ratio = firefoxLastDefaultZoomRatio;
         }
-        return Math.round(ratio * 1000) / 1000;
+
+        // Guard against one-frame false ratios during browser zoom animation.
+        // Require one additional confirmation frame for large step changes.
+        if (firefoxLastDefaultZoomRatio) {
+            var stepDiff = Math.abs(ratio - firefoxLastDefaultZoomRatio);
+            if (stepDiff > 0.055) {
+                if (Math.abs(firefoxDefaultZoomPendingRatio - ratio) > 0.001) {
+                    firefoxDefaultZoomPendingRatio = ratio;
+                    firefoxDefaultZoomPendingCount = 1;
+                    return firefoxLastDefaultZoomRatio;
+                }
+                firefoxDefaultZoomPendingCount += 1;
+                if (firefoxDefaultZoomPendingCount < 2) {
+                    return firefoxLastDefaultZoomRatio;
+                }
+            } else {
+                firefoxDefaultZoomPendingCount = 0;
+                firefoxDefaultZoomPendingRatio = ratio;
+            }
+        }
+
+        ratio = Math.round(ratio * 1000) / 1000;
+        firefoxLastDefaultZoomRatio = ratio;
+        firefoxDefaultZoomPendingRatio = ratio;
+        firefoxDefaultZoomPendingCount = 0;
+        return ratio;
     }
 
     function markZoomFreeze() {
@@ -821,10 +897,6 @@
     }
 
     function applyFirefoxCaretDefaultZoomCompensation(body, canvas) {
-        var unitChanged = false;
-        var zoomChanged = false;
-        // innerWidth includes scrollbar width and is more stable for zoom detection.
-        // This avoids false zoom deltas when vertical scrollbar appears/disappears.
         var currentLayoutWidth = Number.isFinite(window.innerWidth) && window.innerWidth > 0
             ? window.innerWidth
             : (window.visualViewport && Number.isFinite(window.visualViewport.width) && window.visualViewport.width > 0
@@ -834,67 +906,28 @@
                     : 0));
         if (Number.isFinite(currentLayoutWidth) && currentLayoutWidth > 0) {
             currentLayoutWidth = Math.round(currentLayoutWidth * 100) / 100;
-        }
-        if (!firefoxBaseLayoutWidth && currentLayoutWidth > 0) firefoxBaseLayoutWidth = currentLayoutWidth;
-        if (!firefoxBaseDesignUnit && firefoxBaseLayoutWidth > 0) {
-            firefoxBaseDesignUnit = firefoxBaseLayoutWidth / 1920;
+        } else {
+            currentLayoutWidth = 0;
         }
 
-        var zoomRatio = detectFirefoxDefaultZoomRatio(currentLayoutWidth);
-
-        var inverseRatio = 1 / zoomRatio;
-        if (!Number.isFinite(inverseRatio) || inverseRatio <= 0) inverseRatio = 1;
-        inverseRatio = Math.max(0.01, Math.min(100, inverseRatio));
-        inverseRatio = Math.round(inverseRatio * 1000) / 1000;
-        if (Math.abs(zoomRatio - 1) <= 0.01) inverseRatio = 1;
-        zoomChanged = !firefoxLastDefaultZoomRatio || Math.abs(firefoxLastDefaultZoomRatio - zoomRatio) > 0.001;
-        if (zoomChanged) {
-            firefoxDefaultZoomSettlingUntil = Date.now() + 700;
-            markZoomFreeze();
-        }
-
-        // Keep page layout stable by removing global transforms and freezing design unit against Default zoom.
         body.style.zoom = '';
         body.style.transform = '';
         body.style.transformOrigin = '';
         body.style.width = '';
         body.style.minHeight = '';
-
-        if (body) {
-            // Freeze all UI sizes against browser Default zoom.
-            var baseUnitPx = firefoxBaseDesignUnit;
-            if (!Number.isFinite(baseUnitPx) || baseUnitPx <= 0) {
-                baseUnitPx = currentLayoutWidth > 0 ? (currentLayoutWidth / 1920) : 0;
-            }
-            var frozenUnitPx = baseUnitPx > 0 ? (baseUnitPx / zoomRatio) : 0;
-            if (Number.isFinite(frozenUnitPx) && frozenUnitPx > 0) {
-                var frozenUnitCss = frozenUnitPx.toFixed(4) + 'px';
-                if (frozenUnitCss !== firefoxLastFrozenUnitCss) {
-                    document.documentElement.style.setProperty('--u', frozenUnitCss);
-                    body.style.setProperty('--u', frozenUnitCss);
-                    canvas.style.setProperty('--u', frozenUnitCss);
-                    firefoxLastFrozenUnitCss = frozenUnitCss;
-                }
-                if (!firefoxLastFrozenUnitPx || Math.abs(firefoxLastFrozenUnitPx - frozenUnitPx) > 0.0015) {
-                    unitChanged = true;
-                    firefoxLastFrozenUnitPx = frozenUnitPx;
-                }
-            }
-        }
-
-        var inverseRatioString = String(inverseRatio);
-        // Keep text scale neutral; freeze text/layout through --u only.
+        document.documentElement.style.removeProperty('--u');
+        body.style.removeProperty('--u');
+        canvas.style.removeProperty('--u');
+        firefoxLastFrozenUnitCss = '';
+        firefoxLastFrozenUnitPx = 0;
         body.style.setProperty('--es-default-zoom-inverse', '1');
         canvas.style.setProperty('--es-default-zoom-inverse', '1');
-        // Keep caret/icon compensation separate.
-        if (inverseRatioString !== firefoxLastCaretInverseCss) {
-            body.style.setProperty('--es-caret-default-zoom-inverse', inverseRatioString);
-            canvas.style.setProperty('--es-caret-default-zoom-inverse', inverseRatioString);
-            firefoxLastCaretInverseCss = inverseRatioString;
-        }
-        firefoxLastDefaultZoomRatio = zoomRatio;
+        body.style.setProperty('--es-caret-default-zoom-inverse', '1');
+        canvas.style.setProperty('--es-caret-default-zoom-inverse', '1');
+        firefoxLastCaretInverseCss = '1';
 
-        if (unitChanged || zoomChanged) {
+        if (!firefoxLastCompensatedLayoutWidth || Math.abs(firefoxLastCompensatedLayoutWidth - currentLayoutWidth) > 0.5) {
+            firefoxLastCompensatedLayoutWidth = currentLayoutWidth;
             updateMailListLayout();
             schedulePageBottomLayout();
         }
@@ -939,7 +972,6 @@
             body.style.setProperty('--es-caret-default-zoom-inverse', '1');
             canvas.style.setProperty('--es-caret-default-zoom-inverse', '1');
             firefoxLastCaretInverseCss = '1';
-            firefoxLastDefaultZoomRatio = 1;
         } else {
             applyFirefoxCaretDefaultZoomCompensation(body, canvas);
         }
@@ -1120,11 +1152,14 @@
             : 0;
         var requiredDividerTopPx = listTopPx + listHeightPx + minGapPx;
         var extraSpacePx = Math.max(0, requiredDividerTopPx - dividerBaseTopPx);
+        var extraSpace = (Math.round(extraSpacePx * 1000) / 1000).toFixed(3) + 'px';
+        var shouldWrite = !Number.isFinite(firefoxLastExtraMailSpacePx) || Math.abs(firefoxLastExtraMailSpacePx - extraSpacePx) > 0.1;
         firefoxLastExtraMailSpacePx = extraSpacePx;
-        var extraSpace = Math.ceil(extraSpacePx) + 'px';
 
-        canvas.style.setProperty('--es-extra-mail-space', extraSpace);
-        if (container) container.style.setProperty('--es-extra-mail-space', extraSpace);
+        if (shouldWrite) {
+            canvas.style.setProperty('--es-extra-mail-space', extraSpace);
+            if (container) container.style.setProperty('--es-extra-mail-space', extraSpace);
+        }
         schedulePageBottomLayout();
     }
 
@@ -1231,7 +1266,6 @@
     }
 
     function updatePageBottomLayout() {
-        if (document.body && document.body.classList.contains('is-zooming')) return;
         var container = document.querySelector('.main-container');
         var cards = document.querySelector('.es-cards');
         if (!container) return;
@@ -1253,6 +1287,8 @@
         }
 
         var height = Math.max(bottom, minBaseHeightPx);
+        if (Number.isFinite(pageBottomLastHeightPx) && Math.abs(pageBottomLastHeightPx - height) <= 0.1) return;
+        pageBottomLastHeightPx = height;
         var heightCss = height.toFixed(3) + 'px';
         container.style.height = heightCss;
         container.style.minHeight = heightCss;
