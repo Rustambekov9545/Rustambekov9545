@@ -1,0 +1,527 @@
+{
+  "name": "Import page",
+  "purpose": "Full-page Figma-derived spec for pixel-perfect implementation without another MCP request.",
+  "source": {
+    "fileKey": "F3IINcPIy2U8nTYKiD6Pp6",
+    "url": "https://www.figma.com/design/F3IINcPIy2U8nTYKiD6Pp6/3?node-id=1-473&m=draw",
+    "nodeId": "1:473",
+    "capturedAt": "2026-05-02",
+    "coordinateUnit": "px",
+    "baselineViewportWidth": 1920,
+    "pxToVwDivisor": 19.2
+  },
+  "tokens": {
+    "fontFamilies": {
+      "primary": "Roboto",
+      "secondary": "Inter"
+    },
+    "fontWeights": {
+      "light": 300,
+      "regular": 400,
+      "medium": 500
+    },
+    "fontVariationSettings": "'wdth' 100",
+    "colors": {
+      "pageBackground": "#FFFCEC",
+      "topbarBackground": "#FED839",
+      "panelBackground": "#FFFFFF",
+      "tableBandBackground": "#FFF7BB",
+      "fieldBackground": "#FFFEFB",
+      "buttonBackground": "#FFEE80",
+      "textPrimary": "#62560E",
+      "textMuted": "rgba(98, 86, 14, 0.7)",
+      "textPlaceholder": "#9C9C9C",
+      "textBlue": "#0087FC",
+      "textBlack": "#0F0F0F",
+      "activeRed": "#FF0303",
+      "countAdded": "#E5A521",
+      "countUpdated": "#FF0303",
+      "cellBorder": "#62560E",
+      "controlBorder": "rgba(98, 86, 14, 0.45)",
+      "checkboxBorder": "#86868A",
+      "tooltipBackground": "#EAEAEA"
+    },
+    "border": {
+      "tablePx": 0.3,
+      "controlPx": 0.3,
+      "checkboxPx": 0.5,
+      "implementationVw": {
+        "tableApprox": 0.0521,
+        "controlApprox": 0.0521
+      }
+    }
+  },
+  "page": {
+    "nodeId": "1:474",
+    "name": "Импорт из xml и логи",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 630
+    },
+    "background": "#FFFCEC",
+    "overflow": "clip"
+  },
+  "topbar": {
+    "nodeIds": {
+      "group": "4:204",
+      "bar": "4:205",
+      "logo": "4:221"
+    },
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "width": 1920,
+      "height": 54.974
+    },
+    "background": "#FED839",
+    "logo": {
+      "x": 59,
+      "y": 13,
+      "width": 179,
+      "height": 28.432
+    },
+    "nav": [
+      {
+        "key": "managers",
+        "iconNodeId": "4:207",
+        "textNodeId": "4:213",
+        "icon": {
+          "x": 279,
+          "y": 11,
+          "width": 37.44,
+          "height": 33.5
+        },
+        "text": {
+          "value": "ЖУРНАЛ МЕНЕДЖЕРОВ",
+          "x": 330.47,
+          "y": 20,
+          "fontSize": 21,
+          "lineHeight": 1.37,
+          "color": "rgba(98,86,14,0.7)"
+        }
+      },
+      {
+        "key": "resume",
+        "iconNodeId": "4:226",
+        "textNodeId": "4:225",
+        "icon": {
+          "x": 598,
+          "y": 11,
+          "width": 32.06,
+          "height": 33.5
+        },
+        "text": {
+          "value": "РЕЗЮМЕ",
+          "x": 644.07,
+          "y": 20,
+          "fontSize": 21,
+          "lineHeight": 1.37,
+          "color": "rgba(98,86,14,0.7)"
+        }
+      },
+      {
+        "key": "companies",
+        "iconNodeId": "4:233",
+        "textNodeId": "4:232",
+        "icon": {
+          "x": 759.07,
+          "y": 11,
+          "width": 42.82,
+          "height": 33.5
+        },
+        "text": {
+          "value": "КОМПАНИИ",
+          "x": 815.98,
+          "y": 20,
+          "fontSize": 21,
+          "lineHeight": 1.37,
+          "color": "rgba(98,86,14,0.7)"
+        }
+      },
+      {
+        "key": "import",
+        "iconNodeId": "4:242",
+        "textNodeId": "4:245",
+        "active": true,
+        "icon": {
+          "x": 962.98,
+          "y": 11,
+          "width": 35.534,
+          "height": 33.5
+        },
+        "text": {
+          "value": "ИМПОРТ",
+          "x": 1011.51,
+          "y": 19.81,
+          "fontSize": 21,
+          "lineHeight": 1.37,
+          "color": "#FF0303"
+        }
+      },
+      {
+        "key": "ads",
+        "iconNodeId": "4:262",
+        "textNodeId": "4:261",
+        "icon": {
+          "x": 1127,
+          "y": 11,
+          "width": 29.148,
+          "height": 33.5
+        },
+        "text": {
+          "value": "ОБЪЯВЛЕНИЯ",
+          "x": 1170.35,
+          "y": 20,
+          "fontSize": 21,
+          "lineHeight": 1.37,
+          "color": "rgba(98,86,14,0.7)"
+        }
+      },
+      {
+        "key": "letters",
+        "iconNodeId": "4:247",
+        "textNodeId": "4:258",
+        "icon": {
+          "x": 1337.35,
+          "y": 11,
+          "width": 46.948,
+          "height": 33.5
+        },
+        "text": {
+          "value": "EMAIL  ПИСЬМА",
+          "x": 1398.3,
+          "y": 20.02,
+          "width": 166.722,
+          "height": 15.728,
+          "fontSize": 21,
+          "lineHeight": 1.37,
+          "color": "rgba(98,86,14,0.7)"
+        }
+      },
+      {
+        "key": "settings",
+        "iconNodeId": "4:216",
+        "textNodeId": "4:215",
+        "icon": {
+          "x": 1588,
+          "y": 12,
+          "width": 39.75,
+          "height": 33.5
+        },
+        "text": {
+          "value": "EMAIL  НАСТРОЙКИ",
+          "x": 1641.69,
+          "y": 20,
+          "fontSize": 21,
+          "lineHeight": 1.37,
+          "color": "rgba(98,86,14,0.7)"
+        }
+      }
+    ]
+  },
+  "mainPanel": {
+    "nodeId": "1:524",
+    "bounds": {
+      "x": 20,
+      "y": 75,
+      "width": 1881,
+      "height": 265
+    },
+    "background": "#FFFFFF",
+    "borderRadius": 4,
+    "title": {
+      "nodeId": "1:525",
+      "text": "Импорт  из xml/xlsx/dosx",
+      "x": 64,
+      "y": 113,
+      "fontFamily": "Roboto",
+      "fontWeight": 400,
+      "fontSize": 27,
+      "lineHeight": 1.37,
+      "color": "#62560E"
+    }
+  },
+  "dateRange": {
+    "from": {
+      "cellNodeId": "1:526",
+      "textNodeId": "1:527",
+      "bounds": {
+        "x": 52,
+        "y": 175,
+        "width": 217,
+        "height": 50
+      },
+      "borderRadius": 4,
+      "label": {
+        "text": "ДАТА ОТ",
+        "fontSize": 21.6,
+        "lineHeight": 1.37,
+        "color": "#62560E"
+      },
+      "value": {
+        "text": "12.05.2023",
+        "fontSize": 21.6,
+        "lineHeight": 1.37,
+        "color": "#0087FC"
+      }
+    },
+    "to": {
+      "cellNodeId": "1:528",
+      "textNodeId": "1:529",
+      "bounds": {
+        "x": 272,
+        "y": 175,
+        "width": 217,
+        "height": 50
+      },
+      "borderRadius": 4,
+      "label": {
+        "text": "ДАТА ДО",
+        "fontSize": 21.6,
+        "lineHeight": 1.37,
+        "color": "#62560E"
+      },
+      "value": {
+        "text": "12.05.2023",
+        "fontSize": 21.6,
+        "lineHeight": 1.37,
+        "color": "#0087FC"
+      }
+    }
+  },
+  "checkboxes": [
+    {
+      "key": "importAll",
+      "boxNodeId": "29:20",
+      "labelNodeId": "29:21",
+      "box": {
+        "x": 565,
+        "y": 187,
+        "width": 26,
+        "height": 26,
+        "borderRadius": 3
+      },
+      "label": {
+        "text": "Все импортировать оъявления",
+        "x": 610,
+        "top": 207,
+        "fontSize": 21.6,
+        "fontFamily": "Roboto",
+        "fontWeight": 300,
+        "color": "#62560E"
+      }
+    },
+    {
+      "key": "skipDuplicates",
+      "boxNodeId": "31:58",
+      "labelNodeId": "31:59",
+      "box": {
+        "x": 979,
+        "y": 187,
+        "width": 26,
+        "height": 26,
+        "borderRadius": 3
+      },
+      "label": {
+        "text": "Не проверять на повторы",
+        "x": 1023,
+        "top": 207,
+        "fontSize": 21.6,
+        "fontFamily": "Roboto",
+        "fontWeight": 300,
+        "color": "#62560E"
+      }
+    }
+  ],
+  "importControls": {
+    "labels": {
+      "type": {
+        "nodeId": "1:540",
+        "text": "Укажите тип файла",
+        "x": 76,
+        "y": 241,
+        "fontSize": 21,
+        "lineHeight": 1.2,
+        "color": "#62560E"
+      },
+      "path": {
+        "nodeId": "1:539",
+        "text": "Укажите путь к файлу xlsx телефоны",
+        "x": 571,
+        "y": 241,
+        "width": 502.689,
+        "fontSize": 21,
+        "lineHeight": 1.2,
+        "color": "#62560E"
+      }
+    },
+    "select": {
+      "nodeId": "1:532",
+      "bounds": {
+        "x": 52,
+        "y": 267,
+        "width": 465,
+        "height": 50
+      },
+      "background": "#FFFEFB",
+      "borderRadius": 6,
+      "valueNodeId": "1:630",
+      "value": {
+        "text": "Xlsx телефоны",
+        "x": 76,
+        "y": 275,
+        "width": 198,
+        "fontFamily": "Inter",
+        "fontWeight": 300,
+        "fontSize": 21.6,
+        "lineHeight": 1.37,
+        "color": "#62560E"
+      },
+      "arrow": {
+        "nodeId": "1:537",
+        "x": 430,
+        "y": 278,
+        "width": 30,
+        "height": 27.778
+      },
+      "clearIcon": {
+        "nodeId": "1:538",
+        "x": 470,
+        "y": 277,
+        "width": 30,
+        "height": 30
+      }
+    },
+    "filepath": {
+      "nodeId": "1:531",
+      "bounds": {
+        "x": 547,
+        "y": 267,
+        "width": 986,
+        "height": 50
+      },
+      "background": "#FFFEFB",
+      "borderRadius": 6,
+      "valueNodeId": "1:631",
+      "value": {
+        "text": "Название фалы из которого нужно производить импорт.xlsx",
+        "x": 571,
+        "y": 275,
+        "fontFamily": "Inter",
+        "fontWeight": 300,
+        "fontSize": 21.6,
+        "lineHeight": 1.37,
+        "color": "#0F0F0F"
+      },
+      "clearIcon": {
+        "nodeId": "6:538",
+        "x": 1488,
+        "y": 277,
+        "width": 30,
+        "height": 30
+      }
+    },
+    "paperclip": {
+      "nodeId": "1:535",
+      "x": 1555,
+      "y": 278,
+      "width": 13,
+      "height": 31.785
+    },
+    "button": {
+      "nodeId": "1:533",
+      "bounds": {
+        "x": 1589,
+        "y": 267,
+        "width": 269,
+        "height": 50
+      },
+      "background": "#FFEE80",
+      "borderRadius": 6,
+      "textNodeId": "1:534",
+      "text": {
+        "value": "Начать Импорт из XML",
+        "x": 1611,
+        "y": 278,
+        "fontFamily": "Roboto",
+        "fontWeight": 300,
+        "fontSize": 21.6,
+        "lineHeight": 1.2,
+        "color": "#62560E",
+        "opacity": 0.5
+      }
+    }
+  },
+  "logArea": {
+    "bandNodeId": "1:541",
+    "bounds": {
+      "x": 20,
+      "y": 340,
+      "width": 1881,
+      "height": 260
+    },
+    "background": "#FFF7BB",
+    "tooltip": {
+      "nodeId": "1:628",
+      "textNodeId": "1:629",
+      "bounds": {
+        "x": 1747,
+        "y": 574,
+        "width": 155,
+        "height": 40
+      },
+      "text": {
+        "value": "Удалить лог",
+        "x": 1764,
+        "y": 578,
+        "fontFamily": "Roboto",
+        "fontWeight": 300,
+        "fontSize": 21.6,
+        "lineHeight": 1.37,
+        "color": "#000000"
+      }
+    },
+    "tableSpecFile": "figma-table-design.json",
+    "tableSummary": {
+      "nodeId": "1:542",
+      "bounds": {
+        "x": 52,
+        "y": 371,
+        "width": 1814,
+        "height": 196
+      },
+      "columns": [
+        63,
+        186,
+        186,
+        810,
+        114,
+        248,
+        114,
+        105
+      ],
+      "headerHeight": 98,
+      "bodyRowHeight": 50
+    }
+  },
+  "implementationChecklist": [
+    "Use the full-page node 1:473 as the source for page-level layout.",
+    "Use figma-table-design.json for detailed table cells and count-cell offsets.",
+    "At 1920px viewport, topbar height must be 54.974px.",
+    "White panel must start at x20 y75 with size 1881 x 265.",
+    "Yellow log band must start at x20 y340 with size 1881 x 260.",
+    "Table must start at x52 y371.",
+    "No log title should appear above the table in this Figma state.",
+    "Figma state is selected file type Xlsx телефоны, filepath filled, button text Начать Импорт из XML.",
+    "Use two mock table rows for exact visual parity with this Figma state.",
+    "Convert px to vw on 1920 baseline by dividing by 19.2."
+  ],
+  "currentProjectFiles": {
+    "html": "index.html",
+    "css": "css/style.css",
+    "js": "js/script.js",
+    "tableSpec": "figma-table-design.json"
+  }
+}

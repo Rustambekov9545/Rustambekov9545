@@ -1,0 +1,4486 @@
+﻿.settings-page {
+        --u: calc(100vw / 1920);
+        --es-text-zoom-ratio: 1;
+        --es-text-zoom-inverse: 1;
+        font-size: calc(1.02917vw * var(--es-text-zoom-inverse));
+    }
+
+    /* Hard freeze for browser Default zoom (Ctrl +/-) where supported. */
+    @supports (zoom: reset) {
+        .settings-page {
+            zoom: reset;
+        }
+    }
+
+    .settings-page .page-wrapper {
+        padding: calc(14 * var(--u)) calc(20 * var(--u)) 0;
+    }
+
+    .settings-page .main-container {
+        width: calc(1880 * var(--u));
+        min-height: calc(1020 * var(--u));
+        height: auto;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        overflow: visible;
+        background: #F4F4F4;
+    }
+
+    .settings-page .page-title,
+    .settings-page .date-row,
+    .settings-page .import-controls,
+    .settings-page .bottom-stripe {
+        display: none;
+    }
+
+    .settings-canvas,
+    .settings-canvas * {
+        box-sizing: border-box;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .settings-canvas {
+        position: absolute;
+        inset: 0;
+        color: #62560E;
+    }
+
+    .es-heading {
+        position: absolute;
+        left: calc(31 * var(--u));
+        top: calc(22 * var(--u));
+        margin: 0;
+        color: #62560E;
+        font-size: calc(21 * var(--u) * var(--es-text-zoom-inverse));
+        font-weight: 400;
+        line-height: 1.35;
+        letter-spacing: 0;
+    }
+
+    .es-top-label {
+        position: absolute;
+        color: #82752E;
+        font-size: calc(21.6 * var(--u) * var(--es-text-zoom-inverse));
+        font-weight: 300;
+        line-height: 1.2;
+        white-space: nowrap;
+    }
+
+    .es-top-label.email { left: calc(31 * var(--u)); top: calc(85 * var(--u)); }
+    .es-top-label.pass  { left: calc(284 * var(--u)); top: calc(85 * var(--u)); }
+    .es-top-label.qty   { left: calc(1522 * var(--u)); top: calc(85 * var(--u)); }
+
+    .es-small-input {
+        position: absolute;
+        height: calc(50 * var(--u));
+        border: calc(0.3 * var(--u)) solid rgba(98, 86, 14, 0.45);
+        border-radius: calc(4 * var(--u));
+        background: #FFFFFF;
+    }
+
+    .es-small-input.email { left: calc(31 * var(--u)); top: calc(113 * var(--u)); width: calc(230 * var(--u)); }
+    .es-small-input.pass  { left: calc(284 * var(--u)); top: calc(113 * var(--u)); width: calc(200 * var(--u)); }
+    .es-small-input.qty   { left: calc(1522 * var(--u)); top: calc(113 * var(--u)); width: calc(200 * var(--u)); }
+
+    .es-qty-value {
+        position: absolute;
+        left: calc(1540 * var(--u));
+        top: calc(130 * var(--u));
+        color: #4D4343;
+        font-size: calc(32 * var(--u) * var(--es-text-zoom-inverse));
+        font-weight: 400;
+        line-height: 1.15;
+    }
+
+    .es-plus-btn {
+        position: absolute;
+        left: calc(512 * var(--u));
+        top: calc(113 * var(--u));
+        width: calc(50 * var(--u));
+        height: calc(50 * var(--u));
+        border: calc(1 * var(--u)) solid rgba(98, 86, 14, 0.28);
+        border-radius: calc(7 * var(--u));
+        background: #F6F6F6;
+    }
+
+    .es-plus-btn::before,
+    .es-plus-btn::after {
+        content: '';
+        position: absolute;
+        background: #B0B0B0;
+        border-radius: calc(1 * var(--u));
+    }
+
+    .es-plus-btn::before {
+        left: calc(15 * var(--u));
+        top: calc(24 * var(--u));
+        width: calc(20 * var(--u));
+        height: calc(2.4 * var(--u));
+    }
+
+    .es-plus-btn::after {
+        left: calc(24 * var(--u));
+        top: calc(15 * var(--u));
+        width: calc(2.4 * var(--u));
+        height: calc(20 * var(--u));
+    }
+
+    .es-mail-list {
+        position: absolute;
+        left: calc(31 * var(--u));
+        top: calc(182 * var(--u));
+        display: flex;
+        flex-direction: column;
+        gap: calc(6 * var(--u));
+    }
+
+    .es-mail-item {
+        display: inline-flex;
+        align-items: center;
+        gap: calc(10 * var(--u));
+        width: fit-content;
+    }
+
+    .es-mail-link {
+        color: #1284F8;
+        font-size: calc(32 * var(--u) * var(--es-text-zoom-inverse));
+        font-weight: 400;
+        line-height: 1.15;
+        white-space: nowrap;
+    }
+
+    .es-x-chip {
+        position: absolute;
+        width: calc(33 * var(--u));
+        height: calc(33 * var(--u));
+        border-radius: 50%;
+        background: #A9A27A;
+    }
+
+    .es-x-chip::before,
+    .es-x-chip::after {
+        content: '';
+        position: absolute;
+        left: calc(15.5 * var(--u));
+        top: calc(8.5 * var(--u));
+        width: calc(2 * var(--u));
+        height: calc(16 * var(--u));
+        background: #FFFFFF;
+        border-radius: calc(1 * var(--u));
+    }
+
+    .es-x-chip::before { transform: rotate(45deg); }
+    .es-x-chip::after { transform: rotate(-45deg); }
+
+    .es-mail-item .es-x-chip {
+        position: relative;
+        display: inline-block;
+        flex: 0 0 auto;
+        margin-top: calc(1 * var(--u));
+    }
+
+    .es-x-chip.qty-x  { left: calc(1675 * var(--u)); top: calc(121 * var(--u)); width: calc(36 * var(--u)); height: calc(36 * var(--u)); }
+
+    .es-divider {
+        position: absolute;
+        left: 0;
+        top: calc(264 * var(--u));
+        width: 100%;
+        height: calc(1 * var(--u));
+        background: #D4D4D4;
+    }
+
+    .es-head-wrap,
+    .es-top-row {
+        position: absolute;
+        left: calc(25 * var(--u));
+        width: calc(1849 * var(--u));
+        display: grid;
+        grid-template-columns:
+            calc(622 * var(--u))
+            calc(309 * var(--u))
+            calc(224 * var(--u))
+            calc(224 * var(--u))
+            calc(288 * var(--u))
+            calc(50 * var(--u));
+        column-gap: calc(8 * var(--u));
+    }
+
+    .es-head-wrap {
+        top: calc(295 * var(--u));
+        color: #82752E;
+        font-size: calc(21.6 * var(--u) * var(--es-text-zoom-inverse));
+        font-weight: 300;
+        line-height: 1.2;
+        white-space: nowrap;
+    }
+
+    .es-top-row { top: calc(323 * var(--u)); }
+
+    .es-input {
+        height: calc(50 * var(--u));
+        border: calc(0.3 * var(--u)) solid rgba(98, 86, 14, 0.45);
+        border-radius: calc(4 * var(--u));
+        background: #FFFFFF;
+        position: relative;
+    }
+
+    .es-input.empty { background: #F4F4F4; }
+
+.es-caret {
+    position: absolute;
+    right: calc(14 * var(--u));
+    top: 50%;
+    width: calc(16 * var(--u));
+    height: calc(8 * var(--u));
+    margin-top: 10px;
+    background-image: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    pointer-events: none;
+    transform: none;
+    transition: transform 0.15s ease;
+}
+
+.es-caret::before,
+.es-caret::after {
+    display: none;
+}
+
+.es-select-field {
+    cursor: pointer;
+    outline: none;
+}
+
+.es-select-field .es-select-value {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.es-select-field.has-clear {
+    padding-right: calc(86 * var(--u));
+}
+
+.es-select-field.has-clear .es-caret {
+    right: calc(54 * var(--u));
+}
+
+.es-select-field.is-empty .es-select-value {
+    color: #B8B08A;
+}
+
+.es-select-field.open .es-caret {
+    transform: rotate(180deg);
+}
+
+.es-select-field:focus-visible {
+    box-shadow: inset 0 0 0 calc(1.2 * var(--u)) #0087FC;
+}
+
+    .es-add-btn {
+        width: calc(50 * var(--u));
+        height: calc(50 * var(--u));
+        border: calc(1 * var(--u)) solid rgba(98, 86, 14, 0.35);
+        border-radius: calc(7 * var(--u));
+        background: #F6F6F6;
+        position: relative;
+    }
+
+    .es-add-btn::before,
+    .es-add-btn::after {
+        content: '';
+        position: absolute;
+        background: #666;
+        border-radius: calc(1 * var(--u));
+    }
+
+    .es-add-btn::before {
+        left: calc(15 * var(--u));
+        top: calc(24 * var(--u));
+        width: calc(20 * var(--u));
+        height: calc(2.2 * var(--u));
+    }
+
+    .es-add-btn::after {
+        left: calc(24 * var(--u));
+        top: calc(15 * var(--u));
+        width: calc(2.2 * var(--u));
+        height: calc(20 * var(--u));
+    }
+
+    .es-cards {
+        position: absolute;
+        left: calc(15 * var(--u));
+        top: calc(383 * var(--u));
+        width: calc(1849 * var(--u));
+        display: flex;
+        flex-direction: column;
+        gap: calc(14 * var(--u));
+    }
+
+    .es-card {
+        position: relative;
+        height: calc(188 * var(--u));
+        border: calc(0.5 * var(--u)) solid rgba(98, 86, 14, 0.5);
+        border-radius: calc(16 * var(--u));
+        background: #F4F4F4;
+        padding: calc(6 * var(--u)) calc(14 * var(--u)) calc(50 * var(--u));
+    }
+
+    .es-card-title {
+        margin: 0;
+        color: #62560E;
+        font-size: calc(28 * var(--u) * var(--es-text-zoom-inverse));
+        font-weight: 400;
+        line-height: 1.2;
+    }
+
+    .es-card-grid {
+        margin-top: calc(4 * var(--u));
+        margin-right: calc(122 * var(--u));
+        display: grid;
+        grid-template-columns:
+            calc(622 * var(--u))
+            calc(309 * var(--u))
+            calc(224 * var(--u))
+            calc(224 * var(--u))
+            calc(288 * var(--u));
+        column-gap: calc(8 * var(--u));
+        row-gap: calc(6 * var(--u));
+    }
+
+    .es-card-label {
+        color: #82752E;
+        font-size: calc(21.6 * var(--u) * var(--es-text-zoom-inverse));
+        font-weight: 300;
+        line-height: 1.2;
+        white-space: nowrap;
+    }
+
+    .es-card-label.error {
+        color: #FF2A2A;
+    }
+
+    .es-card-input {
+        position: relative;
+        height: calc(50 * var(--u));
+        border: calc(0.3 * var(--u)) solid rgba(98, 86, 14, 0.45);
+        border-radius: calc(4 * var(--u));
+        background: #FFFFFF;
+        padding: calc(8 * var(--u)) calc(36 * var(--u)) calc(8 * var(--u)) calc(10 * var(--u));
+        color: #4D4343;
+        font-size: calc(28 * var(--u) * var(--es-text-zoom-inverse));
+        font-weight: 400;
+        line-height: 1.15;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .es-card-input.soft {
+        background: #FFFEFB;
+    }
+
+    .es-card-input.error {
+        border-color: #FF3A3A;
+        background: #FFFBFB;
+    }
+    .es-card-warning {
+        position: absolute;
+        left: calc(1472 * var(--u));
+        top: calc(94 * var(--u));
+        color: #FF3A3A;
+        font-size: calc(21.6 * var(--u) * var(--es-text-zoom-inverse));
+        font-weight: 300;
+        line-height: 1.2;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .es-card-warning::before {
+        content: '';
+        width: calc(6 * var(--u));
+        height: calc(6 * var(--u));
+        border-radius: 50%;
+        margin-right: calc(8 * var(--u));
+        background: #FF3A3A;
+        box-shadow: 0 0 0 calc(2 * var(--u)) rgba(255, 58, 58, 0.16);
+    }
+
+    .es-card-footer {
+        position: absolute;
+        left: calc(14 * var(--u));
+        right: calc(120 * var(--u));
+        bottom: calc(10 * var(--u));
+        margin-top: 0;
+        display: flex;
+        align-items: center;
+        gap: calc(24 * var(--u));
+    }
+
+    .es-check {
+        display: inline-flex;
+        align-items: center;
+        gap: calc(10 * var(--u));
+        height: calc(35 * var(--u));
+        margin: 0;
+    }
+
+    .es-check .check-input {
+        width: calc(26 * var(--u));
+        height: calc(26 * var(--u));
+        margin: 0;
+        flex: 0 0 auto;
+    }
+
+    .es-check .es-check-text {
+        color: #82752E;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 300;
+        font-size: calc(21.6 * var(--u) * var(--es-text-zoom-inverse));
+        line-height: 1.2;
+        white-space: nowrap;
+    }
+    .es-inline-x {
+        position: absolute;
+        right: calc(10 * var(--u));
+        top: 50%;
+        width: calc(33 * var(--u));
+        height: calc(33 * var(--u));
+        margin-top: calc(-16.5 * var(--u));
+        border-radius: 50%;
+        background: #A9A27A;
+    }
+
+    .es-inline-x::before,
+    .es-inline-x::after {
+        content: '';
+        position: absolute;
+        left: calc(15.5 * var(--u));
+        top: calc(8.5 * var(--u));
+        width: calc(2 * var(--u));
+        height: calc(16 * var(--u));
+        background: #FFFFFF;
+        border-radius: calc(1 * var(--u));
+    }
+
+.es-inline-x::before { transform: rotate(45deg); }
+.es-inline-x::after { transform: rotate(-45deg); }
+
+.es-inline-x-btn {
+    cursor: pointer;
+}
+
+.es-inline-x-btn:focus-visible {
+    outline: calc(1 * var(--u)) solid #0087FC;
+    outline-offset: calc(1 * var(--u));
+}
+
+.es-field-menu {
+    position: fixed;
+    display: none;
+    background: #FFFFFF;
+    border: calc(1 * var(--u)) solid rgba(98, 86, 14, 0.24);
+    border-radius: calc(6 * var(--u));
+    box-shadow: 0 calc(6 * var(--u)) calc(18 * var(--u)) rgba(0, 0, 0, 0.12);
+    overflow: visible;
+    z-index: 20000;
+}
+
+.es-field-menu.open {
+    display: block;
+}
+
+.es-field-option {
+    width: 100%;
+    height: calc(42 * var(--u));
+    border: 0;
+    border-bottom: calc(1 * var(--u)) solid rgba(98, 86, 14, 0.1);
+    padding: 0 calc(12 * var(--u));
+    background: #FFFFFF;
+    color: #4D4343;
+    font-size: calc(24 * var(--u) * var(--es-text-zoom-inverse));
+    font-weight: 300;
+    line-height: 1.2;
+    text-align: left;
+    cursor: pointer;
+}
+
+.es-field-option:last-child {
+    border-bottom: 0;
+}
+
+.es-field-option:hover,
+.es-field-option:focus-visible,
+.es-field-option.is-selected {
+    background: #FFDF3B;
+    color: #0B84FF;
+    outline: none;
+}
+
+.es-actions {
+    position: absolute;
+    right: calc(14 * var(--u));
+    top: calc(39 * var(--u));
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    gap: calc(22 * var(--u));
+    overflow: visible;
+}
+
+.es-edit {
+    width: calc(42 * var(--u));
+    height: calc(42 * var(--u));
+    appearance: none;
+    -webkit-appearance: none;
+    border: 0;
+    padding: 0;
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    display: block;
+    flex: 0 0 auto;
+    line-height: 0;
+}
+
+.es-edit::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: calc(35 * var(--u)) calc(35 * var(--u));
+    transform: scale(1);
+    transform-origin: center;
+    transition: transform 0.18s ease;
+    will-change: transform;
+}
+
+.es-edit:hover::before,
+.es-edit:focus-visible::before {
+    background-image: none;
+    transform: scale(1.1);
+}
+
+.es-edit:hover,
+.es-edit:focus-visible {
+    outline: none;
+}
+
+.es-edit:active::before,
+.es-edit.is-active::before {
+    background-image: none;
+    transform: scale(1.13);
+}
+
+.es-edit::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: calc(48 * var(--u));
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 21000;
+    min-width: max-content;
+    padding: calc(7 * var(--u)) calc(18 * var(--u));
+    background: #EFEFEF;
+    color: #111111;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.25;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.es-edit:hover::after,
+.es-edit:focus-visible::after,
+.es-edit.is-active::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+.es-edit.is-active::after {
+    top: calc(55 * var(--u));
+}
+
+.es-delete {
+    width: calc(52 * var(--u));
+    height: calc(52 * var(--u));
+    appearance: none;
+    -webkit-appearance: none;
+    border: 0;
+    padding: 0;
+    position: relative;
+    background: transparent;
+    cursor: pointer;
+    flex: 0 0 auto;
+}
+
+.es-delete::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: none;
+    transform: scale(1);
+    transform-origin: center;
+    transition: transform 0.18s ease;
+}
+
+.es-delete:hover::before,
+.es-delete:focus-visible::before {
+    background-image: none;
+    transform: scale(1.08);
+}
+
+.es-delete:active::before {
+    background-image: none;
+    transform: scale(1.12);
+}
+
+.es-delete:focus-visible {
+    outline: none;
+}
+
+.es-delete::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: calc(58 * var(--u));
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 21000;
+    min-width: max-content;
+    padding: calc(5 * var(--u)) calc(14 * var(--u));
+    background: #EFEFEF;
+    color: #111111;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.25;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.es-delete:hover::after,
+.es-delete:focus-visible::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Compact event cards, matched to the provided Figma crop. */
+.es-cards {
+    left: calc(4 * var(--u));
+    top: calc(383 * var(--u));
+    width: calc(1848 * var(--u));
+    gap: calc(18 * var(--u));
+}
+
+.es-card {
+    height: calc(145 * var(--u));
+    border-color: rgba(98, 86, 14, 0.38);
+    border-radius: calc(11 * var(--u));
+    background: #FFFEFB;
+    padding: 0;
+    overflow: visible;
+}
+
+.es-card-title {
+    position: absolute;
+    left: calc(14 * var(--u));
+    top: calc(8 * var(--u));
+    font-size: calc(22 * var(--u) * var(--es-text-zoom-inverse));
+    line-height: 1.2;
+}
+
+.es-card-grid {
+    position: absolute;
+    left: calc(14 * var(--u));
+    right: calc(135 * var(--u));
+    top: calc(8 * var(--u));
+    margin: 0;
+    display: grid;
+    grid-template-columns:
+        calc(622 * var(--u))
+        calc(309 * var(--u))
+        calc(224 * var(--u))
+        calc(224 * var(--u))
+        minmax(0, 1fr);
+    column-gap: calc(8 * var(--u));
+    row-gap: calc(5 * var(--u));
+}
+
+.es-card-label {
+    font-size: calc(20 * var(--u) * var(--es-text-zoom-inverse));
+    line-height: 1.2;
+}
+
+.es-card-input {
+    height: calc(50 * var(--u));
+    border-color: rgba(98, 86, 14, 0.22);
+    border-radius: calc(4 * var(--u));
+    padding: calc(8 * var(--u)) calc(34 * var(--u)) calc(7 * var(--u)) calc(10 * var(--u));
+    font-size: calc(22 * var(--u) * var(--es-text-zoom-inverse));
+    line-height: 1.15;
+}
+
+.es-card-input.error {
+    border-color: #FF3A3A;
+}
+
+.es-select-field.has-clear {
+    padding-right: calc(76 * var(--u));
+}
+
+.es-select-field.has-clear .es-caret {
+    right: calc(48 * var(--u));
+}
+
+.es-inline-x {
+    right: calc(8 * var(--u));
+    width: calc(29 * var(--u));
+    height: calc(29 * var(--u));
+    margin-top: calc(-14.5 * var(--u));
+}
+
+.es-inline-x::before,
+.es-inline-x::after {
+    left: calc(13.5 * var(--u));
+    top: calc(7 * var(--u));
+    width: calc(2 * var(--u));
+    height: calc(15 * var(--u));
+}
+
+.es-card-warning {
+    left: calc(1432 * var(--u));
+    top: calc(94 * var(--u));
+    font-size: calc(17 * var(--u) * var(--es-text-zoom-inverse));
+    line-height: 1.1;
+}
+
+.es-card-warning::before {
+    width: calc(12 * var(--u));
+    height: calc(16 * var(--u));
+    margin-right: calc(4 * var(--u));
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+}
+
+.es-card-footer {
+    left: calc(14 * var(--u));
+    right: calc(135 * var(--u));
+    bottom: calc(7 * var(--u));
+    gap: calc(38 * var(--u));
+}
+
+.es-check {
+    height: calc(28 * var(--u));
+    gap: calc(8 * var(--u));
+}
+
+.es-check .check-input {
+    width: calc(25 * var(--u));
+    height: calc(25 * var(--u));
+}
+
+.es-check .es-check-text {
+    font-size: calc(20 * var(--u) * var(--es-text-zoom-inverse));
+    line-height: 1.2;
+}
+
+.es-actions {
+    right: calc(12 * var(--u));
+    top: calc(40 * var(--u));
+    gap: calc(15 * var(--u));
+}
+
+.es-edit {
+    width: calc(36 * var(--u));
+    height: calc(36 * var(--u));
+}
+
+.es-edit::before {
+    background-size: calc(29 * var(--u)) calc(29 * var(--u));
+}
+
+.es-edit:hover::before,
+.es-edit:focus-visible::before {
+    transform: scale(1.08);
+}
+
+.es-edit:active::before,
+.es-edit.is-active::before {
+    transform: scale(1.1);
+}
+
+.es-edit::after {
+    top: calc(42 * var(--u));
+    padding: calc(5 * var(--u)) calc(14 * var(--u));
+    font-size: calc(18 * var(--u) * var(--es-text-zoom-inverse));
+}
+
+.es-edit.is-active::after {
+    top: calc(46 * var(--u));
+}
+
+.settings-page.is-blank-tab .settings-canvas {
+    display: none;
+}
+
+.es-small-input,
+.es-input,
+.es-card-input,
+.es-card-inner-input,
+.es-card-number-input {
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+}
+
+input.es-small-input,
+input.es-input {
+    color: #4D4343;
+    font-size: calc(20 * var(--u) * var(--es-text-zoom-inverse));
+    font-weight: 400;
+}
+
+input.es-small-input {
+    padding: 0 calc(10 * var(--u));
+}
+
+input.es-input {
+    padding: calc(8 * var(--u)) calc(10 * var(--u));
+}
+
+.es-small-input.is-invalid,
+.es-input.is-invalid,
+.es-card-input.error {
+    border-color: #FF3A3A;
+}
+
+.es-plus-btn:disabled,
+.es-add-btn:disabled,
+.es-plus-btn.is-disabled,
+.es-add-btn.is-disabled {
+    cursor: default;
+    opacity: 0.55;
+}
+
+.es-plus-btn:disabled::before,
+.es-add-btn:disabled::before {
+    opacity: 1;
+}
+
+.es-plus-btn:disabled::after,
+.es-add-btn:disabled::after {
+    opacity: 0;
+}
+
+.es-x-chip.is-hidden,
+.es-inline-x.is-hidden {
+    display: none;
+}
+
+.es-edit-field {
+    padding: 0;
+}
+
+.es-card-inner-input {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    padding: calc(8 * var(--u)) calc(34 * var(--u)) calc(7 * var(--u)) calc(10 * var(--u));
+    background: transparent;
+    color: #4D4343;
+    font: inherit;
+}
+
+.es-card-title-edit {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(2 * var(--u));
+}
+
+.es-card-number-input {
+    width: calc(44 * var(--u));
+    height: calc(28 * var(--u));
+    border: calc(1 * var(--u)) solid transparent;
+    border-radius: calc(4 * var(--u));
+    padding: 0 calc(3 * var(--u));
+    background: #FFFFFF;
+    color: #62560E;
+    font: inherit;
+}
+
+.es-card-number-input:focus {
+    border-color: var(--es-field-border-hover);
+}
+
+.es-suggest-menu {
+    position: fixed;
+    display: none;
+    max-height: calc(260 * var(--u));
+    overflow: auto;
+    z-index: 30000;
+    border: calc(1 * var(--u)) solid var(--es-field-border-color);
+    border-radius: var(--es-field-radius);
+    background: #FFFFFF;
+    box-shadow: 0 calc(6 * var(--u)) calc(18 * var(--u)) rgba(0, 0, 0, 0.12);
+}
+
+.es-suggest-menu.open {
+    display: block;
+}
+
+.es-suggest-option {
+    display: block;
+    width: 100%;
+    height: calc(36 * var(--u));
+    border: 0;
+    border-bottom: calc(1 * var(--u)) solid rgba(98, 86, 14, 0.1);
+    padding: 0 calc(10 * var(--u));
+    background: #FFFFFF;
+    color: #4D4343;
+    font-size: calc(18 * var(--u) * var(--es-text-zoom-inverse));
+    font-weight: 300;
+    line-height: 1.2;
+    text-align: left;
+    cursor: pointer;
+}
+
+.es-suggest-option:hover,
+.es-suggest-option:focus-visible {
+    background: #FFDF3B;
+    color: #0B84FF;
+    outline: none;
+}
+
+.es-card:not(.is-editing) .es-card-input {
+    cursor: default;
+}
+
+.es-card:nth-child(2) .es-edit {
+    opacity: 0.32;
+}
+
+.es-card:nth-child(2) .es-edit:hover,
+.es-card:nth-child(2) .es-edit:focus-visible {
+    opacity: 1;
+}
+
+.es-delete {
+    width: calc(52 * var(--u));
+    height: calc(52 * var(--u));
+}
+
+.es-inline-x,
+.es-x-chip {
+    background: none;
+    cursor: pointer;
+    overflow: visible;
+    transform: scale(1);
+    transition: transform 0.16s ease;
+}
+
+.es-inline-x:hover,
+.es-inline-x:focus-visible,
+.es-x-chip:hover,
+.es-x-chip:focus-visible {
+    background-image: none;
+    outline: none;
+    transform: scale(1.06);
+}
+
+.es-inline-x:active,
+.es-x-chip:active {
+    background-image: none;
+    transform: scale(1.08);
+}
+
+.es-inline-x::before,
+.es-x-chip::before {
+    display: none;
+}
+
+.es-inline-x::after,
+.es-x-chip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: calc(37 * var(--u));
+    left: 50%;
+    width: auto;
+    height: auto;
+    transform: translateX(-50%);
+    z-index: 21000;
+    min-width: max-content;
+    padding: calc(5 * var(--u)) calc(14 * var(--u));
+    background: #EFEFEF;
+    border-radius: 0;
+    color: #111111;
+    font-family: 'Roboto', sans-serif;
+    font-size: calc(18 * var(--u) * var(--es-text-zoom-inverse));
+    font-weight: 300;
+    line-height: 1.25;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.es-inline-x:hover::after,
+.es-inline-x:focus-visible::after,
+.es-x-chip:hover::after,
+.es-x-chip:focus-visible::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Top settings block alignment from the supplied crop. */
+.es-heading {
+    left: calc(16 * var(--u));
+    top: calc(21 * var(--u));
+    font-size: calc(21 * var(--u) * var(--es-text-zoom-inverse));
+}
+
+.es-top-label {
+    font-size: calc(21.6 * var(--u) * var(--es-text-zoom-inverse));
+}
+
+.es-top-label.email { left: calc(16 * var(--u)); top: calc(78 * var(--u)); }
+.es-top-label.pass  { left: calc(276 * var(--u)); top: calc(78 * var(--u)); }
+.es-top-label.qty   { left: calc(1544 * var(--u)); top: calc(78 * var(--u)); }
+
+.es-small-input {
+    height: calc(50 * var(--u));
+    border-color: rgba(98, 86, 14, 0.13);
+    border-radius: calc(3 * var(--u));
+}
+
+.es-small-input.email { left: calc(8 * var(--u)); top: calc(112 * var(--u)); width: calc(252 * var(--u)); }
+.es-small-input.pass  { left: calc(276 * var(--u)); top: calc(112 * var(--u)); width: calc(206 * var(--u)); }
+.es-small-input.qty   { left: calc(1546 * var(--u)); top: calc(112 * var(--u)); width: calc(202 * var(--u)); }
+
+.es-plus-btn,
+.es-add-btn {
+    appearance: none;
+    -webkit-appearance: none;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    background-image: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    transition: transform 0.16s ease;
+}
+
+.es-plus-btn {
+    left: calc(504 * var(--u));
+    top: calc(112 * var(--u));
+    width: calc(50 * var(--u));
+    height: calc(50 * var(--u));
+}
+
+.es-plus-btn::before,
+.es-plus-btn::after,
+.es-add-btn::before,
+.es-add-btn::after {
+    display: none;
+}
+
+.es-plus-btn:hover,
+.es-plus-btn:focus-visible,
+.es-add-btn:hover,
+.es-add-btn:focus-visible {
+    background-image: none;
+    outline: none;
+    transform: scale(1.03);
+}
+
+.es-plus-btn:active,
+.es-add-btn:active,
+.es-plus-btn.is-active,
+.es-add-btn.is-active {
+    background-image: none;
+    transform: scale(0.98);
+}
+
+.es-qty-value {
+    left: calc(1570 * var(--u));
+    top: calc(126 * var(--u));
+    font-size: calc(21 * var(--u) * var(--es-text-zoom-inverse));
+    line-height: 1.15;
+}
+
+.es-x-chip.qty-x {
+    left: calc(1704 * var(--u));
+    top: calc(119 * var(--u));
+    width: calc(30 * var(--u));
+    height: calc(30 * var(--u));
+}
+
+.es-mail-list {
+    left: calc(16 * var(--u));
+    top: calc(184 * var(--u));
+    gap: calc(5 * var(--u));
+}
+
+.es-mail-link {
+    font-size: calc(22 * var(--u) * var(--es-text-zoom-inverse));
+    line-height: 1.15;
+}
+
+.es-mail-item {
+    gap: calc(12 * var(--u));
+}
+
+.es-mail-item .es-x-chip {
+    width: calc(30 * var(--u));
+    height: calc(30 * var(--u));
+}
+
+.es-divider {
+    top: calc(264 * var(--u));
+}
+
+.es-head-wrap,
+.es-top-row {
+    left: calc(8 * var(--u));
+    width: calc(1816 * var(--u));
+    grid-template-columns:
+        calc(640 * var(--u))
+        calc(320 * var(--u))
+        calc(228 * var(--u))
+        calc(228 * var(--u))
+        calc(296 * var(--u))
+        calc(50 * var(--u));
+    column-gap: calc(8 * var(--u));
+}
+
+.es-head-wrap {
+    top: calc(292 * var(--u));
+    font-size: calc(21.6 * var(--u) * var(--es-text-zoom-inverse));
+}
+
+.es-top-row {
+    top: calc(326 * var(--u));
+}
+
+.es-input {
+    height: calc(50 * var(--u));
+    border-color: rgba(98, 86, 14, 0.13);
+    border-radius: calc(3 * var(--u));
+}
+
+.es-input.empty {
+    background: #F4F4F4;
+}
+
+.es-add-btn {
+    width: calc(50 * var(--u));
+    height: calc(50 * var(--u));
+}
+
+/* Smooth hover states: keep the button hit-area fixed and animate only the inner icon. */
+.es-plus-btn,
+.es-add-btn {
+    background-image: none;
+    transform: none;
+    transition: none;
+    overflow: visible;
+}
+
+.es-plus-btn::before,
+.es-plus-btn::after,
+.es-add-btn::before,
+.es-add-btn::after {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: auto;
+    height: auto;
+    margin: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.es-plus-btn::before,
+.es-add-btn::before {
+    background: none;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.es-plus-btn::after,
+.es-add-btn::after {
+    background: none;
+    opacity: 0;
+    transform: scale(0.98);
+}
+
+.es-plus-btn:hover,
+.es-plus-btn:focus-visible,
+.es-add-btn:hover,
+.es-add-btn:focus-visible,
+.es-plus-btn:active,
+.es-add-btn:active,
+.es-plus-btn.is-active,
+.es-add-btn.is-active {
+    background-image: none;
+    transform: none;
+}
+
+.es-plus-btn:hover::before,
+.es-plus-btn:focus-visible::before,
+.es-add-btn:hover::before,
+.es-add-btn:focus-visible::before,
+.es-plus-btn:active::before,
+.es-add-btn:active::before,
+.es-plus-btn.is-active::before,
+.es-add-btn.is-active::before {
+    opacity: 0;
+    transform: scale(1.02);
+}
+
+.es-plus-btn:hover::after,
+.es-plus-btn:focus-visible::after,
+.es-add-btn:hover::after,
+.es-add-btn:focus-visible::after,
+.es-plus-btn:active::after,
+.es-add-btn:active::after,
+.es-plus-btn.is-active::after,
+.es-add-btn.is-active::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.es-inline-x,
+.es-x-chip {
+    background: none;
+    transform: none;
+    transition: none;
+}
+
+.es-inline-x::before,
+.es-x-chip::before {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: auto;
+    height: auto;
+    margin: 0;
+    background: none;
+    border-radius: 0;
+    pointer-events: none;
+    transform: scale(1);
+    transition: background-image 0.01s linear, transform 0.18s ease;
+}
+
+.es-inline-x:hover,
+.es-inline-x:focus-visible,
+.es-x-chip:hover,
+.es-x-chip:focus-visible,
+.es-inline-x:active,
+.es-x-chip:active {
+    background: none;
+    transform: none;
+}
+
+.es-inline-x:hover::before,
+.es-inline-x:focus-visible::before,
+.es-x-chip:hover::before,
+.es-x-chip:focus-visible::before {
+    background-image: none;
+    transform: scale(1.04);
+}
+
+.es-inline-x:active::before,
+.es-x-chip:active::before {
+    background-image: none;
+    transform: scale(1.06);
+}
+
+/* Email settings icon font from the provided IcoMoon export. */
+@font-face {
+    font-family: "EmailSettingsIcons";
+    src:
+        url("../fonts/email-settings-icons/Untitled.woff2") format("woff2"),
+        url("../fonts/email-settings-icons/Untitled.woff") format("woff"),
+        url("../fonts/email-settings-icons/Untitled.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-palette-values --email-settings-palette {
+    font-family: "EmailSettingsIcons";
+    base-palette: 0;
+}
+
+.es-caret {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(22 * var(--u));
+    height: calc(18 * var(--u));
+    margin-top: calc(-9 * var(--u));
+    background: none;
+    transform-origin: center;
+}
+
+.es-caret::before {
+    content: "\f00b";
+    display: block;
+    position: static;
+    width: auto;
+    height: auto;
+    background: none;
+    color: #B9AE84;
+    font-family: "EmailSettingsIcons" !important;
+    font-palette: --email-settings-palette;
+    font-size: calc(16 * var(--u) * var(--es-text-zoom-inverse));
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    opacity: 1;
+    transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.es-caret::after {
+    display: none;
+}
+
+.es-plus-btn,
+.es-add-btn {
+    color: #6B6B6B;
+    background: none;
+}
+
+.es-plus-btn::before,
+.es-plus-btn::after,
+.es-add-btn::before,
+.es-add-btn::after {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    color: currentColor;
+    font-family: "EmailSettingsIcons" !important;
+    font-palette: --email-settings-palette;
+    font-size: calc(50 * var(--u) * var(--es-text-zoom-inverse));
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.es-plus-btn::before,
+.es-add-btn::before {
+    content: "\f009";
+    opacity: 1;
+    transform: scale(1);
+}
+
+.es-plus-btn::after,
+.es-add-btn::after {
+    content: "\f00a";
+    opacity: 0;
+    transform: scale(0.98);
+}
+
+.es-plus-btn:hover::before,
+.es-plus-btn:focus-visible::before,
+.es-add-btn:hover::before,
+.es-add-btn:focus-visible::before,
+.es-plus-btn:active::before,
+.es-add-btn:active::before,
+.es-plus-btn.is-active::before,
+.es-add-btn.is-active::before {
+    opacity: 0;
+    transform: scale(1.01);
+}
+
+.es-plus-btn:hover::after,
+.es-plus-btn:focus-visible::after,
+.es-add-btn:hover::after,
+.es-add-btn:focus-visible::after,
+.es-plus-btn:active::after,
+.es-add-btn:active::after,
+.es-plus-btn.is-active::after,
+.es-add-btn.is-active::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.es-edit::before {
+    content: "\f000";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    color: #0087FC;
+    font-family: "EmailSettingsIcons" !important;
+    font-palette: --email-settings-palette;
+    font-size: calc(36 * var(--u) * var(--es-text-zoom-inverse));
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    transform: scale(1);
+    transition: transform 0.18s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.es-edit:hover::before,
+.es-edit:focus-visible::before {
+    content: "\f001";
+    background: none;
+    transform: scale(1.07);
+}
+
+.es-edit:active::before,
+.es-edit.is-active::before {
+    content: "\f002";
+    background: none;
+    transform: scale(1.09);
+}
+
+.es-delete::before {
+    content: "\f005";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    color: #111111;
+    font-family: "EmailSettingsIcons" !important;
+    font-palette: --email-settings-palette;
+    font-size: calc(52 * var(--u) * var(--es-text-zoom-inverse));
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    transform: scale(1);
+    transition: color 0.16s ease, transform 0.18s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.es-delete:hover::before,
+.es-delete:focus-visible::before {
+    content: "\f004";
+    background: none;
+    color: #FF0303;
+    transform: scale(1.06);
+}
+
+.es-delete:active::before {
+    content: "\f004";
+    background: none;
+    color: #FF0303;
+    transform: scale(1.09);
+}
+
+.es-card-warning::before {
+    content: "\f003";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(12 * var(--u));
+    height: calc(16 * var(--u));
+    margin-right: calc(4 * var(--u));
+    background: none;
+    color: #FF0303;
+    font-family: "EmailSettingsIcons" !important;
+    font-palette: --email-settings-palette;
+    font-size: calc(15 * var(--u) * var(--es-text-zoom-inverse));
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    box-shadow: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.es-inline-x,
+.es-x-chip {
+    background: none;
+    color: #A9A27A;
+    transform: none;
+    transition: none;
+}
+
+.es-inline-x::before,
+.es-x-chip::before {
+    content: "\f006";
+    display: flex;
+    position: absolute;
+    inset: 0;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    margin: 0;
+    background: none;
+    border-radius: 0;
+    color: currentColor;
+    font-family: "EmailSettingsIcons" !important;
+    font-palette: --email-settings-palette;
+    font-size: calc(30 * var(--u) * var(--es-text-zoom-inverse));
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    opacity: 1;
+    pointer-events: none;
+    transform: scale(1);
+    transition: color 0.16s ease, transform 0.18s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.es-inline-x::before {
+    font-size: calc(29 * var(--u) * var(--es-text-zoom-inverse));
+}
+
+.es-inline-x:hover,
+.es-inline-x:focus-visible,
+.es-x-chip:hover,
+.es-x-chip:focus-visible,
+.es-inline-x:active,
+.es-x-chip:active {
+    background: none;
+    transform: none;
+}
+
+.es-inline-x:hover::before,
+.es-inline-x:focus-visible::before,
+.es-x-chip:hover::before,
+.es-x-chip:focus-visible::before {
+    content: "\f007";
+    background: none;
+    color: #D7C463;
+    transform: scale(1.04);
+}
+
+.es-inline-x:active::before,
+.es-x-chip:active::before {
+    content: "\f008";
+    background: none;
+    color: #62560E;
+    transform: scale(1.06);
+}
+
+/* Stable layered icon states prevent hover jitter from font-glyph metric swaps. */
+.es-edit,
+.es-delete,
+.es-inline-x,
+.es-x-chip,
+.es-plus-btn,
+.es-add-btn {
+    -webkit-tap-highlight-color: transparent;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.es-edit.has-icon-layers::before,
+.es-delete.has-icon-layers::before,
+.es-inline-x.has-icon-layers::before,
+.es-x-chip.has-icon-layers::before {
+    content: none;
+    display: none;
+}
+
+.es-icon-layer {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: currentColor;
+    font-family: "EmailSettingsIcons" !important;
+    font-palette: --email-settings-palette;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate3d(0, 0, 0) scale(0.985);
+    transform-origin: 50% 50%;
+    transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+    will-change: opacity, transform;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.es-icon-layer-default {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+}
+
+.es-edit .es-icon-layer {
+    color: #0087FC;
+    font-size: calc(36 * var(--u) * var(--es-text-zoom-inverse));
+}
+
+.es-delete .es-icon-layer {
+    color: #111111;
+    font-size: calc(52 * var(--u) * var(--es-text-zoom-inverse));
+}
+
+.es-inline-x .es-icon-layer {
+    color: #A9A27A;
+    font-size: calc(29 * var(--u) * var(--es-text-zoom-inverse));
+}
+
+.es-x-chip .es-icon-layer {
+    color: #A9A27A;
+    font-size: calc(30 * var(--u) * var(--es-text-zoom-inverse));
+}
+
+.es-edit:hover .es-icon-layer-default,
+.es-edit:focus-visible .es-icon-layer-default,
+.es-delete:hover .es-icon-layer-default,
+.es-delete:focus-visible .es-icon-layer-default,
+.es-inline-x:hover .es-icon-layer-default,
+.es-inline-x:focus-visible .es-icon-layer-default,
+.es-x-chip:hover .es-icon-layer-default,
+.es-x-chip:focus-visible .es-icon-layer-default,
+.es-edit:active .es-icon-layer-default,
+.es-edit.is-active .es-icon-layer-default,
+.es-delete:active .es-icon-layer-default,
+.es-inline-x:active .es-icon-layer-default,
+.es-x-chip:active .es-icon-layer-default {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(1.015);
+}
+
+.es-edit:hover .es-icon-layer-hover,
+.es-edit:focus-visible .es-icon-layer-hover,
+.es-delete:hover .es-icon-layer-hover,
+.es-delete:focus-visible .es-icon-layer-hover,
+.es-inline-x:hover .es-icon-layer-hover,
+.es-inline-x:focus-visible .es-icon-layer-hover,
+.es-x-chip:hover .es-icon-layer-hover,
+.es-x-chip:focus-visible .es-icon-layer-hover {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1.035);
+}
+
+.es-edit:active .es-icon-layer-hover,
+.es-edit.is-active .es-icon-layer-hover,
+.es-delete:active .es-icon-layer-hover,
+.es-inline-x:active .es-icon-layer-hover,
+.es-x-chip:active .es-icon-layer-hover {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(1.015);
+}
+
+.es-edit:active .es-icon-layer-active,
+.es-edit.is-active .es-icon-layer-active,
+.es-delete:active .es-icon-layer-active,
+.es-inline-x:active .es-icon-layer-active,
+.es-x-chip:active .es-icon-layer-active {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1.055);
+}
+
+.es-delete:hover .es-icon-layer-hover,
+.es-delete:focus-visible .es-icon-layer-hover,
+.es-delete:active .es-icon-layer-active {
+    color: #FF0303;
+}
+
+.es-inline-x:hover .es-icon-layer-hover,
+.es-inline-x:focus-visible .es-icon-layer-hover,
+.es-x-chip:hover .es-icon-layer-hover,
+.es-x-chip:focus-visible .es-icon-layer-hover {
+    color: #D7C463;
+}
+
+.es-inline-x:active .es-icon-layer-active,
+.es-x-chip:active .es-icon-layer-active {
+    color: #62560E;
+}
+
+.es-card.is-clear-tooltip-visible,
+.es-card-grid,
+.es-card-input.is-clear-tooltip-visible {
+    overflow: visible;
+}
+
+.es-card.is-clear-tooltip-visible {
+    z-index: 120;
+}
+
+.es-card-input.is-clear-tooltip-visible {
+    z-index: 130;
+}
+
+.es-card-input.is-clear-tooltip-visible .es-inline-x::after,
+.es-card-input:has(.es-inline-x:hover) .es-inline-x::after,
+.es-card-input:has(.es-inline-x:focus-visible) .es-inline-x::after {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.es-plus-btn::before,
+.es-plus-btn::after,
+.es-add-btn::before,
+.es-add-btn::after {
+    transform-origin: 50% 50%;
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+}
+
+.es-caret {
+    width: calc(16 * var(--u));
+    height: calc(14 * var(--u));
+    margin-top: calc(-7 * var(--u));
+}
+
+.es-caret::before {
+    font-size: calc(11 * var(--u) * var(--es-text-zoom-inverse));
+}
+
+.es-top-row .es-select-field {
+    padding: calc(8 * var(--u)) calc(34 * var(--u)) calc(8 * var(--u)) calc(10 * var(--u));
+    color: #4D4343;
+    font-size: calc(20 * var(--u) * var(--es-text-zoom-inverse));
+    line-height: 1.25;
+}
+
+.es-top-row .es-select-field .es-select-value {
+    height: 100%;
+    line-height: calc(34 * var(--u));
+}
+
+/* Unified field borders and corners, matched to the provided crop. */
+.settings-canvas {
+    --es-field-border-color: #DAD2BB;
+    --es-field-border-hover: #C8BD9F;
+    --es-field-radius: calc(7 * var(--u));
+}
+
+.es-small-input,
+.es-input,
+.es-card-input {
+    border: calc(1 * var(--u)) solid var(--es-field-border-color);
+    border-radius: var(--es-field-radius);
+    background: #FFFFFF;
+    box-shadow: none;
+}
+
+.es-input.empty,
+.es-card-input.soft {
+    background: #FFFFFF;
+}
+
+.es-card-input.error {
+    border-color: #FF3A3A;
+    background: #FFFDFD;
+}
+
+.es-select-field {
+    cursor: pointer;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.es-select-field:hover,
+.es-select-field:focus-visible,
+.es-select-field.open {
+    border-color: var(--es-field-border-hover);
+    outline: none;
+}
+
+.es-select-field:focus-visible,
+.es-select-field.open {
+    box-shadow: inset 0 0 0 calc(0.5 * var(--u)) rgba(98, 86, 14, 0.18);
+}
+
+.es-field-menu {
+    border: calc(1 * var(--u)) solid var(--es-field-border-color);
+    border-radius: var(--es-field-radius);
+    background: #FFFFFF;
+    overflow: visible;
+}
+
+.es-field-option {
+    background: #FFFFFF;
+}
+
+.es-card {
+    border: calc(1 * var(--u)) solid var(--es-field-border-color);
+    border-radius: calc(12 * var(--u));
+}
+
+.es-delete::after {
+    top: calc(54 * var(--u));
+    padding: calc(3 * var(--u)) calc(8 * var(--u));
+    font-size: calc(13 * var(--u) * var(--es-text-zoom-inverse));
+    line-height: 1.15;
+}
+
+.es-edit::after {
+    top: calc(42 * var(--u));
+    padding: calc(3 * var(--u)) calc(8 * var(--u));
+    font-size: calc(13 * var(--u) * var(--es-text-zoom-inverse));
+    line-height: 1.15;
+}
+
+.es-edit.is-active::after {
+    top: calc(46 * var(--u));
+}
+
+/* Final functional-state overrides from the DOCX requirements. */
+.es-plus-btn:disabled,
+.es-add-btn:disabled,
+.es-plus-btn.is-disabled,
+.es-add-btn.is-disabled {
+    cursor: default;
+    opacity: 0.55;
+}
+
+.es-plus-btn:disabled:hover::before,
+.es-plus-btn.is-disabled:hover::before,
+.es-add-btn:disabled:hover::before,
+.es-add-btn.is-disabled:hover::before,
+.es-plus-btn:disabled:focus-visible::before,
+.es-add-btn:disabled:focus-visible::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.es-plus-btn:disabled:hover::after,
+.es-plus-btn.is-disabled:hover::after,
+.es-add-btn:disabled:hover::after,
+.es-add-btn.is-disabled:hover::after,
+.es-plus-btn:disabled:focus-visible::after,
+.es-add-btn:disabled:focus-visible::after {
+    opacity: 0;
+}
+
+input.es-small-input,
+input.es-input,
+.es-card-inner-input,
+.es-card-number-input {
+    font-family: 'Roboto', sans-serif;
+}
+
+.settings-canvas {
+    --es-extra-mail-space: 0px;
+}
+
+.es-divider {
+    top: calc(264 * var(--u) + var(--es-extra-mail-space));
+}
+
+.es-head-wrap {
+    top: calc(292 * var(--u) + var(--es-extra-mail-space));
+}
+
+.es-top-row {
+    top: calc(326 * var(--u) + var(--es-extra-mail-space));
+}
+
+.es-cards {
+    top: calc(383 * var(--u) + var(--es-extra-mail-space));
+}
+
+.es-floating-tooltip {
+    position: fixed;
+    z-index: 50000;
+    min-width: max-content;
+    padding: calc(3 * var(--u)) calc(8 * var(--u));
+    background: #EFEFEF;
+    color: #111111;
+    font-family: 'Roboto', sans-serif;
+    font-size: calc(13 * var(--u) * var(--es-text-zoom-inverse));
+    font-weight: 300;
+    line-height: 1.15;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%);
+}
+
+.es-floating-tooltip.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.es-card.has-warning .es-card-label.error {
+    color: #FF2A2A;
+}
+
+.es-card.has-warning .es-card-grid .es-card-input:nth-child(10) {
+    border-color: #FF2A2A;
+    background: #FFFDFD;
+}
+
+.es-card.has-warning .es-card-warning {
+    left: auto;
+    right: calc(138 * var(--u));
+    top: calc(94 * var(--u));
+    width: calc(288 * var(--u));
+    color: #FF2A2A;
+    font-size: calc(17 * var(--u) * var(--es-text-zoom-inverse));
+    line-height: 1.1;
+}
+
+.es-card.has-warning .es-card-warning::before {
+    width: calc(12 * var(--u));
+    height: calc(16 * var(--u));
+    margin-right: calc(4 * var(--u));
+    color: #FF0303;
+}
+
+.es-card .es-edit {
+    opacity: 0.32;
+}
+
+.es-card .es-edit:hover,
+.es-card .es-edit:focus-visible,
+.es-card .es-edit.is-active {
+    opacity: 1;
+}
+
+.es-edit.is-active::after {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.es-edit.is-active:hover::after,
+.es-edit.is-active:focus-visible::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+.es-card-title {
+    top: calc(7 * var(--u));
+    height: calc(26 * var(--u));
+    display: inline-flex;
+    align-items: center;
+}
+
+.es-card-grid {
+    top: calc(7 * var(--u));
+    grid-template-rows: calc(26 * var(--u)) calc(50 * var(--u));
+    align-items: center;
+}
+
+.es-card-label {
+    height: calc(26 * var(--u));
+    display: flex;
+    align-items: center;
+}
+
+.es-card-input {
+    display: flex;
+    align-items: center;
+}
+
+.es-card-input.es-edit-field,
+.es-card-input.es-select-field {
+    display: block;
+}
+
+.es-inline-x::after,
+.es-x-chip::after,
+.es-inline-x:hover::after,
+.es-inline-x:focus-visible::after,
+.es-x-chip:hover::after,
+.es-x-chip:focus-visible::after {
+    content: none !important;
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+.settings-page .page-wrapper {
+    padding-bottom: calc(10 * var(--u));
+}
+
+.settings-page .main-container {
+    height: calc(866 * var(--u) + var(--es-extra-mail-space, 0px));
+    min-height: calc(866 * var(--u) + var(--es-extra-mail-space, 0px));
+}
+
+.es-card-title-edit {
+    gap: 0;
+}
+
+.es-card-number-input {
+    appearance: none;
+    -webkit-appearance: none;
+    min-width: 1ch;
+    height: 1.2em;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: #62560E;
+    font: inherit;
+    line-height: inherit;
+    text-align: left;
+}
+
+.es-card-number-input:focus {
+    border-color: transparent;
+    box-shadow: none;
+    outline: none;
+}
+
+/* Final visual pass from the TZ screenshot: background, colors, fonts, borders. */
+.settings-page {
+    background: #FFFCEC;
+}
+
+.settings-page .page-wrapper {
+    background: #FFFCEC;
+}
+
+.settings-page .main-container {
+    background: #FFFFFF;
+    border: calc(1 * var(--u)) solid #E8E2CF;
+}
+
+.settings-canvas,
+.settings-canvas * {
+    font-family: 'Roboto', sans-serif;
+}
+
+.settings-canvas {
+    color: #62560E;
+    background: #FFFFFF;
+}
+
+.es-heading,
+.es-card-title,
+.es-card-number-input {
+    color: #62560E;
+    font-weight: 400;
+}
+
+.es-top-label,
+.es-head-wrap,
+.es-card-label,
+.es-check .es-check-text {
+    color: #82752E;
+    font-weight: 300;
+}
+
+.es-divider {
+    background: #E2E2E2;
+}
+
+.settings-canvas {
+    --es-field-border-color: #E9E4D4;
+    --es-field-border-hover: #CFC5AA;
+    --es-field-radius: calc(3 * var(--u));
+}
+
+.es-small-input,
+.es-input,
+.es-card-input,
+.es-field-menu,
+.es-suggest-menu {
+    border-color: var(--es-field-border-color);
+    border-radius: var(--es-field-radius);
+    background: #FFFFFF;
+}
+
+.es-small-input,
+.es-input,
+.es-card-input {
+    border-width: calc(1 * var(--u));
+    box-shadow: none;
+}
+
+.es-input.empty,
+.es-card-input.soft,
+.es-card {
+    background: #FFFFFF;
+}
+
+.es-card {
+    border-color: #DAD1B8;
+    border-radius: calc(11 * var(--u));
+}
+
+.es-card.has-warning .es-card-label.error,
+.es-card-label.error,
+.es-card.has-warning .es-card-warning {
+    color: #FF0303;
+}
+
+.es-card.has-warning .es-card-grid .es-card-input:nth-child(10),
+.es-card-input.error,
+.es-small-input.is-invalid,
+.es-input.is-invalid {
+    border-color: #FF4A4A;
+    background: #FFFDFD;
+}
+
+input.es-small-input,
+input.es-input,
+.es-card-input,
+.es-card-inner-input,
+.es-card-number-input {
+    color: #4D4343;
+    font-weight: 400;
+}
+
+.es-mail-link {
+    color: #0087FC;
+}
+
+.es-inline-x .es-icon-layer,
+.es-x-chip .es-icon-layer {
+    color: #A9A27A;
+}
+
+.es-plus-btn,
+.es-add-btn {
+    border-color: #C9C9C9;
+    background: #FFFFFF;
+}
+
+.es-plus-btn::before,
+.es-plus-btn::after,
+.es-add-btn::before,
+.es-add-btn::after {
+    background: #9C9C9C;
+}
+
+.es-heading {
+    font-size: calc(21 * var(--u) * var(--es-text-zoom-inverse));
+    line-height: 1.2;
+}
+
+.es-top-label,
+.es-head-wrap,
+.es-card-label,
+.es-check .es-check-text {
+    font-size: calc(21.6 * var(--u) * var(--es-text-zoom-inverse));
+    line-height: 1.2;
+}
+
+input.es-small-input,
+input.es-input,
+.es-input.es-select-field,
+.es-top-row .es-select-field,
+.es-card-input,
+.es-card-inner-input {
+    font-size: calc(22 * var(--u) * var(--es-text-zoom-inverse));
+    line-height: 1.15;
+}
+
+.es-card-title,
+.es-card-number-input {
+    font-size: calc(24 * var(--u) * var(--es-text-zoom-inverse));
+    line-height: 1.15;
+}
+
+.es-mail-link {
+    font-size: calc(22 * var(--u) * var(--es-text-zoom-inverse));
+    line-height: 1.15;
+}
+
+.es-field-option {
+    font-size: calc(22 * var(--u) * var(--es-text-zoom-inverse));
+    line-height: 1.2;
+}
+
+.es-suggest-option {
+    font-size: calc(20 * var(--u) * var(--es-text-zoom-inverse));
+    line-height: 1.2;
+}
+
+.es-card.has-warning .es-card-warning {
+    font-size: calc(17 * var(--u) * var(--es-text-zoom-inverse));
+    line-height: 1.1;
+}
+
+.es-floating-tooltip,
+.es-edit::after,
+.es-delete::after {
+    font-size: calc(13 * var(--u) * var(--es-text-zoom-inverse));
+    line-height: 1.15;
+}
+
+.es-plus-btn,
+.es-add-btn {
+    border: calc(1 * var(--u)) solid #C9C9C9;
+    border-radius: calc(4 * var(--u));
+    background: #FFFFFF;
+    opacity: 1;
+}
+
+.es-plus-btn::before,
+.es-plus-btn::after,
+.es-add-btn::before,
+.es-add-btn::after {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: auto;
+    left: 50%;
+    top: 50%;
+    margin: 0;
+    background: #B9B9B9;
+    border-radius: calc(2 * var(--u));
+    opacity: 1;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+}
+
+.es-plus-btn::before,
+.es-add-btn::before {
+    width: calc(20 * var(--u));
+    height: calc(2 * var(--u));
+}
+
+.es-plus-btn::after,
+.es-add-btn::after {
+    width: calc(2 * var(--u));
+    height: calc(20 * var(--u));
+}
+
+.es-plus-btn:hover::before,
+.es-plus-btn:focus-visible::before,
+.es-plus-btn:active::before,
+.es-plus-btn.is-active::before,
+.es-plus-btn:disabled::before,
+.es-plus-btn.is-disabled::before,
+.es-plus-btn:disabled:hover::before,
+.es-plus-btn.is-disabled:hover::before,
+.es-plus-btn:disabled:focus-visible::before,
+.es-add-btn:hover::before,
+.es-add-btn:focus-visible::before,
+.es-add-btn:active::before,
+.es-add-btn.is-active::before,
+.es-add-btn:disabled::before,
+.es-add-btn.is-disabled::before,
+.es-add-btn:disabled:hover::before,
+.es-add-btn.is-disabled:hover::before,
+.es-add-btn:disabled:focus-visible::before {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+
+.es-plus-btn:hover::after,
+.es-plus-btn:focus-visible::after,
+.es-plus-btn:active::after,
+.es-plus-btn.is-active::after,
+.es-plus-btn:disabled::after,
+.es-plus-btn.is-disabled::after,
+.es-plus-btn:disabled:hover::after,
+.es-plus-btn.is-disabled:hover::after,
+.es-plus-btn:disabled:focus-visible::after,
+.es-add-btn:hover::after,
+.es-add-btn:focus-visible::after,
+.es-add-btn:active::after,
+.es-add-btn.is-active::after,
+.es-add-btn:disabled::after,
+.es-add-btn.is-disabled::after,
+.es-add-btn:disabled:hover::after,
+.es-add-btn.is-disabled:hover::after,
+.es-add-btn:disabled:focus-visible::after {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+
+/* Pixel alignment for the event-add row and event cards from the TZ screenshot. */
+.es-divider {
+    top: calc(264 * var(--u) + var(--es-extra-mail-space));
+}
+
+.es-head-wrap,
+.es-top-row {
+    left: calc(25 * var(--u));
+    width: calc(1849 * var(--u));
+    grid-template-columns:
+        calc(622 * var(--u))
+        calc(309 * var(--u))
+        calc(224 * var(--u))
+        calc(224 * var(--u))
+        calc(288 * var(--u))
+        calc(50 * var(--u));
+    column-gap: calc(8 * var(--u));
+}
+
+.es-head-wrap {
+    top: calc(295 * var(--u) + var(--es-extra-mail-space));
+    align-items: center;
+}
+
+.es-top-row {
+    top: calc(323 * var(--u) + var(--es-extra-mail-space));
+}
+
+.es-cards {
+    left: calc(15 * var(--u));
+    top: calc(383 * var(--u) + var(--es-extra-mail-space));
+    width: calc(1849 * var(--u));
+    gap: calc(14 * var(--u));
+}
+
+.es-card {
+    height: calc(145 * var(--u));
+    border-radius: calc(11 * var(--u));
+}
+
+.es-card-title {
+    left: calc(17 * var(--u));
+    top: calc(8 * var(--u));
+    height: calc(26 * var(--u));
+}
+
+.es-card-grid {
+    left: calc(8 * var(--u));
+    right: calc(122 * var(--u));
+    top: calc(8 * var(--u));
+    grid-template-columns:
+        calc(622 * var(--u))
+        calc(309 * var(--u))
+        calc(224 * var(--u))
+        calc(224 * var(--u))
+        calc(288 * var(--u));
+    grid-template-rows: calc(26 * var(--u)) calc(50 * var(--u));
+    column-gap: calc(8 * var(--u));
+    row-gap: calc(5 * var(--u));
+}
+
+.es-card-label {
+    height: calc(26 * var(--u));
+    align-items: center;
+    padding-left: calc(12 * var(--u));
+    box-sizing: border-box;
+}
+
+.es-card-label:first-child {
+    padding-left: 0;
+}
+
+.es-head-wrap > div {
+    padding-left: calc(12 * var(--u));
+    box-sizing: border-box;
+}
+
+.es-head-wrap > div:last-child {
+    padding-left: 0;
+}
+
+.es-card-footer {
+    left: calc(14 * var(--u));
+    right: calc(120 * var(--u));
+    bottom: calc(7 * var(--u));
+    gap: calc(38 * var(--u));
+}
+
+.es-actions {
+    right: calc(14 * var(--u));
+    top: calc(39 * var(--u));
+    gap: calc(15 * var(--u));
+}
+
+/* Final top-block pixel pass from the latest screenshot reference. */
+.settings-page {
+    background: #FFFCEC;
+}
+
+.settings-page .page-wrapper {
+    background: #FFFCEC;
+}
+
+.settings-page .main-container,
+.settings-canvas {
+    background: #FFFFFF;
+}
+
+.es-heading {
+    left: calc(31 * var(--u));
+    top: calc(22 * var(--u));
+    font-size: calc(21 * var(--u) * var(--es-text-zoom-inverse));
+    line-height: 1.2;
+}
+
+.es-top-label {
+    font-size: calc(21.6 * var(--u) * var(--es-text-zoom-inverse));
+    line-height: 1.2;
+}
+
+.es-top-label.email { left: calc(31 * var(--u)); top: calc(85 * var(--u)); }
+.es-top-label.pass  { left: calc(284 * var(--u)); top: calc(85 * var(--u)); }
+.es-top-label.qty   { left: calc(1522 * var(--u)); top: calc(85 * var(--u)); }
+
+.es-small-input.email { left: calc(31 * var(--u)); top: calc(113 * var(--u)); width: calc(230 * var(--u)); }
+.es-small-input.pass  { left: calc(284 * var(--u)); top: calc(113 * var(--u)); width: calc(200 * var(--u)); }
+.es-small-input.qty   { left: calc(1522 * var(--u)); top: calc(113 * var(--u)); width: calc(200 * var(--u)); }
+
+.es-small-input {
+    border-color: #E0DAC5;
+    border-radius: calc(4 * var(--u));
+}
+
+.es-plus-btn {
+    left: calc(512 * var(--u));
+    top: calc(113 * var(--u));
+    width: calc(50 * var(--u));
+    height: calc(50 * var(--u));
+}
+
+.es-x-chip.qty-x {
+    left: calc(1675 * var(--u));
+    top: calc(121 * var(--u));
+    width: calc(36 * var(--u));
+    height: calc(36 * var(--u));
+}
+
+.es-mail-list {
+    left: calc(31 * var(--u));
+    top: calc(182 * var(--u));
+    gap: calc(6 * var(--u));
+}
+
+.es-mail-item {
+    gap: calc(10 * var(--u));
+}
+
+.es-mail-item .es-x-chip {
+    width: calc(33 * var(--u));
+    height: calc(33 * var(--u));
+}
+
+.es-divider {
+    top: calc(206 * var(--u) + var(--es-extra-mail-space));
+    background: #DBDBDB;
+}
+
+.es-head-wrap {
+    top: calc(237 * var(--u) + var(--es-extra-mail-space));
+}
+
+.es-top-row {
+    top: calc(265 * var(--u) + var(--es-extra-mail-space));
+}
+
+.es-cards {
+    top: calc(325 * var(--u) + var(--es-extra-mail-space));
+}
+
+/* Card edge/border match to the latest reference crop. */
+.es-card {
+    border: calc(1 * var(--u)) solid #D3CCB2;
+    border-radius: calc(14 * var(--u));
+    background: #ffffff;
+}
+
+/* Dropdowns: full visual style matched to the main page selects. */
+.es-select-field {
+    border: 0;
+    border-radius: calc(6 * var(--u));
+    background: #FFFEFB;
+    box-shadow: inset 0 0 0 calc(1 * var(--u)) #EFE8CD;
+    transition: box-shadow 0.15s ease, background 0.15s ease, border-radius 0.15s ease;
+}
+
+.es-select-field:hover {
+    box-shadow: inset 0 0 0 calc(1 * var(--u)) #0087FC;
+}
+
+.es-select-field:focus-visible,
+.es-select-field.open {
+    background: #FFFFFF;
+    box-shadow: inset 0 0 0 calc(1.5 * var(--u)) #0087FC;
+    border-radius: calc(6 * var(--u)) calc(6 * var(--u)) 0 0;
+    outline: none;
+}
+
+.es-select-field.open-up:focus-visible,
+.es-select-field.open-up.open {
+    border-radius: 0 0 calc(6 * var(--u)) calc(6 * var(--u));
+}
+
+.es-select-field.is-invalid {
+    box-shadow: inset 0 0 0 calc(1.5 * var(--u)) #FF4A4A;
+}
+
+.es-select-field .es-select-value {
+    color: #62560E;
+    font-weight: 300;
+}
+
+.es-select-field.is-empty .es-select-value {
+    color: #D0CDB7;
+}
+
+.es-caret {
+    width: calc(10 * var(--u));
+    height: calc(10 * var(--u));
+    margin-top: calc(-5 * var(--u));
+    right: calc(14 * var(--u));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: center;
+    background: none;
+}
+
+.es-caret::before {
+    content: "\f000";
+    display: block;
+    color: #62560E;
+    font-family: 'vsevn-select-arrow' !important;
+    font-size: calc(10 * var(--u) * var(--es-text-zoom-inverse));
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.es-caret::after {
+    display: none !important;
+}
+
+.es-select-field.open .es-caret {
+    transform: rotate(180deg);
+}
+
+.es-field-menu {
+    position: fixed;
+    border: 0;
+    border-radius: 0 0 calc(6 * var(--u)) calc(6 * var(--u));
+    background: #FFFFFF;
+    box-shadow: 0 calc(4 * var(--u)) calc(15 * var(--u)) rgba(0, 0, 0, 0.12);
+    max-height: calc(522 * var(--u));
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 20000;
+    scrollbar-width: none;
+}
+
+.es-field-menu::-webkit-scrollbar {
+    display: none;
+}
+
+.es-field-menu::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow:
+        inset calc(1.5 * var(--u)) 0 0 #0087FC,
+        inset calc(-1.5 * var(--u)) 0 0 #0087FC,
+        inset 0 calc(-1.5 * var(--u)) 0 #0087FC;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.es-field-menu.open-up {
+    border-radius: calc(6 * var(--u)) calc(6 * var(--u)) 0 0;
+}
+
+.es-field-menu.open-up::after {
+    box-shadow:
+        inset calc(1.5 * var(--u)) 0 0 #0087FC,
+        inset calc(-1.5 * var(--u)) 0 0 #0087FC,
+        inset 0 calc(1.5 * var(--u)) 0 #0087FC;
+}
+
+.es-field-option {
+    position: relative;
+    z-index: 1;
+    height: calc(58 * var(--u));
+    padding: 0 calc(16 * var(--u));
+    display: flex;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: calc(22 * var(--u) * var(--es-text-zoom-inverse));
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: 0;
+    color: rgba(78, 74, 74, 0.8);
+    background: #FFFFFF;
+    border: 0;
+    box-shadow: inset 0 calc(-1 * var(--u)) 0 rgba(0, 0, 0, 0.035);
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.1s ease, color 0.1s ease;
+}
+
+.es-field-option:last-child {
+    box-shadow: none;
+}
+
+.es-field-option:hover,
+.es-field-option:focus-visible {
+    background: #FFDF3B;
+    color: #00A6FF;
+    outline: none;
+}
+
+.es-field-option.is-selected {
+    background: #F6FBFF;
+    color: #00A6FF;
+}
+
+.es-field-option.is-selected:hover,
+.es-field-option.is-selected:focus-visible {
+    background: #FFDF3B;
+    color: #00A6FF;
+}
+
+/* Plus icon final lock (1:1): keep both bars visible even in disabled state. */
+.settings-page .es-plus-btn,
+.settings-page .es-add-btn {
+    border: calc(1 * var(--u)) solid #C9C9C9 !important;
+    border-radius: calc(7 * var(--u)) !important;
+    background: #F6F6F6 !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+}
+
+.settings-page .es-plus-btn::before,
+.settings-page .es-plus-btn::after,
+.settings-page .es-add-btn::before,
+.settings-page .es-add-btn::after {
+    content: '' !important;
+    opacity: 1 !important;
+    background: #C6C6C6 !important;
+    border-radius: calc(1 * var(--u)) !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+.settings-page .es-plus-btn::before,
+.settings-page .es-add-btn::before {
+    width: calc(20 * var(--u)) !important;
+    height: calc(2 * var(--u)) !important;
+}
+
+.settings-page .es-plus-btn::after,
+.settings-page .es-add-btn::after {
+    width: calc(2 * var(--u)) !important;
+    height: calc(20 * var(--u)) !important;
+}
+
+.settings-page .es-plus-btn:disabled,
+.settings-page .es-add-btn:disabled,
+.settings-page .es-plus-btn.is-disabled,
+.settings-page .es-add-btn.is-disabled {
+    opacity: 1 !important;
+}
+
+.settings-page .es-plus-btn:disabled::before,
+.settings-page .es-plus-btn:disabled::after,
+.settings-page .es-plus-btn.is-disabled::before,
+.settings-page .es-plus-btn.is-disabled::after,
+.settings-page .es-add-btn:disabled::before,
+.settings-page .es-add-btn:disabled::after,
+.settings-page .es-add-btn.is-disabled::before,
+.settings-page .es-add-btn.is-disabled::after {
+    opacity: 1 !important;
+}
+
+.settings-page .es-plus-btn,
+.settings-page .es-add-btn {
+    border: calc(1 * var(--u)) solid rgba(98, 86, 14, 0.28) !important;
+    border-radius: calc(7 * var(--u)) !important;
+    background: #F6F6F6 !important;
+    overflow: hidden;
+}
+
+.settings-page .es-plus-btn::before,
+.settings-page .es-add-btn::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: url('../icons/plus-light.svg') center / 100% 100% no-repeat !important;
+    border-radius: inherit !important;
+    transform: none !important;
+    opacity: 1 !important;
+}
+
+.settings-page .es-plus-btn::after,
+.settings-page .es-add-btn::after {
+    content: none !important;
+    display: none !important;
+}
+
+.settings-page .es-plus-btn:not(:disabled):not(.is-disabled)::before,
+.settings-page .es-add-btn:not(:disabled):not(.is-disabled)::before {
+    background-image: url('../icons/plus-dark.svg') !important;
+}
+
+/* Final 1:1 lock for top row fields (without plus): same border/light/radius. */
+.settings-page .es-head-wrap > div {
+    color: #8F8348 !important;
+}
+
+.settings-page #eventNameInput,
+.settings-page #eventEmailSelect,
+.settings-page #eventTimeSelect,
+.settings-page #eventDaySelect,
+.settings-page #eventDirectorInput {
+    background: #FFFEFB !important;
+    border: calc(1 * var(--u)) solid #E3DDC7 !important;
+    border-radius: calc(4 * var(--u)) !important;
+    box-shadow: none !important;
+}
+
+.settings-page #eventEmailSelect:hover,
+.settings-page #eventTimeSelect:hover,
+.settings-page #eventDaySelect:hover,
+.settings-page #eventEmailSelect:focus-visible,
+.settings-page #eventTimeSelect:focus-visible,
+.settings-page #eventDaySelect:focus-visible,
+.settings-page #eventEmailSelect.open,
+.settings-page #eventTimeSelect.open,
+.settings-page #eventDaySelect.open,
+.settings-page #eventEmailSelect.open-up,
+.settings-page #eventTimeSelect.open-up,
+.settings-page #eventDaySelect.open-up,
+.settings-page #eventEmailSelect.open-up:focus-visible,
+.settings-page #eventTimeSelect.open-up:focus-visible,
+.settings-page #eventDaySelect.open-up:focus-visible {
+    background: #FFFEFB !important;
+    border: calc(1 * var(--u)) solid #E3DDC7 !important;
+    border-radius: calc(4 * var(--u)) !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* Absolute final size lock for all dropdown arrows. */
+.settings-page .es-caret,
+.settings-page.is-text-zoomed .es-caret {
+    width: calc(16.4px * var(--es-caret-default-zoom-inverse, 1)) !important;
+    height: calc(16.4px * var(--es-caret-default-zoom-inverse, 1)) !important;
+    min-width: calc(16.4px * var(--es-caret-default-zoom-inverse, 1)) !important;
+    min-height: calc(16.4px * var(--es-caret-default-zoom-inverse, 1)) !important;
+    margin-top: calc(-0.5 * calc(16.4px * var(--es-caret-default-zoom-inverse, 1))) !important;
+    right: calc(16 * var(--u)) !important;
+}
+
+.settings-page .es-select-field.has-clear .es-caret,
+.settings-page.is-text-zoomed .es-select-field.has-clear .es-caret {
+    right: calc(56 * var(--u)) !important;
+}
+
+.settings-page .es-caret::before,
+.settings-page.is-text-zoomed .es-caret::before {
+    content: '' !important;
+    display: block !important;
+    width: calc(16.4px * var(--es-caret-default-zoom-inverse, 1)) !important;
+    height: calc(16.4px * var(--es-caret-default-zoom-inverse, 1)) !important;
+    border-right: calc(1.1px * var(--es-caret-default-zoom-inverse, 1)) solid #B7C694 !important;
+    border-bottom: calc(1.1px * var(--es-caret-default-zoom-inverse, 1)) solid #B7C694 !important;
+    transform: rotate(45deg) scale(0.62) !important;
+    transform-origin: center !important;
+    background: none !important;
+    color: #B7C694 !important;
+    font-size: 0 !important;
+    font-family: inherit !important;
+    line-height: 0 !important;
+    opacity: 0.9 !important;
+}
+
+/* Final id-lock for top-row parity (exactly 5 fields, without plus). */
+.settings-page #eventNameInput,
+.settings-page #eventEmailSelect,
+.settings-page #eventTimeSelect,
+.settings-page #eventDaySelect,
+.settings-page #eventDirectorInput {
+    background: #FFFEFB !important;
+    border: calc(1 * var(--u)) solid #E3DDC7 !important;
+    border-radius: calc(4 * var(--u)) !important;
+    box-shadow: none !important;
+}
+
+.settings-page #eventEmailSelect:hover,
+.settings-page #eventTimeSelect:hover,
+.settings-page #eventDaySelect:hover,
+.settings-page #eventEmailSelect:focus-visible,
+.settings-page #eventTimeSelect:focus-visible,
+.settings-page #eventDaySelect:focus-visible,
+.settings-page #eventEmailSelect.open,
+.settings-page #eventTimeSelect.open,
+.settings-page #eventDaySelect.open,
+.settings-page #eventEmailSelect.open-up,
+.settings-page #eventTimeSelect.open-up,
+.settings-page #eventDaySelect.open-up,
+.settings-page #eventEmailSelect.open-up:focus-visible,
+.settings-page #eventTimeSelect.open-up:focus-visible,
+.settings-page #eventDaySelect.open-up:focus-visible {
+    background: #FFFEFB !important;
+    border: calc(1 * var(--u)) solid #E3DDC7 !important;
+    border-radius: calc(4 * var(--u)) !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* Final lock: all top-row fields (except plus) must be visually identical. */
+.settings-page .es-top-row > :not(.es-add-btn) {
+    background: #FFFEFB !important;
+    border: calc(1 * var(--u)) solid #E3DDC7 !important;
+    border-radius: calc(4 * var(--u)) !important;
+    box-shadow: none !important;
+}
+
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn),
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn):hover,
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn):focus-visible,
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn).open,
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn).open-up,
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn).open-up:focus-visible {
+    background: #FFFEFB !important;
+    border: calc(1 * var(--u)) solid #E3DDC7 !important;
+    border-radius: calc(4 * var(--u)) !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* Top event-add row (without plus): light 1:1 borders and labels. */
+.settings-page .es-head-wrap > div {
+    color: #8F8348 !important;
+}
+
+.settings-page .es-top-row > .es-input:not(.es-add-btn) {
+    background: #fbfffb !important;
+    border-color: #E3DDC7 !important;
+    border-radius: calc(4 * var(--u)) !important;
+    box-shadow: none !important;
+}
+
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn) {
+    border: 0 !important;
+    box-shadow: inset 0 0 0 calc(1 * var(--u)) #E3DDC7 !important;
+}
+
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn):hover {
+    box-shadow: inset 0 0 0 calc(1 * var(--u)) #D8D0B2 !important;
+}
+
+/* Top row exact border parity: all fields match "Добавить новое событие". */
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn),
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn):hover,
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn):focus-visible,
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn).open,
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn).open-up,
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn).open-up:focus-visible {
+    background: #FFFEFB !important;
+    border: calc(1 * var(--u)) solid #E3DDC7 !important;
+    border-radius: calc(4 * var(--u)) !important;
+    box-shadow: none !important;
+}
+
+/* Dropdown caret final lock: light greenish tone to avoid dark look. */
+.settings-page .es-caret {
+    width: calc(16.4px * var(--es-caret-default-zoom-inverse, 1)) !important;
+    height: calc(16.4px * var(--es-caret-default-zoom-inverse, 1)) !important;
+    margin-top: calc(-0.5 * calc(16.4px * var(--es-caret-default-zoom-inverse, 1))) !important;
+}
+
+.settings-page .es-caret::before {
+    content: '' !important;
+    display: block !important;
+    width: calc(16.4px * var(--es-caret-default-zoom-inverse, 1)) !important;
+    height: calc(16.4px * var(--es-caret-default-zoom-inverse, 1)) !important;
+    border-right: calc(1.2px * var(--es-caret-default-zoom-inverse, 1)) solid #B7C694 !important;
+    border-bottom: calc(1.2px * var(--es-caret-default-zoom-inverse, 1)) solid #B7C694 !important;
+    transform: rotate(45deg) !important;
+    background: none !important;
+    color: #B7C694 !important;
+    font-size: 0 !important;
+    font-family: inherit !important;
+    line-height: 0 !important;
+    opacity: 0.9 !important;
+}
+
+.settings-page .es-caret::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Absolute 1:1 lock for plus icon from Figma SVG. */
+.settings-page .es-plus-btn,
+.settings-page .es-add-btn {
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+}
+
+.settings-page .es-plus-btn::before,
+.settings-page .es-add-btn::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    left: auto !important;
+    top: auto !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    transform: none !important;
+    border-radius: 0 !important;
+    opacity: 1 !important;
+    background: url('../icons/plus-light.svg') center / 100% 100% no-repeat !important;
+}
+
+.settings-page .es-plus-btn::after,
+.settings-page .es-add-btn::after {
+    content: none !important;
+    display: none !important;
+}
+
+.settings-page .es-plus-btn:not(:disabled):not(.is-disabled)::before,
+.settings-page .es-add-btn:not(:disabled):not(.is-disabled)::before {
+    background-image: url('../icons/plus-dark.svg') !important;
+}
+
+/* HARD FINAL PLUS LOCK: render icon on button itself to avoid pseudo conflicts. */
+.settings-page .es-plus-btn,
+.settings-page .es-add-btn {
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: url('../icons/plus-light.svg') center / 100% 100% no-repeat !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+}
+
+.settings-page .es-plus-btn::before,
+.settings-page .es-plus-btn::after,
+.settings-page .es-add-btn::before,
+.settings-page .es-add-btn::after {
+    content: none !important;
+    display: none !important;
+}
+
+.settings-page .es-plus-btn:not(:disabled):not(.is-disabled),
+.settings-page .es-add-btn:not(:disabled):not(.is-disabled) {
+    background-image: url('../icons/plus-dark.svg') !important;
+}
+
+/* ULTRA FINAL PLUS ICON LOCK: absolute last rule for 1:1 Figma icon. */
+.settings-page .es-plus-btn,
+.settings-page .es-add-btn {
+    border: 0 !important;
+    border-radius: 0 !important;
+    background-color: transparent !important;
+    background-image: url('../icons/plus-light.svg') !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: 100% 100% !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+}
+
+.settings-page .es-plus-btn::before,
+.settings-page .es-plus-btn::after,
+.settings-page .es-add-btn::before,
+.settings-page .es-add-btn::after {
+    content: none !important;
+    display: none !important;
+}
+
+.settings-page .es-plus-btn:not(:disabled):not(.is-disabled),
+.settings-page .es-add-btn:not(:disabled):not(.is-disabled) {
+    background-image: url('../icons/plus-dark.svg') !important;
+}
+
+/* FINAL NO-HOVER-ANIMATION FOR PLUS: keep + icon fully static on hover/focus/active. */
+.settings-page .es-plus-btn,
+.settings-page .es-add-btn,
+.settings-page .es-plus-btn:hover,
+.settings-page .es-add-btn:hover,
+.settings-page .es-plus-btn:focus-visible,
+.settings-page .es-add-btn:focus-visible,
+.settings-page .es-plus-btn:active,
+.settings-page .es-add-btn:active,
+.settings-page .es-plus-btn.is-active,
+.settings-page .es-add-btn.is-active {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+    filter: none !important;
+    box-shadow: none !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: 100% 100% !important;
+}
+
+.settings-page .es-plus-btn::before,
+.settings-page .es-plus-btn::after,
+.settings-page .es-add-btn::before,
+.settings-page .es-add-btn::after,
+.settings-page .es-plus-btn:hover::before,
+.settings-page .es-plus-btn:hover::after,
+.settings-page .es-add-btn:hover::before,
+.settings-page .es-add-btn:hover::after,
+.settings-page .es-plus-btn:focus-visible::before,
+.settings-page .es-plus-btn:focus-visible::after,
+.settings-page .es-add-btn:focus-visible::before,
+.settings-page .es-add-btn:focus-visible::after,
+.settings-page .es-plus-btn:active::before,
+.settings-page .es-plus-btn:active::after,
+.settings-page .es-add-btn:active::before,
+.settings-page .es-add-btn:active::after,
+.settings-page .es-plus-btn.is-active::before,
+.settings-page .es-plus-btn.is-active::after,
+.settings-page .es-add-btn.is-active::before,
+.settings-page .es-add-btn.is-active::after {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+}
+
+/* ULTRA FINAL PLUS VISIBILITY LOCK: keep plus visible on hover/focus/active (never disappear). */
+.settings-page .es-plus-btn,
+.settings-page .es-add-btn,
+.settings-page .es-plus-btn:hover,
+.settings-page .es-add-btn:hover,
+.settings-page .es-plus-btn:focus-visible,
+.settings-page .es-add-btn:focus-visible,
+.settings-page .es-plus-btn:active,
+.settings-page .es-add-btn:active,
+.settings-page .es-plus-btn.is-active,
+.settings-page .es-add-btn.is-active {
+    background-color: transparent !important;
+    background-image: url('../icons/plus-dark.svg') !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: 100% 100% !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+}
+
+.settings-page .es-plus-btn:disabled,
+.settings-page .es-add-btn:disabled,
+.settings-page .es-plus-btn.is-disabled,
+.settings-page .es-add-btn.is-disabled {
+    background-color: transparent !important;
+    background-image: url('../icons/plus-light.svg') !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: 100% 100% !important;
+}
+
+.settings-page .es-plus-btn::before,
+.settings-page .es-plus-btn::after,
+.settings-page .es-add-btn::before,
+.settings-page .es-add-btn::after,
+.settings-page .es-plus-btn:hover::before,
+.settings-page .es-plus-btn:hover::after,
+.settings-page .es-add-btn:hover::before,
+.settings-page .es-add-btn:hover::after,
+.settings-page .es-plus-btn:focus-visible::before,
+.settings-page .es-plus-btn:focus-visible::after,
+.settings-page .es-add-btn:focus-visible::before,
+.settings-page .es-add-btn:focus-visible::after,
+.settings-page .es-plus-btn:active::before,
+.settings-page .es-plus-btn:active::after,
+.settings-page .es-add-btn:active::before,
+.settings-page .es-add-btn:active::after,
+.settings-page .es-plus-btn.is-active::before,
+.settings-page .es-plus-btn.is-active::after,
+.settings-page .es-add-btn.is-active::before,
+.settings-page .es-add-btn.is-active::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* ULTRA FINAL DROPDOWN PANEL LOCK: overlay trigger and keep clean border in open-up mode. */
+.settings-page .es-field-menu.open-up {
+    border-radius: 0 0 calc(6 * var(--u)) calc(6 * var(--u)) !important;
+}
+
+.settings-page .es-field-menu.open-up::after {
+    box-shadow:
+        inset calc(1.5 * var(--u)) 0 0 #0087FC,
+        inset calc(-1.5 * var(--u)) 0 0 #0087FC,
+        inset 0 calc(-1.5 * var(--u)) 0 #0087FC !important;
+}
+
+/* FINAL DROPDOWN OPEN-UP RESTORE: keep original top-opening panel shape. */
+.settings-page .es-field-menu.open-up {
+    border-radius: calc(6 * var(--u)) calc(6 * var(--u)) 0 0 !important;
+}
+
+.settings-page .es-field-menu.open-up::after {
+    box-shadow:
+        inset calc(1.5 * var(--u)) 0 0 #0087FC,
+        inset calc(-1.5 * var(--u)) 0 0 #0087FC,
+        inset 0 calc(1.5 * var(--u)) 0 #0087FC !important;
+}
+
+/* FINAL FIX: restore hover animation for top inputs
+   "Добавить новое событие" and "Почта директора". */
+.settings-page .settings-canvas .es-top-row > input#eventNameInput,
+.settings-page .settings-canvas .es-top-row > input#eventDirectorInput {
+    border: 0 !important;
+    border-radius: calc(6 * var(--u)) !important;
+    background: #FFFEFB !important;
+    box-shadow: inset 0 0 0 var(--ui-control-line, 0.02604vw) #EFE8CD !important;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease !important;
+}
+
+.settings-page .settings-canvas .es-top-row > input#eventNameInput:hover:not(.is-invalid),
+.settings-page .settings-canvas .es-top-row > input#eventDirectorInput:hover:not(.is-invalid) {
+    background: #FFFEFB !important;
+    box-shadow: inset 0 0 0 var(--ui-control-line, 0.02604vw) #0087FC !important;
+}
+
+.settings-page .settings-canvas .es-top-row > input#eventNameInput:focus-visible:not(.is-invalid),
+.settings-page .settings-canvas .es-top-row > input#eventDirectorInput:focus-visible:not(.is-invalid) {
+    background: #FFFFFF !important;
+    box-shadow: inset 0 0 0 var(--ui-control-strong-line, 0.07813vw) #0087FC !important;
+    outline: none !important;
+}
+
+/* FINAL ALIGN FIX: keep text on one baseline in all fields. */
+.settings-page #emailQtyInput {
+    text-indent: 0 !important;
+    padding-top: 0 !important;
+}
+
+.settings-page input.es-small-input,
+.settings-page input.es-input,
+.settings-page .es-card-inner-input {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    line-height: calc(48 * var(--u)) !important;
+    vertical-align: middle !important;
+}
+
+.settings-page .es-select-field .es-select-value {
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
+    line-height: 1 !important;
+}
+
+/* ABSOLUTE FINAL COLOR LOCK: in event cards text color must not change on edit mode. */
+.settings-page .es-card .es-card-inner-input,
+.settings-page .es-card .es-select-field .es-select-value,
+.settings-page .es-card.is-editing .es-card-inner-input,
+.settings-page .es-card.is-editing .es-select-field .es-select-value {
+    color: #4D4343 !important;
+}
+
+.settings-page .es-card .es-select-field.is-empty .es-select-value,
+.settings-page .es-card.is-editing .es-select-field.is-empty .es-select-value {
+    color: #D0CDB7 !important;
+}
+
+/* Final targeted fix: top-row text inputs must have visible hover animation. */
+.settings-page .es-top-row > #eventNameInput,
+.settings-page .es-top-row > #eventDirectorInput {
+    border: 0 !important;
+    border-radius: calc(6 * var(--u)) !important;
+    background: #FFFEFB !important;
+    box-shadow: inset 0 0 0 var(--ui-control-line, 0.02604vw) #EFE8CD !important;
+    transition: box-shadow 0.15s ease, background-color 0.15s ease !important;
+}
+
+.settings-page .es-top-row > #eventNameInput:hover:not(.is-invalid),
+.settings-page .es-top-row > #eventDirectorInput:hover:not(.is-invalid) {
+    box-shadow: inset 0 0 0 var(--ui-control-line, 0.02604vw) #0087FC !important;
+    background: #FFFEFB !important;
+}
+
+.settings-page .es-top-row > #eventNameInput:focus-visible:not(.is-invalid),
+.settings-page .es-top-row > #eventDirectorInput:focus-visible:not(.is-invalid) {
+    box-shadow: inset 0 0 0 var(--ui-control-strong-line, 0.07813vw) #0087FC !important;
+    background: #FFFFFF !important;
+    outline: none !important;
+}
+
+/* FINAL TOOLTIP SIZE LOCK: match email-settings tooltips to index page tooltip metrics. */
+.settings-page .es-edit::after,
+.settings-page .es-delete::after,
+.settings-page .es-inline-x::after,
+.settings-page .es-x-chip::after,
+.settings-page .es-floating-tooltip {
+    min-width: max-content !important;
+    height: calc(40 * var(--u)) !important;
+    padding: 0 calc(16 * var(--u)) calc(4 * var(--u)) !important;
+    background: #EAEAEA !important;
+    color: #000000 !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 300 !important;
+    font-size: calc(20 * var(--u)) !important;
+    line-height: calc(30 * var(--u)) !important;
+    border-radius: 0 !important;
+    box-sizing: border-box !important;
+    white-space: nowrap !important;
+}
+
+.settings-page .es-edit::after,
+.settings-page .es-delete::after,
+.settings-page .es-inline-x::after,
+.settings-page .es-x-chip::after {
+    top: calc(100% + 8 * var(--u)) !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 50000 !important;
+}
+
+.settings-page .es-floating-tooltip {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 50000 !important;
+}
+
+.settings-page.is-text-zoomed .es-floating-tooltip,
+.settings-page.is-text-zoomed .es-edit::after,
+.settings-page.is-text-zoomed .es-delete::after,
+.settings-page.is-text-zoomed .es-inline-x::after,
+.settings-page.is-text-zoomed .es-x-chip::after {
+    font-size: calc(20 * var(--u) * var(--es-text-zoom-inverse)) !important;
+    line-height: calc(30 * var(--u) * var(--es-text-zoom-inverse)) !important;
+}
+
+/* ULTRA FINAL TOOLTIP EDGE FIX: use only floating tooltip for icons to prevent clipping on viewport edges. */
+.settings-page .es-edit::after,
+.settings-page .es-delete::after,
+.settings-page .es-inline-x::after,
+.settings-page .es-x-chip::after {
+    content: none !important;
+    display: none !important;
+}
+
+.settings-page .es-floating-tooltip {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    max-width: calc(100vw - 24px) !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    z-index: 50000 !important;
+}
+
+/* Mail row freeze: keep email + chip visually stable in Firefox Text-Only zoom. */
+.settings-page .es-mail-item .es-mail-link.is-static-svg-text {
+    display: inline-flex !important;
+    align-items: center !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+}
+
+.settings-page .es-mail-item .es-mail-link.is-static-svg-text .svg-label {
+    display: block !important;
+    height: calc(30 * var(--u)) !important;
+}
+
+.settings-page .es-mail-item .es-x-chip {
+    background: #A9A27A !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 6L18 18M18 6L6 18' stroke='white' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 58% 58% !important;
+    border: 0 !important;
+    border-radius: 50% !important;
+    box-shadow: none !important;
+    color: transparent !important;
+    transform: none !important;
+    transform-origin: center !important;
+    transition: transform 0.18s ease, filter 0.18s ease, background-color 0.18s ease !important;
+    will-change: transform !important;
+}
+
+.settings-page .es-mail-item .es-x-chip:hover,
+.settings-page .es-mail-item .es-x-chip:focus-visible {
+    background-color: #B8B089 !important;
+    transform: scale(1.06) !important;
+    filter: brightness(1.03) !important;
+}
+
+.settings-page .es-mail-item .es-x-chip:active {
+    background-color: #9E976E !important;
+    transform: scale(0.94) !important;
+    filter: brightness(0.96) !important;
+}
+
+.settings-page .es-mail-item .es-x-chip.has-icon-layers .es-icon-layer {
+    display: none !important;
+    opacity: 0 !important;
+}
+
+.settings-page .es-mail-item .es-x-chip::before,
+.settings-page .es-mail-item .es-x-chip::after,
+.settings-page .es-mail-item .es-x-chip.has-icon-layers::before,
+.settings-page .es-mail-item .es-x-chip.has-icon-layers::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* FINAL DROPDOWN ARROW FREEZE:
+   keep arrow visually fixed on zoom and slightly reduce width. */
+.settings-page .es-caret,
+.settings-page .es-select-field.open .es-caret,
+.settings-page .es-select-field.open-up .es-caret,
+.settings-page .es-select-field.open:focus-visible .es-caret,
+.settings-page .es-select-field.open-up:focus-visible .es-caret,
+.settings-page.is-text-zoomed .es-caret,
+.settings-page.is-text-zoomed .es-select-field.open .es-caret,
+.settings-page.is-text-zoomed .es-select-field.open-up .es-caret {
+    width: calc(16.4px * var(--es-caret-default-zoom-inverse, 1)) !important;
+    height: calc(16.4px * var(--es-caret-default-zoom-inverse, 1)) !important;
+    min-width: calc(16.4px * var(--es-caret-default-zoom-inverse, 1)) !important;
+    min-height: calc(16.4px * var(--es-caret-default-zoom-inverse, 1)) !important;
+    margin-top: calc(-0.5 * calc(16.4px * var(--es-caret-default-zoom-inverse, 1))) !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+    z-index: 2 !important;
+}
+
+.settings-page .es-caret::before,
+.settings-page.is-text-zoomed .es-caret::before {
+    content: '' !important;
+    display: block !important;
+    width: calc(16.4px * var(--es-caret-default-zoom-inverse, 1)) !important;
+    height: calc(16.4px * var(--es-caret-default-zoom-inverse, 1)) !important;
+    border-right: calc(1.35px * var(--es-caret-default-zoom-inverse, 1)) solid #B7C694 !important;
+    border-bottom: calc(1.35px * var(--es-caret-default-zoom-inverse, 1)) solid #B7C694 !important;
+    transform: rotate(45deg) scale(0.62) !important;
+    transform-origin: center !important;
+    background: none !important;
+    color: #B7C694 !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    opacity: 1 !important;
+}
+
+.settings-page .es-caret::after,
+.settings-page.is-text-zoomed .es-caret::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* FINAL DEFAULT-ZOOM FREEZE (Firefox):
+   keep input caret + dropdown arrow visually stable on browser Default zoom. */
+.settings-page {
+    --es-default-zoom-inverse: 1;
+    --es-caret-default-zoom-inverse: 1;
+}
+
+.settings-page input.es-small-input,
+.settings-page input.es-input,
+.settings-page .es-card-input input,
+.settings-page .es-card-inner-input {
+    font-size: calc(22 * var(--u) * var(--es-text-zoom-inverse) * var(--es-default-zoom-inverse, 1)) !important;
+    line-height: 1.15 !important;
+    caret-color: #62560E !important;
+}
+
+.settings-page .es-card-number-input {
+    font-size: calc(24 * var(--u) * var(--es-text-zoom-inverse) * var(--es-default-zoom-inverse, 1)) !important;
+    line-height: 1.15 !important;
+    caret-color: #62560E !important;
+}
+
+.settings-page .es-caret,
+.settings-page .es-select-field.open .es-caret,
+.settings-page .es-select-field.open-up .es-caret,
+.settings-page .es-select-field.open:focus-visible .es-caret,
+.settings-page .es-select-field.open-up:focus-visible .es-caret,
+.settings-page.is-text-zoomed .es-caret,
+.settings-page.is-text-zoomed .es-select-field.open .es-caret,
+.settings-page.is-text-zoomed .es-select-field.open-up .es-caret {
+    --es-caret-size-freeze: calc(16.4px * var(--es-caret-default-zoom-inverse, 1));
+    --es-caret-stroke-freeze: calc(1.75px * var(--es-caret-default-zoom-inverse, 1));
+    width: var(--es-caret-size-freeze) !important;
+    height: var(--es-caret-size-freeze) !important;
+    min-width: var(--es-caret-size-freeze) !important;
+    min-height: var(--es-caret-size-freeze) !important;
+    margin-top: calc(-0.5 * var(--es-caret-size-freeze)) !important;
+    right: calc(24 * var(--u)) !important;
+    transform: rotate(0deg) !important;
+    transition: transform 0.18s ease !important;
+    animation: none !important;
+    will-change: transform !important;
+}
+
+.settings-page .es-select-field.open .es-caret,
+.settings-page .es-select-field.open-up .es-caret,
+.settings-page.is-text-zoomed .es-select-field.open .es-caret,
+.settings-page.is-text-zoomed .es-select-field.open-up .es-caret {
+    transform: rotate(180deg) !important;
+}
+
+.settings-page .es-select-field.has-clear .es-caret,
+.settings-page.is-text-zoomed .es-select-field.has-clear .es-caret {
+    right: calc(64 * var(--u)) !important;
+}
+
+/* Only "День недели": move dropdown icon 20px right from default has-clear position */
+.settings-page .es-card .es-select-field[data-field="day"].has-clear .es-caret,
+.settings-page .es-card .es-select-field[data-field="day"].has-clear.open .es-caret,
+.settings-page .es-card .es-select-field[data-field="day"].has-clear.open-up .es-caret,
+.settings-page.is-text-zoomed .es-card .es-select-field[data-field="day"].has-clear .es-caret,
+.settings-page.is-text-zoomed .es-card .es-select-field[data-field="day"].has-clear.open .es-caret,
+.settings-page.is-text-zoomed .es-card .es-select-field[data-field="day"].has-clear.open-up .es-caret,
+.settings-page .es-card .es-select-field[data-select-role="day"].has-clear .es-caret,
+.settings-page .es-card .es-select-field[data-select-role="day"].has-clear.open .es-caret,
+.settings-page .es-card .es-select-field[data-select-role="day"].has-clear.open-up .es-caret,
+.settings-page.is-text-zoomed .es-card .es-select-field[data-select-role="day"].has-clear .es-caret,
+.settings-page.is-text-zoomed .es-card .es-select-field[data-select-role="day"].has-clear.open .es-caret,
+.settings-page.is-text-zoomed .es-card .es-select-field[data-select-role="day"].has-clear.open-up .es-caret {
+    right: calc(44 * var(--u)) !important;
+}
+
+.settings-page .es-caret::before,
+.settings-page.is-text-zoomed .es-caret::before {
+    content: '' !important;
+    display: block !important;
+    width: var(--es-caret-size-freeze) !important;
+    height: var(--es-caret-size-freeze) !important;
+    border-right: var(--es-caret-stroke-freeze) solid #B7C694 !important;
+    border-bottom: var(--es-caret-stroke-freeze) solid #B7C694 !important;
+    transform: rotate(45deg) scale(0.62) !important;
+    transform-origin: center !important;
+    background: none !important;
+    opacity: 1 !important;
+}
+
+/* Slight left shift only for "Время на отправку" and "День недели" labels. */
+.settings-page .es-head-wrap > div:nth-child(3),
+.settings-page .es-head-wrap > div:nth-child(4) {
+    padding-left: calc(12 * var(--u)) !important;
+    position: relative !important;
+    left: calc(-8 * var(--u)) !important;
+    transform: none !important;
+}
+
+.settings-page .es-card-grid > .es-card-label:nth-child(3),
+.settings-page .es-card-grid > .es-card-label:nth-child(4) {
+    padding-left: calc(12 * var(--u)) !important;
+    position: relative !important;
+    left: calc(-8 * var(--u)) !important;
+    transform: none !important;
+}
+
+/* FINAL EVENT CARD 1:1 LOCK (sizes/positions/borders/icons from reference). */
+.settings-page .es-card {
+    height: calc(145 * var(--u)) !important;
+    border: calc(1 * var(--u)) solid #D3CCB2 !important;
+    border-radius: calc(12 * var(--u)) !important;
+    background: #FFFEFB !important;
+}
+
+.settings-page .es-card-title {
+    left: calc(17 * var(--u)) !important;
+    top: calc(8 * var(--u)) !important;
+    height: calc(26 * var(--u)) !important;
+    color: #62560E !important;
+    font-size: calc(22 * var(--u) * var(--es-text-zoom-inverse)) !important;
+    font-weight: 400 !important;
+    line-height: 1.15 !important;
+}
+
+.settings-page .es-card-grid {
+    left: calc(8 * var(--u)) !important;
+    right: calc(122 * var(--u)) !important;
+    top: calc(8 * var(--u)) !important;
+    grid-template-columns:
+        calc(622 * var(--u))
+        calc(309 * var(--u))
+        calc(224 * var(--u))
+        calc(224 * var(--u))
+        calc(288 * var(--u)) !important;
+    grid-template-rows: calc(26 * var(--u)) calc(50 * var(--u)) !important;
+    column-gap: calc(8 * var(--u)) !important;
+    row-gap: calc(5 * var(--u)) !important;
+}
+
+.settings-page .es-card-label {
+    height: calc(26 * var(--u)) !important;
+    display: flex !important;
+    align-items: center !important;
+    color: #8F8348 !important;
+    font-size: calc(21.6 * var(--u) * var(--es-text-zoom-inverse)) !important;
+    font-weight: 300 !important;
+    line-height: 1.2 !important;
+}
+
+.settings-page .es-card-input,
+.settings-page .es-card-inner-input,
+.settings-page .es-card .es-select-field {
+    height: calc(50 * var(--u)) !important;
+    border: calc(1 * var(--u)) solid #E3DDC7 !important;
+    border-radius: calc(4 * var(--u)) !important;
+    background: #FFFEFB !important;
+    box-shadow: none !important;
+    color: #4D4343 !important;
+    font-size: calc(22 * var(--u) * var(--es-text-zoom-inverse)) !important;
+    line-height: 1.15 !important;
+}
+
+.settings-page .es-card-footer {
+    left: calc(14 * var(--u)) !important;
+    right: calc(120 * var(--u)) !important;
+    bottom: calc(7 * var(--u)) !important;
+    gap: calc(38 * var(--u)) !important;
+}
+
+.settings-page .es-check .check-input {
+    width: calc(25 * var(--u)) !important;
+    height: calc(25 * var(--u)) !important;
+    border-radius: calc(4 * var(--u)) !important;
+}
+
+.settings-page .es-actions {
+    right: calc(14 * var(--u)) !important;
+    top: calc(39 * var(--u)) !important;
+    gap: calc(15 * var(--u)) !important;
+}
+
+.settings-page .es-edit {
+    width: calc(36 * var(--u)) !important;
+    height: calc(36 * var(--u)) !important;
+}
+
+.settings-page .es-delete {
+    width: calc(54 * var(--u)) !important;
+    height: calc(54 * var(--u)) !important;
+}
+
+/* Restore red warning state in event card ("Почта директора" + "Укажите почту"). */
+.settings-page .es-card.has-warning .es-card-label.error,
+.settings-page .es-card .es-card-label.error {
+    color: #FF2A2A !important;
+}
+
+.settings-page .es-card.has-warning .es-card-grid .es-card-input:nth-child(10),
+.settings-page .es-card .es-card-input.error {
+    border-color: #FF4A4A !important;
+    background: #FFFDFD !important;
+}
+
+.settings-page .es-card.has-warning .es-card-warning {
+    color: #FF2A2A !important;
+}
+
+.settings-page .es-card.has-warning .es-card-warning::before {
+    color: #FF2A2A !important;
+}
+
+/* Move footer checkbox controls: 14px right, 8px up */
+.settings-page .es-card-footer .es-check {
+    transform: translate(calc(14 * var(--u)), calc(-8 * var(--u))) !important;
+}
+
+/* Quantity input text offset: 5px right, 9px down */
+.settings-page #emailQtyInput {
+    text-indent: calc(5 * var(--u));
+    padding-top: calc(9 * var(--u));
+}
+
+/* Input hover animation (same interaction style as main page). */
+.settings-page .es-small-input,
+.settings-page .es-input,
+.settings-page .es-card-input,
+.settings-page .es-card-inner-input,
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn),
+.settings-page .es-card .es-select-field {
+    transition: box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease !important;
+}
+
+.settings-page .es-small-input:hover:not(.is-invalid),
+.settings-page .es-input:hover:not(.is-invalid):not(.es-add-btn),
+.settings-page .es-card-input:hover:not(.error),
+.settings-page .es-card-inner-input:hover,
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn):hover:not(.is-invalid),
+.settings-page .es-card .es-select-field:hover:not(.is-invalid) {
+    border-color: #0087FC !important;
+    box-shadow: inset 0 0 0 calc(1 * var(--u)) #0087FC !important;
+}
+
+.settings-page .es-small-input:focus-visible:not(.is-invalid),
+.settings-page .es-input:focus-visible:not(.is-invalid):not(.es-add-btn),
+.settings-page .es-card-input:focus-within:not(.error),
+.settings-page .es-card-inner-input:focus-visible,
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn):focus-visible:not(.is-invalid),
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn).open,
+.settings-page .es-card .es-select-field:focus-visible:not(.is-invalid),
+.settings-page .es-card .es-select-field.open {
+    border-color: #0087FC !important;
+    box-shadow: inset 0 0 0 calc(1.5 * var(--u)) #0087FC !important;
+}
+
+/* Ensure top row hover/focus is always visible (overrides old lock rules). */
+.settings-page .es-top-row > .es-input:not(.es-add-btn):hover:not(.is-invalid),
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn):hover:not(.is-invalid) {
+    border-color: #0087FC !important;
+    box-shadow: inset 0 0 0 calc(1 * var(--u)) #0087FC !important;
+    background: #FFFEFB !important;
+}
+
+.settings-page .es-top-row > .es-input:not(.es-add-btn):focus-visible:not(.is-invalid),
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn):focus-visible:not(.is-invalid),
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn).open,
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn).open-up {
+    border-color: #0087FC !important;
+    box-shadow: inset 0 0 0 calc(1.5 * var(--u)) #0087FC !important;
+    background: #FFFFFF !important;
+    outline: none !important;
+}
+
+/* Final top-row hover restore (id-level override). */
+.settings-page #eventNameInput,
+.settings-page #eventEmailSelect,
+.settings-page #eventTimeSelect,
+.settings-page #eventDaySelect,
+.settings-page #eventDirectorInput {
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease !important;
+}
+
+.settings-page #eventNameInput:hover:not(.is-invalid),
+.settings-page #eventDirectorInput:hover:not(.is-invalid),
+.settings-page #eventEmailSelect:hover:not(.is-invalid),
+.settings-page #eventTimeSelect:hover:not(.is-invalid),
+.settings-page #eventDaySelect:hover:not(.is-invalid) {
+    border-color: #0087FC !important;
+    box-shadow: inset 0 0 0 calc(1 * var(--u)) #0087FC !important;
+    background: #FFFEFB !important;
+}
+
+.settings-page #eventNameInput:focus-visible:not(.is-invalid),
+.settings-page #eventDirectorInput:focus-visible:not(.is-invalid),
+.settings-page #eventEmailSelect:focus-visible:not(.is-invalid),
+.settings-page #eventTimeSelect:focus-visible:not(.is-invalid),
+.settings-page #eventDaySelect:focus-visible:not(.is-invalid),
+.settings-page #eventEmailSelect.open,
+.settings-page #eventTimeSelect.open,
+.settings-page #eventDaySelect.open,
+.settings-page #eventEmailSelect.open-up,
+.settings-page #eventTimeSelect.open-up,
+.settings-page #eventDaySelect.open-up {
+    border-color: #0087FC !important;
+    box-shadow: inset 0 0 0 calc(1.5 * var(--u)) #0087FC !important;
+    background: #FFFFFF !important;
+    outline: none !important;
+}
+
+/* Card edit mode: restore hover animation for editable row fields. */
+.settings-page .es-card.is-editing .es-card-input,
+.settings-page .es-card.is-editing .es-card-inner-input,
+.settings-page .es-card.is-editing .es-select-field {
+    transition: box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease !important;
+}
+
+.settings-page .es-card.is-editing .es-card-input:not(.error):hover,
+.settings-page .es-card.is-editing .es-select-field:hover:not(.is-invalid) {
+    border-color: #0087FC !important;
+    box-shadow: inset 0 0 0 calc(1 * var(--u)) #0087FC !important;
+    background: #FFFEFB !important;
+}
+
+.settings-page .es-card.is-editing .es-card-input:focus-within:not(.error),
+.settings-page .es-card.is-editing .es-select-field:focus-visible:not(.is-invalid),
+.settings-page .es-card.is-editing .es-select-field.open,
+.settings-page .es-card.is-editing .es-select-field.open-up {
+    border-color: #0087FC !important;
+    box-shadow: inset 0 0 0 calc(1.5 * var(--u)) #0087FC !important;
+    background: #FFFFFF !important;
+    outline: none !important;
+}
+
+/* Ultra-final: ensure hover animation is visible in event edit mode. */
+.settings-page .es-card.is-editing .es-card-input.es-edit-field,
+.settings-page .es-card.is-editing .es-card-input.es-select-field {
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease !important;
+}
+
+.settings-page .es-card.is-editing .es-card-input.es-edit-field:hover:not(.error),
+.settings-page .es-card.is-editing .es-card-input.es-edit-field:focus-within:not(.error),
+.settings-page .es-card.is-editing .es-card-input.es-edit-field:has(.es-card-inner-input:hover):not(.error),
+.settings-page .es-card.is-editing .es-card-input.es-edit-field:has(.es-card-inner-input:focus-visible):not(.error),
+.settings-page .es-card.is-editing .es-card-input.es-select-field:hover:not(.is-invalid),
+.settings-page .es-card.is-editing .es-card-input.es-select-field:focus-visible:not(.is-invalid),
+.settings-page .es-card.is-editing .es-card-input.es-select-field.open,
+.settings-page .es-card.is-editing .es-card-input.es-select-field.open-up {
+    border-color: #0087FC !important;
+    box-shadow: inset 0 0 0 calc(1.5 * var(--u)) #0087FC !important;
+    background: #FFFFFF !important;
+    outline: none !important;
+}
+
+/* Ultra-final top add-event row hover: exact same behavior as other inputs. */
+.settings-page .es-top-row #eventNameInput,
+.settings-page .es-top-row #eventDirectorInput,
+.settings-page .es-top-row #eventEmailSelect,
+.settings-page .es-top-row #eventTimeSelect,
+.settings-page .es-top-row #eventDaySelect {
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease !important;
+}
+
+.settings-page .es-top-row #eventNameInput:hover:not(.is-invalid),
+.settings-page .es-top-row #eventDirectorInput:hover:not(.is-invalid),
+.settings-page .es-top-row #eventEmailSelect:hover:not(.is-invalid),
+.settings-page .es-top-row #eventTimeSelect:hover:not(.is-invalid),
+.settings-page .es-top-row #eventDaySelect:hover:not(.is-invalid) {
+    border-color: #0087FC !important;
+    box-shadow: inset 0 0 0 calc(1 * var(--u)) #0087FC !important;
+    background: #FFFEFB !important;
+}
+
+.settings-page .es-top-row #eventNameInput:focus-visible:not(.is-invalid),
+.settings-page .es-top-row #eventDirectorInput:focus-visible:not(.is-invalid),
+.settings-page .es-top-row #eventEmailSelect:focus-visible:not(.is-invalid),
+.settings-page .es-top-row #eventTimeSelect:focus-visible:not(.is-invalid),
+.settings-page .es-top-row #eventDaySelect:focus-visible:not(.is-invalid),
+.settings-page .es-top-row #eventEmailSelect.open,
+.settings-page .es-top-row #eventTimeSelect.open,
+.settings-page .es-top-row #eventDaySelect.open,
+.settings-page .es-top-row #eventEmailSelect.open-up,
+.settings-page .es-top-row #eventTimeSelect.open-up,
+.settings-page .es-top-row #eventDaySelect.open-up {
+    border-color: #0087FC !important;
+    box-shadow: inset 0 0 0 calc(1.5 * var(--u)) #0087FC !important;
+    background: #FFFFFF !important;
+    outline: none !important;
+}
+
+/* Final hard-fix: hover/focus animation for inputs in card edit mode. */
+.settings-page .es-card.is-editing .es-card-grid .es-card-input.es-edit-field,
+.settings-page .es-card.is-editing .es-card-grid .es-card-input.es-select-field,
+.settings-page .es-card.is-editing .es-card-grid .es-card-inner-input {
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease !important;
+    pointer-events: auto !important;
+}
+
+.settings-page .es-card.is-editing .es-card-grid .es-card-input.es-edit-field:hover:not(.error),
+.settings-page .es-card.is-editing .es-card-grid .es-card-input.es-edit-field:focus-within:not(.error),
+.settings-page .es-card.is-editing .es-card-grid .es-card-input.es-edit-field:has(.es-card-inner-input:hover):not(.error),
+.settings-page .es-card.is-editing .es-card-grid .es-card-input.es-edit-field:has(.es-card-inner-input:focus-visible):not(.error),
+.settings-page .es-card.is-editing .es-card-grid .es-card-input.es-select-field:hover:not(.is-invalid),
+.settings-page .es-card.is-editing .es-card-grid .es-card-input.es-select-field:focus-within:not(.is-invalid),
+.settings-page .es-card.is-editing .es-card-grid .es-card-input.es-select-field:focus-visible:not(.is-invalid),
+.settings-page .es-card.is-editing .es-card-grid .es-card-input.es-select-field.open,
+.settings-page .es-card.is-editing .es-card-grid .es-card-input.es-select-field.open-up {
+    border-color: #0087FC !important;
+    box-shadow: inset 0 0 0 calc(1.5 * var(--u)) #0087FC !important;
+    background: #FFFFFF !important;
+    outline: none !important;
+}
+
+/* FINAL: make all email-settings inputs/select borders match main page style. */
+.settings-page .es-small-input,
+.settings-page .es-input,
+.settings-page .es-card-input,
+.settings-page .es-card-inner-input,
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn),
+.settings-page .es-card .es-select-field {
+    border: 0 !important;
+    border-radius: calc(6 * var(--u)) !important;
+    background: #FFFEFB !important;
+    box-shadow: inset 0 0 0 var(--ui-control-line, 0.02604vw) #EFE8CD !important;
+}
+
+.settings-page .es-small-input:hover:not(.is-invalid),
+.settings-page .es-input:hover:not(.is-invalid):not(.es-add-btn),
+.settings-page .es-card-input:hover:not(.error),
+.settings-page .es-card-inner-input:hover,
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn):hover:not(.is-invalid),
+.settings-page .es-card .es-select-field:hover:not(.is-invalid) {
+    box-shadow: inset 0 0 0 var(--ui-control-line, 0.02604vw) #0087FC !important;
+}
+
+.settings-page .es-small-input:focus-visible:not(.is-invalid),
+.settings-page .es-input:focus-visible:not(.is-invalid):not(.es-add-btn),
+.settings-page .es-card-input:focus-within:not(.error),
+.settings-page .es-card-inner-input:focus-visible,
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn):focus-visible:not(.is-invalid),
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn).open,
+.settings-page .es-top-row > .es-select-field:not(.es-add-btn).open-up,
+.settings-page .es-card .es-select-field:focus-visible:not(.is-invalid),
+.settings-page .es-card .es-select-field.open,
+.settings-page .es-card .es-select-field.open-up {
+    background: #FFFFFF !important;
+    box-shadow: inset 0 0 0 var(--ui-control-strong-line, 0.07813vw) #0087FC !important;
+    outline: none !important;
+}
+
+.settings-page .es-small-input.is-invalid,
+.settings-page .es-input.is-invalid,
+.settings-page .es-card-input.error,
+.settings-page .es-card.has-warning .es-card-grid .es-card-input:nth-child(10) {
+    background: #FFFDFD !important;
+    box-shadow: inset 0 0 0 var(--ui-control-strong-line, 0.07813vw) #FF4A4A !important;
+}
+
+/* Keep old-style open-up dropdown panel when below space is not enough. */
+.settings-page .es-field-menu {
+    position: fixed !important;
+    z-index: 50000 !important;
+}
+
+.settings-page .es-field-menu.open-up {
+    border-radius: calc(6 * var(--u)) calc(6 * var(--u)) 0 0 !important;
+}
+
+.settings-page .es-field-menu.open-up::after {
+    box-shadow:
+        inset calc(1.5 * var(--u)) 0 0 #0087FC,
+        inset calc(-1.5 * var(--u)) 0 0 #0087FC,
+        inset 0 calc(1.5 * var(--u)) 0 #0087FC !important;
+}
+
+/* ABSOLUTE FINAL FIX: top inputs hover animation (do not override below). */
+.settings-page .settings-canvas .es-top-row > input#eventNameInput,
+.settings-page .settings-canvas .es-top-row > input#eventDirectorInput {
+    border: 0 !important;
+    border-radius: calc(6 * var(--u)) !important;
+    background: #FFFEFB !important;
+    box-shadow: inset 0 0 0 var(--ui-control-line, 0.02604vw) #EFE8CD !important;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease !important;
+}
+
+.settings-page .settings-canvas .es-top-row > input#eventNameInput:hover:not(.is-invalid),
+.settings-page .settings-canvas .es-top-row > input#eventDirectorInput:hover:not(.is-invalid) {
+    background: #FFFEFB !important;
+    box-shadow: inset 0 0 0 var(--ui-control-line, 0.02604vw) #0087FC !important;
+}
+
+.settings-page .settings-canvas .es-top-row > input#eventNameInput:focus-visible:not(.is-invalid),
+.settings-page .settings-canvas .es-top-row > input#eventDirectorInput:focus-visible:not(.is-invalid) {
+    background: #FFFFFF !important;
+    box-shadow: inset 0 0 0 var(--ui-control-strong-line, 0.07813vw) #0087FC !important;
+    outline: none !important;
+}
+
+/* ABSOLUTE FINAL BASELINE LOCK: all field text on one line */
+.settings-page #emailQtyInput {
+    text-indent: 0 !important;
+    padding-top: 0 !important;
+}
+
+.settings-page input.es-small-input,
+.settings-page input.es-input,
+.settings-page .es-card-inner-input {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    line-height: calc(48 * var(--u)) !important;
+    vertical-align: middle !important;
+}
+
+.settings-page .es-select-field .es-select-value {
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
+    line-height: 1 !important;
+}
+
+/* ABSOLUTE FINAL COLOR LOCK (EOF): keep same text color before/after Edit */
+.settings-page .es-card .es-card-inner-input,
+.settings-page .es-card .es-select-field .es-select-value,
+.settings-page .es-card.is-editing .es-card-inner-input,
+.settings-page .es-card.is-editing .es-select-field .es-select-value {
+    color: #4D4343 !important;
+}
+
+.settings-page .es-card .es-select-field.is-empty .es-select-value,
+.settings-page .es-card.is-editing .es-select-field.is-empty .es-select-value {
+    color: #D0CDB7 !important;
+}
+
+/* ABSOLUTE FINAL ACTION-ICONS ALIGN: pencil and delete on one horizontal line */
+.settings-page .es-card .es-actions {
+    display: flex !important;
+    align-items: center !important;
+}
+
+.settings-page .es-card .es-edit,
+.settings-page .es-card .es-delete {
+    align-self: center !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.settings-page .es-card .es-edit {
+    top: calc(-2 * var(--u)) !important;
+}
+
+.settings-page .es-card .es-delete {
+    top: 0 !important;
+}
+
+/* ABSOLUTE FINAL THIN BORDER LOCK: top row 3 selects same border as other fields */
+.settings-page #eventEmailSelect,
+.settings-page #eventTimeSelect,
+.settings-page #eventDaySelect {
+    border: 0 !important;
+    background: #FFFEFB !important;
+    box-shadow: inset 0 0 0 var(--ui-control-line, 0.02604vw) #EFE8CD !important;
+}
+
+.settings-page #eventEmailSelect:hover:not(.is-invalid),
+.settings-page #eventTimeSelect:hover:not(.is-invalid),
+.settings-page #eventDaySelect:hover:not(.is-invalid) {
+    box-shadow: inset 0 0 0 var(--ui-control-line, 0.02604vw) #0087FC !important;
+}
+
+.settings-page #eventEmailSelect:focus-visible:not(.is-invalid),
+.settings-page #eventTimeSelect:focus-visible:not(.is-invalid),
+.settings-page #eventDaySelect:focus-visible:not(.is-invalid),
+.settings-page #eventEmailSelect.open,
+.settings-page #eventTimeSelect.open,
+.settings-page #eventDaySelect.open,
+.settings-page #eventEmailSelect.open-up,
+.settings-page #eventTimeSelect.open-up,
+.settings-page #eventDaySelect.open-up {
+    box-shadow: inset 0 0 0 var(--ui-control-strong-line, 0.07813vw) #0087FC !important;
+}
+
+/* ABSOLUTE FINAL EDIT TOOLTIP POSITION: not centered, slightly lower */
+.settings-page .es-floating-tooltip[data-action="edit"] {
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    padding-top: calc(9 * var(--u)) !important;
+    padding-bottom: calc(2 * var(--u)) !important;
+}
+
+/* ABSOLUTE FINAL SIZE LOCK: top email + password fields 2x wider */
+.settings-page .es-small-input.email {
+    width: calc(460 * var(--u)) !important;
+}
+
+.settings-page .es-top-label.pass,
+.settings-page .es-small-input.pass {
+    left: calc(514 * var(--u)) !important;
+}
+
+.settings-page .es-small-input.pass {
+    width: calc(400 * var(--u)) !important;
+}
+
+.settings-page #emailAddBtn.es-plus-btn {
+    left: calc(942 * var(--u)) !important;
+}
+
+/* SELECTS NORMALIZATION: stable functionality + smooth animation for all email-settings selects */
+.settings-page .es-select-field {
+    border: 0 !important;
+    border-radius: calc(6 * var(--u)) !important;
+    background: #FFFEFB !important;
+    box-shadow: inset 0 0 0 var(--ui-control-line, 0.02604vw) #EFE8CD !important;
+    transition: box-shadow 0.16s ease, background-color 0.16s ease, border-radius 0.16s ease !important;
+}
+
+.settings-page .es-select-field:hover:not(.is-invalid) {
+    box-shadow: inset 0 0 0 var(--ui-control-line, 0.02604vw) #0087FC !important;
+}
+
+.settings-page .es-select-field:focus-visible:not(.is-invalid),
+.settings-page .es-select-field.open:not(.is-invalid),
+.settings-page .es-select-field.open-up:not(.is-invalid) {
+    background: #FFFFFF !important;
+    box-shadow: inset 0 0 0 var(--ui-control-strong-line, 0.07813vw) #0087FC !important;
+    outline: none !important;
+}
+
+.settings-page .es-select-field.open {
+    border-radius: calc(6 * var(--u)) calc(6 * var(--u)) 0 0 !important;
+}
+
+.settings-page .es-select-field.open.open-up {
+    border-radius: 0 0 calc(6 * var(--u)) calc(6 * var(--u)) !important;
+}
+
+.settings-page .es-caret {
+    transform-origin: center !important;
+    transition: transform 0.18s ease !important;
+}
+
+.settings-page .es-select-field.open .es-caret,
+.settings-page .es-select-field.open-up .es-caret {
+    transform: rotate(180deg) !important;
+}
+
+.settings-page .es-field-menu {
+    position: fixed !important;
+    display: block !important;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(calc(4 * var(--u)));
+    transform-origin: top center;
+    border: calc(1 * var(--u)) solid #0087FC !important;
+    border-radius: 0 0 calc(6 * var(--u)) calc(6 * var(--u)) !important;
+    background: #FFFFFF !important;
+    box-shadow: 0 calc(4 * var(--u)) calc(15 * var(--u)) rgba(0, 0, 0, 0.12) !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    z-index: 30000 !important;
+    transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s ease !important;
+}
+
+.settings-page .es-field-menu::after {
+    content: none !important;
+    display: none !important;
+}
+
+.settings-page .es-field-menu.open {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.settings-page .es-field-menu.open-up {
+    border-radius: calc(6 * var(--u)) calc(6 * var(--u)) 0 0 !important;
+    transform-origin: bottom center;
+}
+
+.settings-page .es-field-menu.open-up:not(.open) {
+    transform: translateY(calc(-4 * var(--u)));
+}
+
+.settings-page .es-field-option {
+    transition: background-color 0.12s ease, color 0.12s ease !important;
+}
+
+/* FINAL BORDER ANIMATION FIX:
+   hover = 0.5px blue, focus/click/open = 1.5px blue for all fields. */
+.settings-page {
+    --es-hover-line: var(--ui-control-line, 0.02604vw);
+    --es-focus-line: var(--ui-control-strong-line, 0.07813vw);
+}
+
+.settings-page #eventNameInput:hover:not(.is-invalid),
+.settings-page #eventDirectorInput:hover:not(.is-invalid),
+.settings-page #eventEmailSelect:hover:not(.is-invalid),
+.settings-page #eventTimeSelect:hover:not(.is-invalid),
+.settings-page #eventDaySelect:hover:not(.is-invalid),
+.settings-page .es-small-input:hover:not(.is-invalid),
+.settings-page .es-input:hover:not(.is-invalid):not(.es-add-btn),
+.settings-page .es-select-field:hover:not(.is-invalid),
+.settings-page .es-card.is-editing .es-card-input:hover:not(.error),
+.settings-page .es-card.is-editing .es-card-input.es-edit-field:has(.es-card-inner-input:hover):not(.error),
+.settings-page .es-card.is-editing .es-card-input.es-select-field:hover:not(.is-invalid),
+.settings-page .es-card.is-editing .es-card-inner-input:hover {
+    border-color: #0087FC !important;
+    box-shadow: inset 0 0 0 var(--es-hover-line) #0087FC !important;
+}
+
+.settings-page #eventNameInput:focus-visible:not(.is-invalid),
+.settings-page #eventDirectorInput:focus-visible:not(.is-invalid),
+.settings-page #eventEmailSelect:focus-visible:not(.is-invalid),
+.settings-page #eventTimeSelect:focus-visible:not(.is-invalid),
+.settings-page #eventDaySelect:focus-visible:not(.is-invalid),
+.settings-page #eventEmailSelect.open,
+.settings-page #eventTimeSelect.open,
+.settings-page #eventDaySelect.open,
+.settings-page #eventEmailSelect.open-up,
+.settings-page #eventTimeSelect.open-up,
+.settings-page #eventDaySelect.open-up,
+.settings-page .es-small-input:focus-visible:not(.is-invalid),
+.settings-page .es-input:focus-visible:not(.is-invalid):not(.es-add-btn),
+.settings-page .es-select-field:focus-visible:not(.is-invalid),
+.settings-page .es-select-field.open:not(.is-invalid),
+.settings-page .es-select-field.open-up:not(.is-invalid),
+.settings-page .es-card.is-editing .es-card-input:focus-within:not(.error),
+.settings-page .es-card.is-editing .es-card-input.es-edit-field:has(.es-card-inner-input:focus-visible):not(.error),
+.settings-page .es-card.is-editing .es-card-input.es-select-field:focus-visible:not(.is-invalid),
+.settings-page .es-card.is-editing .es-card-input.es-select-field.open:not(.is-invalid),
+.settings-page .es-card.is-editing .es-card-input.es-select-field.open-up:not(.is-invalid),
+.settings-page .es-card.is-editing .es-card-inner-input:focus-visible {
+    border-color: #0087FC !important;
+    box-shadow: inset 0 0 0 var(--es-focus-line) #0087FC !important;
+    background: #FFFFFF !important;
+    outline: none !important;
+}
+
+/* FINAL LAYOUT UPDATE:
+   1) top row "Почта директора" wider, plus button moved to the far right;
+   2) event cards: wider director field + replace big X with Delete link. */
+.settings-page .es-head-wrap,
+.settings-page .es-top-row {
+    width: calc(1849 * var(--u)) !important;
+    grid-template-columns:
+        calc(523 * var(--u))
+        calc(410 * var(--u))
+        calc(224 * var(--u))
+        calc(224 * var(--u))
+        calc(378 * var(--u))
+        calc(50 * var(--u)) !important;
+    column-gap: calc(8 * var(--u)) !important;
+}
+
+.settings-page #eventDirectorInput {
+    width: 100% !important;
+    min-width: 0 !important;
+}
+
+.settings-page #eventAddBtn.es-add-btn {
+    justify-self: end !important;
+}
+
+.settings-page .es-card-grid {
+    right: calc(96 * var(--u)) !important;
+    grid-template-columns:
+        calc(523 * var(--u))
+        calc(410 * var(--u))
+        calc(224 * var(--u))
+        calc(224 * var(--u))
+        calc(320 * var(--u)) !important;
+}
+
+.settings-page .es-card .es-actions {
+    right: calc(49 * var(--u)) !important;
+    top: calc(8 * var(--u)) !important;
+    width: calc(76 * var(--u)) !important;
+    height: calc(88 * var(--u)) !important;
+    display: block !important;
+    gap: 0 !important;
+}
+
+.settings-page .es-actions .es-edit {
+    position: absolute !important;
+    right: auto !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    top: calc(48 * var(--u)) !important;
+}
+
+.settings-page .es-delete.es-delete-link {
+    position: absolute !important;
+    right: auto !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    top: 0 !important;
+    width: auto !important;
+    min-width: auto !important;
+    height: auto !important;
+    min-height: auto !important;
+    border: 0 !important;
+    background: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: calc(21.6 * var(--u) * var(--es-text-zoom-inverse)) !important;
+    font-weight: 300 !important;
+    color: #FF2A2A !important;
+    text-decoration: underline !important;
+    text-underline-offset: calc(2 * var(--u));
+    white-space: nowrap !important;
+    cursor: pointer !important;
+}
+
+.settings-page .es-delete.es-delete-link:hover,
+.settings-page .es-delete.es-delete-link:focus-visible {
+    color: #FF2A2A !important;
+}
+
+.settings-page .es-delete.es-delete-link:active {
+    color: #FF2A2A !important;
+}
+
+.settings-page .es-card.has-warning .es-delete.es-delete-link {
+    color: #FF2A2A !important;
+}
+
+.settings-page .es-card.has-warning .es-delete.es-delete-link:hover,
+.settings-page .es-card.has-warning .es-delete.es-delete-link:focus-visible {
+    color: #FF2A2A !important;
+}
+
+.settings-page .es-delete.es-delete-link:focus-visible {
+    outline: calc(1 * var(--u)) solid #0087FC !important;
+    outline-offset: calc(2 * var(--u)) !important;
+}
+
+.settings-page .es-delete.es-delete-link::before,
+.settings-page .es-delete.es-delete-link::after,
+.settings-page .es-delete.es-delete-link .es-icon-layer {
+    content: none !important;
+    display: none !important;
+}
+
+/* FINAL SPACING FIX (Figma):
+   gap between top labels and top inputs in "Добавить новое событие" section = 13px */
+.settings-page {
+    --es-event-head-top: calc(237 * var(--u) + var(--es-extra-mail-space));
+    --es-event-head-height: calc(26 * var(--u));
+    --es-event-head-gap: calc(13 * var(--u));
+}
+
+.settings-page .es-head-wrap {
+    top: var(--es-event-head-top) !important;
+    align-items: center !important;
+}
+
+.settings-page .es-top-row {
+    top: calc(var(--es-event-head-top) + var(--es-event-head-height) + var(--es-event-head-gap)) !important;
+}
+
+/* FINAL VISIBILITY LOCK:
+   keep "Добавить новое событие" block between divider and cards. */
+.settings-page .es-head-wrap {
+    top: calc(237 * var(--u) + var(--es-extra-mail-space)) !important;
+    z-index: 30 !important;
+}
+
+.settings-page .es-top-row {
+    top: calc(265 * var(--u) + var(--es-extra-mail-space)) !important;
+    z-index: 30 !important;
+}
+
+.settings-page .es-cards {
+    top: calc(325 * var(--u) + var(--es-extra-mail-space)) !important;
+    z-index: 20 !important;
+}
+
+/* ULTRA FINAL ACTIONS OFFSET:
+   move Delete + edit group 20px to the right */
+.settings-page .es-card .es-actions {
+    right: calc(29 * var(--u)) !important;
+}
+
+/* ULTRA FINAL EDIT ICON NUDGE:
+   move pencil icon a little bit up */
+.settings-page .es-actions .es-edit {
+    top: calc(41 * var(--u)) !important;
+}
+
+/* ULTRA FINAL DIRECTOR WARNING BORDER FIX:
+   keep warning line fully red (no inner beige contour) */
+.settings-page .es-card.has-warning .es-card-grid .es-card-input:nth-child(10),
+.settings-page .es-card .es-card-input.error {
+    border-color: #FF2A2A !important;
+    box-shadow: inset 0 0 0 var(--ui-control-strong-line, 0.07813vw) #FF2A2A !important;
+    background: #FFFDFD !important;
+}
+
+.settings-page .es-card.has-warning .es-card-grid .es-card-input:nth-child(10) .es-card-inner-input,
+.settings-page .es-card .es-card-input.error .es-card-inner-input {
+    border: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+/* Freeze micro-animations while browser zoom step is applying. */
+.settings-page.is-zooming .settings-canvas,
+.settings-page.is-zooming .settings-canvas *,
+.settings-page.is-zooming .settings-canvas *::before,
+.settings-page.is-zooming .settings-canvas *::after {
+    transition: none !important;
+    animation: none !important;
+}
+
+/* FINAL CARET VERTICAL CENTER FIX:
+   keep dropdown arrow perfectly centered in all select fields. */
+.settings-page .es-select-field .es-caret,
+.settings-page .es-select-field.open .es-caret,
+.settings-page .es-select-field.open-up .es-caret,
+.settings-page .es-select-field.open:focus-visible .es-caret,
+.settings-page .es-select-field.open-up:focus-visible .es-caret,
+.settings-page.is-text-zoomed .es-select-field .es-caret,
+.settings-page.is-text-zoomed .es-select-field.open .es-caret,
+.settings-page.is-text-zoomed .es-select-field.open-up .es-caret,
+.settings-page.is-text-zoomed .es-select-field.open:focus-visible .es-caret,
+.settings-page.is-text-zoomed .es-select-field.open-up:focus-visible .es-caret {
+    top: 50% !important;
+    margin-top: 0 !important;
+    transform: translateY(-50%) rotate(0deg) !important;
+    line-height: 0 !important;
+}
+
+.settings-page .es-select-field.open .es-caret,
+.settings-page .es-select-field.open-up .es-caret,
+.settings-page.is-text-zoomed .es-select-field.open .es-caret,
+.settings-page.is-text-zoomed .es-select-field.open-up .es-caret {
+    transform: translateY(-50%) rotate(180deg) !important;
+}
+
+.settings-page .es-select-field .es-caret::before,
+.settings-page.is-text-zoomed .es-select-field .es-caret::before {
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -52%) rotate(45deg) scale(0.62) !important;
+}
+
+/* ABSOLUTE FINAL BORDER THICKNESS LOCK:
+   hover = 0.5px, focus/click/open = 1.5px. */
+.settings-page {
+    --es-hover-line: calc(0.5px * var(--es-default-zoom-inverse, 1));
+    --es-focus-line: calc(1.5px * var(--es-default-zoom-inverse, 1));
+}
+
+/* Hover only (when field is not focused/open). */
+.settings-page .es-small-input:hover:not(.is-invalid):not(:focus-visible),
+.settings-page .es-input:hover:not(.is-invalid):not(.es-add-btn):not(:focus-visible):not(:focus-within):not(.open):not(.open-up),
+.settings-page .es-select-field:hover:not(.is-invalid):not(:focus-visible):not(.open):not(.open-up),
+.settings-page .es-card.is-editing .es-card-input.es-edit-field:hover:not(.error):not(:focus-within),
+.settings-page .es-card.is-editing .es-card-input.es-edit-field:has(.es-card-inner-input:hover):not(.error):not(:focus-within),
+.settings-page .es-card.is-editing .es-card-input.es-select-field:hover:not(.is-invalid):not(:focus-within):not(.open):not(.open-up),
+.settings-page .es-card.is-editing .es-card-grid .es-card-input.es-edit-field:hover:not(.error):not(:focus-within),
+.settings-page .es-card.is-editing .es-card-grid .es-card-input.es-edit-field:has(.es-card-inner-input:hover):not(.error):not(:focus-within),
+.settings-page .es-card.is-editing .es-card-grid .es-card-input.es-select-field:hover:not(.is-invalid):not(:focus-within):not(.open):not(.open-up),
+.settings-page .es-top-row #eventNameInput:hover:not(.is-invalid):not(:focus-visible),
+.settings-page .es-top-row #eventDirectorInput:hover:not(.is-invalid):not(:focus-visible),
+.settings-page .es-top-row #eventEmailSelect:hover:not(.is-invalid):not(:focus-visible):not(.open):not(.open-up),
+.settings-page .es-top-row #eventTimeSelect:hover:not(.is-invalid):not(:focus-visible):not(.open):not(.open-up),
+.settings-page .es-top-row #eventDaySelect:hover:not(.is-invalid):not(:focus-visible):not(.open):not(.open-up) {
+    border-color: #0087FC !important;
+    box-shadow: inset 0 0 0 var(--es-hover-line) #0087FC !important;
+    background: #FFFEFB !important;
+}
+
+/* Focus/click/open states. */
+.settings-page .es-small-input:focus-visible:not(.is-invalid),
+.settings-page .es-input:focus-visible:not(.is-invalid):not(.es-add-btn),
+.settings-page .es-select-field:focus-visible:not(.is-invalid),
+.settings-page .es-select-field.open:not(.is-invalid),
+.settings-page .es-select-field.open-up:not(.is-invalid),
+.settings-page .es-card.is-editing .es-card-input.es-edit-field:focus-within:not(.error),
+.settings-page .es-card.is-editing .es-card-input.es-edit-field:has(.es-card-inner-input:focus-visible):not(.error),
+.settings-page .es-card.is-editing .es-card-input.es-select-field:focus-visible:not(.is-invalid),
+.settings-page .es-card.is-editing .es-card-input.es-select-field:focus-within:not(.is-invalid),
+.settings-page .es-card.is-editing .es-card-input.es-select-field.open:not(.is-invalid),
+.settings-page .es-card.is-editing .es-card-input.es-select-field.open-up:not(.is-invalid),
+.settings-page .es-card.is-editing .es-card-grid .es-card-input.es-edit-field:focus-within:not(.error),
+.settings-page .es-card.is-editing .es-card-grid .es-card-input.es-edit-field:has(.es-card-inner-input:focus-visible):not(.error),
+.settings-page .es-card.is-editing .es-card-grid .es-card-input.es-select-field:focus-visible:not(.is-invalid),
+.settings-page .es-card.is-editing .es-card-grid .es-card-input.es-select-field:focus-within:not(.is-invalid),
+.settings-page .es-card.is-editing .es-card-grid .es-card-input.es-select-field.open:not(.is-invalid),
+.settings-page .es-card.is-editing .es-card-grid .es-card-input.es-select-field.open-up:not(.is-invalid),
+.settings-page .es-top-row #eventNameInput:focus-visible:not(.is-invalid),
+.settings-page .es-top-row #eventDirectorInput:focus-visible:not(.is-invalid),
+.settings-page .es-top-row #eventEmailSelect:focus-visible:not(.is-invalid),
+.settings-page .es-top-row #eventTimeSelect:focus-visible:not(.is-invalid),
+.settings-page .es-top-row #eventDaySelect:focus-visible:not(.is-invalid),
+.settings-page .es-top-row #eventEmailSelect.open,
+.settings-page .es-top-row #eventTimeSelect.open,
+.settings-page .es-top-row #eventDaySelect.open,
+.settings-page .es-top-row #eventEmailSelect.open-up,
+.settings-page .es-top-row #eventTimeSelect.open-up,
+.settings-page .es-top-row #eventDaySelect.open-up {
+    border-color: #0087FC !important;
+    box-shadow: inset 0 0 0 var(--es-focus-line) #0087FC !important;
+    background: #FFFFFF !important;
+    outline: none !important;
+}
+
+/* FINAL TOP ROW DROPDOWN PARITY:
+   force top-row dropdowns to use the same visual/interaction model as card dropdowns. */
+.settings-page .es-top-row #eventEmailSelect,
+.settings-page .es-top-row #eventTimeSelect,
+.settings-page .es-top-row #eventDaySelect {
+    border: 0 !important;
+    border-radius: calc(6 * var(--u)) !important;
+    background: #FFFEFB !important;
+    box-shadow: inset 0 0 0 var(--ui-control-line, 0.02604vw) #EFE8CD !important;
+    padding: calc(8 * var(--u)) calc(34 * var(--u)) calc(7 * var(--u)) calc(10 * var(--u)) !important;
+    color: #4D4343 !important;
+    font-size: calc(22 * var(--u) * var(--es-text-zoom-inverse)) !important;
+    line-height: 1.15 !important;
+    transition: box-shadow 0.16s ease, background-color 0.16s ease, border-radius 0.16s ease !important;
+}
+
+.settings-page .es-top-row #eventEmailSelect .es-select-value,
+.settings-page .es-top-row #eventTimeSelect .es-select-value,
+.settings-page .es-top-row #eventDaySelect .es-select-value {
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
+    line-height: 1 !important;
+    color: #4D4343 !important;
+}
+
+.settings-page .es-top-row #eventEmailSelect.is-empty .es-select-value,
+.settings-page .es-top-row #eventTimeSelect.is-empty .es-select-value,
+.settings-page .es-top-row #eventDaySelect.is-empty .es-select-value {
+    color: #D0CDB7 !important;
+}
+
+.settings-page .es-top-row #eventEmailSelect:hover:not(.is-invalid):not(:focus-visible):not(.open):not(.open-up),
+.settings-page .es-top-row #eventTimeSelect:hover:not(.is-invalid):not(:focus-visible):not(.open):not(.open-up),
+.settings-page .es-top-row #eventDaySelect:hover:not(.is-invalid):not(:focus-visible):not(.open):not(.open-up) {
+    box-shadow: inset 0 0 0 var(--es-hover-line) #0087FC !important;
+    background: #FFFEFB !important;
+}
+
+.settings-page .es-top-row #eventEmailSelect:focus-visible:not(.is-invalid),
+.settings-page .es-top-row #eventTimeSelect:focus-visible:not(.is-invalid),
+.settings-page .es-top-row #eventDaySelect:focus-visible:not(.is-invalid),
+.settings-page .es-top-row #eventEmailSelect.open:not(.is-invalid),
+.settings-page .es-top-row #eventTimeSelect.open:not(.is-invalid),
+.settings-page .es-top-row #eventDaySelect.open:not(.is-invalid),
+.settings-page .es-top-row #eventEmailSelect.open-up:not(.is-invalid),
+.settings-page .es-top-row #eventTimeSelect.open-up:not(.is-invalid),
+.settings-page .es-top-row #eventDaySelect.open-up:not(.is-invalid) {
+    box-shadow: inset 0 0 0 var(--es-focus-line) #0087FC !important;
+    background: #FFFFFF !important;
+    outline: none !important;
+}
+
+/* FINAL CARET VERTICAL ALIGN LOCK:
+   keep dropdown arrow perfectly centered in field height. */
+.settings-page .es-select-field .es-caret,
+.settings-page .es-select-field.open .es-caret,
+.settings-page .es-select-field.open-up .es-caret,
+.settings-page .es-select-field.open:focus-visible .es-caret,
+.settings-page .es-select-field.open-up:focus-visible .es-caret {
+    top: 50% !important;
+    bottom: auto !important;
+    margin-top: 0 !important;
+    transform: translateY(-50%) rotate(0deg) !important;
+    transform-origin: center center !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 0 !important;
+}
+
+.settings-page .es-select-field.open .es-caret,
+.settings-page .es-select-field.open-up .es-caret,
+.settings-page .es-select-field.open:focus-visible .es-caret,
+.settings-page .es-select-field.open-up:focus-visible .es-caret {
+    transform: translateY(-50%) rotate(180deg) !important;
+}
+
+.settings-page .es-select-field .es-caret::before,
+.settings-page .es-select-field.open .es-caret::before,
+.settings-page .es-select-field.open-up .es-caret::before {
+    top: 50% !important;
+    left: 50% !important;
+    margin: 0 !important;
+    transform: translate(-50%, -50%) rotate(45deg) scale(0.62) !important;
+}
