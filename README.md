@@ -1,26 +1,37 @@
-<table width="100%">
-  <tr>
-    <td>
-      <sub>Hello, I am</sub>
-      <h1>Abdulloh Rustambekov</h1>
-      <p><strong>Frontend Developer</strong></p>
-      <p>I craft fast, accessible, and carefully built web experiences.</p>
-      <p>
-        <kbd>React</kbd>
-        <kbd>Next.js</kbd>
-        <kbd>TypeScript</kbd>
-        <kbd>Tailwind CSS</kbd>
-      </p>
-      <p>
-        <a href="https://github.com/Rustambekov9545?tab=repositories"><strong>View repositories</strong></a>
-        &nbsp; | &nbsp;
-        <a href="mailto:abdullox.2117.ru@gmail.com"><strong>Contact me</strong></a>
-        &nbsp; | &nbsp;
-        <strong>Available for opportunities</strong>
-      </p>
-    </td>
-  </tr>
-</table>
+<div align="center">
+
+  <sub>Hello, I am</sub>
+
+  <h1>Abdulloh Rustambekov</h1>
+
+  <p>
+    <strong>Frontend Developer</strong>
+    &nbsp; | &nbsp;
+    React
+    &nbsp; | &nbsp;
+    Next.js
+    &nbsp; | &nbsp;
+    TypeScript
+  </p>
+
+  <img
+    alt="Animated introduction"
+    src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&amp;weight=600&amp;size=18&amp;duration=2600&amp;pause=700&amp;color=39D353&amp;center=true&amp;vCenter=true&amp;width=760&amp;lines=I+build+fast%2C+accessible%2C+production-ready+interfaces.;Clean+architecture.+Responsive+layouts.+Smooth+motion.;Turning+careful+design+into+reliable+code."
+  />
+
+  <br />
+
+  <a href="https://github.com/Rustambekov9545?tab=repositories">
+    <img alt="View repositories" src="https://img.shields.io/badge/View_Repositories-2ea043?style=for-the-badge&amp;logo=github&amp;logoColor=white" />
+  </a>
+  <a href="mailto:abdullox.2117.ru@gmail.com">
+    <img alt="Contact me" src="https://img.shields.io/badge/Contact_Me-1f6feb?style=for-the-badge&amp;logo=gmail&amp;logoColor=white" />
+  </a>
+  <img alt="Available for opportunities" src="https://img.shields.io/badge/Available_for_opportunities-8957e5?style=for-the-badge" />
+
+</div>
+
+<br />
 
 <table width="100%">
   <tr>
@@ -45,89 +56,111 @@
 
 <p align="right"><sub>Profile snapshot: July 2026</sub></p>
 
-<details open>
-  <summary><strong>Tech Stack</strong></summary>
-  <br />
-  <table width="100%">
-    <tr>
-      <td align="center"><kbd>TS</kbd><br /><sub>TypeScript</sub></td>
-      <td align="center"><kbd>RE</kbd><br /><sub>React</sub></td>
-      <td align="center"><kbd>NX</kbd><br /><sub>Next.js</sub></td>
-      <td align="center"><kbd>ND</kbd><br /><sub>Node.js</sub></td>
-      <td align="center"><kbd>TW</kbd><br /><sub>Tailwind</sub></td>
-      <td align="center"><kbd>CSS</kbd><br /><sub>CSS3</sub></td>
-      <td align="center"><kbd>HTML</kbd><br /><sub>HTML5</sub></td>
-      <td align="center"><kbd>GIT</kbd><br /><sub>Git</sub></td>
-      <td align="center"><kbd>FG</kbd><br /><sub>Figma</sub></td>
-      <td align="center"><kbd>VC</kbd><br /><sub>Vercel</sub></td>
-    </tr>
-  </table>
-</details>
+## Tech Stack
 
-<details open>
-  <summary><strong>About My Work</strong></summary>
-  <br />
-  <table width="100%">
-    <tr>
-      <th align="left">Direction</th>
-      <th align="left">What I focus on</th>
-    </tr>
-    <tr>
-      <td><strong>Interface</strong></td>
-      <td>Responsive layouts, clear hierarchy, accessibility, and polished states.</td>
-    </tr>
-    <tr>
-      <td><strong>Architecture</strong></td>
-      <td>Reusable components, typed contracts, and maintainable project structure.</td>
-    </tr>
-    <tr>
-      <td><strong>Motion</strong></td>
-      <td>Subtle transitions that support the interface without slowing it down.</td>
-    </tr>
-    <tr>
-      <td><strong>Delivery</strong></td>
-      <td>Production checks, deployment preparation, and careful verification.</td>
-    </tr>
-  </table>
-</details>
+<table width="100%">
+  <tr>
+    <td width="10%" align="center">
+      <img width="42" height="42" alt="TypeScript" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" />
+      <br /><sub>TypeScript</sub>
+    </td>
+    <td width="10%" align="center">
+      <img width="42" height="42" alt="React" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" />
+      <br /><sub>React</sub>
+    </td>
+    <td width="10%" align="center">
+      <img width="42" height="42" alt="Next.js" src="https://cdn.simpleicons.org/nextdotjs/FFFFFF" />
+      <br /><sub>Next.js</sub>
+    </td>
+    <td width="10%" align="center">
+      <img width="42" height="42" alt="Node.js" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" />
+      <br /><sub>Node.js</sub>
+    </td>
+    <td width="10%" align="center">
+      <img width="42" height="42" alt="Tailwind CSS" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" />
+      <br /><sub>Tailwind</sub>
+    </td>
+    <td width="10%" align="center">
+      <img width="42" height="42" alt="CSS3" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" />
+      <br /><sub>CSS3</sub>
+    </td>
+    <td width="10%" align="center">
+      <img width="42" height="42" alt="HTML5" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" />
+      <br /><sub>HTML5</sub>
+    </td>
+    <td width="10%" align="center">
+      <img width="42" height="42" alt="Git" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" />
+      <br /><sub>Git</sub>
+    </td>
+    <td width="10%" align="center">
+      <img width="42" height="42" alt="Figma" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" />
+      <br /><sub>Figma</sub>
+    </td>
+    <td width="10%" align="center">
+      <img width="42" height="42" alt="Vercel" src="https://cdn.simpleicons.org/vercel/FFFFFF" />
+      <br /><sub>Vercel</sub>
+    </td>
+  </tr>
+</table>
 
-<details open>
-  <summary><strong>Selected Projects</strong></summary>
-  <br />
-  <table width="100%">
-    <tr>
-      <td>
-        <h3><a href="https://github.com/Rustambekov9545/My-works">My Works</a></h3>
-        <p>A collection of development projects and production work.</p>
-        <p><kbd>Projects</kbd> <kbd>Frontend</kbd> <kbd>Production</kbd></p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <h3><a href="https://github.com/Rustambekov9545/My-works/tree/main/Terralift">Terralift</a></h3>
-        <p>A full-stack corporate platform with managed content, catalog, projects, solutions, leads, and administration tools.</p>
-        <p><kbd>Next.js</kbd> <kbd>TypeScript</kbd> <kbd>Admin CMS</kbd></p>
-      </td>
-    </tr>
-  </table>
-</details>
+## What I Build
 
-<details>
-  <summary><strong>Current Focus</strong></summary>
-  <br />
+<table width="100%">
+  <tr>
+    <td width="33%" valign="top">
+      <h3>Interface Systems</h3>
+      <p>Responsive layouts, clear hierarchy, reusable components, and accessible interaction states.</p>
+      <p><code>UI</code> <code>Accessibility</code> <code>Responsive</code></p>
+    </td>
+    <td width="33%" valign="top">
+      <h3>Production Apps</h3>
+      <p>Typed frontend architecture, API integration, administration tools, and reliable deployment.</p>
+      <p><code>TypeScript</code> <code>Next.js</code> <code>API</code></p>
+    </td>
+    <td width="33%" valign="top">
+      <h3>Thoughtful Motion</h3>
+      <p>Subtle animation that improves feedback and flow without sacrificing performance.</p>
+      <p><code>Motion</code> <code>Performance</code> <code>UX</code></p>
+    </td>
+  </tr>
+</table>
 
-  - Building accessible and responsive product interfaces
-  - Improving frontend architecture and reusable component systems
-  - Creating efficient interaction patterns
-  - Preparing applications for reliable production deployment
-</details>
+## Featured Work
+
+<table width="100%">
+  <tr>
+    <td>
+      <h3><a href="https://github.com/Rustambekov9545/My-works">My Works</a></h3>
+      <p>A growing collection of development projects and production work.</p>
+      <p><code>Projects</code> <code>Frontend</code> <code>Production</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3><a href="https://github.com/Rustambekov9545/My-works/tree/main/Terralift">Terralift</a></h3>
+      <p>A full-stack corporate platform with managed content, catalog, projects, solutions, leads, and administration tools.</p>
+      <p><code>Next.js</code> <code>TypeScript</code> <code>Admin CMS</code></p>
+    </td>
+  </tr>
+</table>
+
+## Working Principles
+
+| | |
+|---|---|
+| **Design with intent** | Every visual decision should improve clarity or usability. |
+| **Build for change** | Components and contracts should stay understandable as the product grows. |
+| **Keep motion useful** | Animation should guide attention and preserve performance. |
+| **Verify delivery** | Responsive checks, production builds, and deployment validation matter. |
 
 ---
 
-<p align="center">
-  <strong>Let us build something useful.</strong>
-  <br />
+<div align="center">
+
+  <h3>Let us build something useful.</h3>
+
   <a href="https://github.com/Rustambekov9545">GitHub</a>
   &nbsp; | &nbsp;
   <a href="mailto:abdullox.2117.ru@gmail.com">Email</a>
-</p>
+
+</div>
