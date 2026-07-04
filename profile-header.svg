@@ -1,76 +1,157 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-labelledby="title description">
-  <title id="title">D. ACE developer profile</title>
-  <desc id="description">Animated developer profile header with a dark green digital background and moving light trails.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="0 0 1200 500" role="img" aria-labelledby="title description">
+  <title id="title">D. ACE - Fullstack Developer and DevOps Engineer</title>
+  <desc id="description">Animated dark developer profile header with neon green flowing threads.</desc>
+
   <defs>
     <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#020a0d"/>
-      <stop offset=".48" stop-color="#041016"/>
-      <stop offset="1" stop-color="#02070b"/>
+      <stop offset="0" stop-color="#02080e"/>
+      <stop offset=".48" stop-color="#041019"/>
+      <stop offset="1" stop-color="#02070c"/>
     </linearGradient>
-    <radialGradient id="greenGlow" cx="88%" cy="0%" r="78%">
-      <stop offset="0" stop-color="#24dd67" stop-opacity=".58"/>
-      <stop offset=".28" stop-color="#139a47" stop-opacity=".23"/>
-      <stop offset=".66" stop-color="#07311a" stop-opacity=".08"/>
-      <stop offset="1" stop-color="#02080c" stop-opacity="0"/>
+    <radialGradient id="rightGlow" cx="88%" cy="42%" r="55%">
+      <stop offset="0" stop-color="#22d84f" stop-opacity=".22"/>
+      <stop offset=".38" stop-color="#0c7f30" stop-opacity=".1"/>
+      <stop offset="1" stop-color="#02080d" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="trail" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#48f27d" stop-opacity="0"/>
-      <stop offset=".5" stop-color="#d9ffe5"/>
-      <stop offset="1" stop-color="#55f889" stop-opacity=".1"/>
+    <linearGradient id="nameGradient" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#36e459"/>
+      <stop offset=".16" stop-color="#61ef72"/>
+      <stop offset=".34" stop-color="#f8fff9"/>
+      <stop offset="1" stop-color="#f4f7f6"/>
     </linearGradient>
-    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
-      <path d="M24 0H0v24" fill="none" stroke="#1f603b" stroke-width=".7" opacity=".21"/>
-      <circle cx="4" cy="4" r="1.25" fill="#3ce673" opacity=".38"/>
-      <circle cx="16" cy="11" r=".75" fill="#76f99b" opacity=".16"/>
-    </pattern>
-    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
-      <feGaussianBlur stdDeviation="8" result="blur"/>
+    <linearGradient id="pillBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#07151a" stop-opacity=".94"/>
+      <stop offset="1" stop-color="#030b0f" stop-opacity=".98"/>
+    </linearGradient>
+    <linearGradient id="waveBright" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0c6928" stop-opacity=".08"/>
+      <stop offset=".35" stop-color="#28d94e" stop-opacity=".75"/>
+      <stop offset=".7" stop-color="#7dff8d"/>
+      <stop offset="1" stop-color="#2bdd4e" stop-opacity=".35"/>
+    </linearGradient>
+    <linearGradient id="waveSoft" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0e5425" stop-opacity=".08"/>
+      <stop offset=".5" stop-color="#29c94b" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#53ef68" stop-opacity=".18"/>
+    </linearGradient>
+    <filter id="waveGlow" x="-50%" y="-80%" width="200%" height="260%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
-    <filter id="largeGlow" x="-100%" y="-100%" width="300%" height="300%">
-      <feGaussianBlur stdDeviation="25"/>
+    <filter id="dotGlow" x="-300%" y="-300%" width="700%" height="700%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
     </filter>
-    <clipPath id="clip">
-      <rect x="8" y="8" width="1184" height="304" rx="14"/>
+    <filter id="panelShadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#000" flood-opacity=".48"/>
+    </filter>
+    <clipPath id="panelClip">
+      <rect x="16" y="16" width="1168" height="468" rx="28"/>
     </clipPath>
+    <clipPath id="threadClip">
+      <rect x="565" y="28" width="619" height="430"/>
+    </clipPath>
+
     <style>
       text { font-family: Inter, "Segoe UI", Arial, sans-serif; }
-      .grid-flow { animation: gridFlow 14s linear infinite; }
-      .trail-flow { stroke-dasharray: 120 46; animation: trailFlow 8s linear infinite; }
-      .trail-flow-slow { stroke-dasharray: 65 75; animation: trailFlow 11s linear reverse infinite; }
-      .star { animation: star 3.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
-      .star-delay { animation: star 3.4s ease-in-out 1.4s infinite; transform-box: fill-box; transform-origin: center; }
-      @keyframes gridFlow { to { transform: translateX(48px); } }
-      @keyframes trailFlow { to { stroke-dashoffset: -332; } }
-      @keyframes star { 0%,100% { opacity: .18; transform: scale(.7); } 50% { opacity: 1; transform: scale(1.35); } }
+      .thread-one { stroke-dasharray: 180 54; animation: threadFlow 6s linear infinite; }
+      .thread-two { stroke-dasharray: 115 72; animation: threadFlow 8.5s linear reverse infinite; }
+      .thread-three { stroke-dasharray: 220 68; animation: threadFlow 10s linear infinite; }
+      .thread-four { stroke-dasharray: 90 64; animation: threadFlow 7.2s linear reverse infinite; }
+      .thread-five { stroke-dasharray: 145 80; animation: threadFlow 11s linear infinite; }
+      .thread-drift { animation: threadDrift 6.5s ease-in-out infinite; transform-origin: 900px 250px; }
+      .thread-drift-alt { animation: threadDriftAlt 8s ease-in-out infinite; transform-origin: 900px 250px; }
+      .particle { animation: particlePulse 3.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+      .particle-delay { animation: particlePulse 3.4s ease-in-out 1.5s infinite; transform-box: fill-box; transform-origin: center; }
+      .pill { transition: opacity .2s ease; }
+      @keyframes threadFlow { to { stroke-dashoffset: -468; } }
+      @keyframes threadDrift {
+        0%,100% { transform: translateY(-7px) scaleY(.98); }
+        50% { transform: translateY(10px) scaleY(1.04); }
+      }
+      @keyframes threadDriftAlt {
+        0%,100% { transform: translateY(10px) scaleY(1.03); }
+        50% { transform: translateY(-11px) scaleY(.97); }
+      }
+      @keyframes particlePulse {
+        0%,100% { opacity: .28; transform: scale(.7); }
+        50% { opacity: 1; transform: scale(1.3); }
+      }
     </style>
   </defs>
 
-  <rect width="1200" height="320" rx="16" fill="#050b0f"/>
-  <rect x="8" y="8" width="1184" height="304" rx="14" fill="url(#background)" stroke="#1d3c2d" stroke-width="1.4"/>
+  <rect width="1200" height="500" fill="#02070c"/>
+  <rect x="16" y="16" width="1168" height="468" rx="28" fill="url(#background)" stroke="#12642d" stroke-width="2.2" filter="url(#panelShadow)"/>
 
-  <g clip-path="url(#clip)">
-    <rect x="8" y="8" width="1184" height="304" fill="url(#greenGlow)"/>
-    <g class="grid-flow">
-      <rect x="-48" y="8" width="740" height="304" fill="url(#grid)" opacity=".72"/>
+  <g clip-path="url(#panelClip)">
+    <rect x="16" y="16" width="1168" height="468" fill="url(#rightGlow)"/>
+
+    <g clip-path="url(#threadClip)">
+      <g class="thread-drift-alt" fill="none" stroke-linecap="round">
+        <path d="M565 318 C665 210 742 403 850 320 S1032 130 1205 174" stroke="#0b7b2c" stroke-width="19" opacity=".08" filter="url(#waveGlow)"/>
+        <path class="thread-one" d="M565 318 C665 210 742 403 850 320 S1032 130 1205 174" stroke="url(#waveBright)" stroke-width="3.1" filter="url(#waveGlow)"/>
+      </g>
+
+      <g class="thread-drift" fill="none" stroke-linecap="round">
+        <path d="M590 270 C700 142 784 350 900 264 S1058 89 1206 120" stroke="#2bea55" stroke-width="15" opacity=".06" filter="url(#waveGlow)"/>
+        <path class="thread-two" d="M590 270 C700 142 784 350 900 264 S1058 89 1206 120" stroke="url(#waveBright)" stroke-width="2.2" filter="url(#waveGlow)"/>
+      </g>
+
+      <g class="thread-drift-alt" fill="none" stroke-linecap="round">
+        <path class="thread-three" d="M575 360 C690 250 770 447 905 364 S1068 250 1205 270" stroke="url(#waveSoft)" stroke-width="2.3"/>
+        <path d="M585 220 C710 110 804 321 930 232 S1095 72 1210 96" stroke="#1aad3f" stroke-width="1.2" opacity=".58"/>
+      </g>
+
+      <g class="thread-drift" fill="none" stroke-linecap="round">
+        <path class="thread-four" d="M600 402 C718 290 812 495 946 394 S1090 303 1208 320" stroke="url(#waveSoft)" stroke-width="2"/>
+        <path class="thread-five" d="M640 335 C748 225 824 398 945 326 S1080 188 1210 215" stroke="#42ee60" stroke-width="1.4" opacity=".62"/>
+      </g>
     </g>
-    <ellipse cx="1020" cy="4" rx="310" ry="120" fill="#29e369" opacity=".1" filter="url(#largeGlow)"/>
-    <path d="M758 38 C910 70 1068 135 1210 253" fill="none" stroke="#1ec75a" stroke-width="38" opacity=".08" filter="url(#largeGlow)"/>
-    <path class="trail-flow" d="M748 36 C923 72 1065 137 1212 257" fill="none" stroke="url(#trail)" stroke-width="2.3" filter="url(#glow)"/>
-    <path class="trail-flow-slow" d="M835 52 C976 90 1091 155 1197 243" fill="none" stroke="#5aff8e" stroke-width="1.1" opacity=".65"/>
-    <circle class="star" cx="916" cy="78" r="2.1" fill="#caffd8"/>
-    <circle class="star-delay" cx="1032" cy="122" r="2.8" fill="#91ffad"/>
-    <circle class="star" cx="1125" cy="188" r="1.8" fill="#e0ffe8"/>
-    <circle class="star-delay" cx="852" cy="152" r="1.4" fill="#5dff90"/>
-    <circle class="star" cx="986" cy="211" r="1.6" fill="#75ff9b"/>
+
+    <circle class="particle" cx="785" cy="104" r="3.2" fill="#64ff77" filter="url(#dotGlow)"/>
+    <circle class="particle-delay" cx="1072" cy="94" r="2.4" fill="#9affaa" filter="url(#dotGlow)"/>
   </g>
 
-  <text x="110" y="125" fill="#f5faf6" font-size="76" font-weight="750">D. ACE</text>
+  <text x="62" y="92" fill="#89969f" font-size="28" font-weight="500">Hello, I&apos;m</text>
+  <text x="62" y="199" fill="url(#nameGradient)" font-size="92" font-weight="780">D. ACE</text>
+  <text x="62" y="267" fill="#42e75e" font-size="28" font-weight="700">Fullstack Developer &amp; DevOps Engineer</text>
+  <text x="62" y="313" fill="#d3dadd" font-size="19">I build scalable products, clean interfaces, and reliable infrastructure.</text>
 
-  <text x="110" y="196" fill="#ecfff2" font-size="30" font-weight="700">Fullstack Developer &amp; DevOps Engineer</text>
-  <text x="110" y="242" fill="#b9c8ce" font-size="20">Scalable products, automated delivery, reliable infrastructure.</text>
+  <g class="pill" transform="translate(62 344)">
+    <rect width="132" height="60" rx="13" fill="url(#pillBg)" stroke="#16813a" stroke-width="1.5"/>
+    <g transform="translate(26 30)" fill="none" stroke="#45ed64" stroke-width="1.7">
+      <ellipse rx="17" ry="6.6"/>
+      <ellipse rx="17" ry="6.6" transform="rotate(60)"/>
+      <ellipse rx="17" ry="6.6" transform="rotate(-60)"/>
+      <circle r="3.3" fill="#45ed64" stroke="none"/>
+    </g>
+    <text x="54" y="38" fill="#f1f6f3" font-size="20" font-weight="600">React</text>
+  </g>
 
+  <g class="pill" transform="translate(207 344)">
+    <rect width="142" height="60" rx="13" fill="url(#pillBg)" stroke="#16813a" stroke-width="1.5"/>
+    <circle cx="29" cy="30" r="17" fill="#06100e" stroke="#39e85a" stroke-width="1.5"/>
+    <text x="20" y="37" fill="#f6faf7" font-size="19" font-weight="700">N</text>
+    <text x="54" y="38" fill="#f1f6f3" font-size="20" font-weight="600">Next.js</text>
+  </g>
+
+  <g class="pill" transform="translate(362 344)">
+    <rect width="178" height="60" rx="13" fill="url(#pillBg)" stroke="#16813a" stroke-width="1.5"/>
+    <rect x="15" y="13" width="35" height="35" rx="3" fill="#34d451"/>
+    <text x="20" y="39" fill="#fff" font-size="17" font-weight="700">TS</text>
+    <text x="62" y="38" fill="#f1f6f3" font-size="20" font-weight="600">TypeScript</text>
+  </g>
+
+  <g class="pill" transform="translate(553 344)">
+    <rect width="146" height="60" rx="13" fill="url(#pillBg)" stroke="#16813a" stroke-width="1.5"/>
+    <path d="M19 31c-7-1-9-11-3-15 3-3 8-3 11-1 2-7 13-9 18-4 2 2 3 5 3 8 7 0 10 9 5 14-2 2-4 2-7 2H23" fill="none" stroke="#43e95f" stroke-width="2" stroke-linecap="round"/>
+    <path d="M34 25v20m0 0-6-6m6 6 6-6" fill="none" stroke="#43e95f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="66" y="38" fill="#f1f6f3" font-size="20" font-weight="600">DevOps</text>
+  </g>
 </svg>
