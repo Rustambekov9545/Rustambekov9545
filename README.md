@@ -1,83 +1,133 @@
-<h1 align="center">Abdulloh Rustambekov</h1>
+<table width="100%">
+  <tr>
+    <td>
+      <sub>Hello, I am</sub>
+      <h1>Abdulloh Rustambekov</h1>
+      <p><strong>Frontend Developer</strong></p>
+      <p>I craft fast, accessible, and carefully built web experiences.</p>
+      <p>
+        <kbd>React</kbd>
+        <kbd>Next.js</kbd>
+        <kbd>TypeScript</kbd>
+        <kbd>Tailwind CSS</kbd>
+      </p>
+      <p>
+        <a href="https://github.com/Rustambekov9545?tab=repositories"><strong>View repositories</strong></a>
+        &nbsp; | &nbsp;
+        <a href="mailto:abdullox.2117.ru@gmail.com"><strong>Contact me</strong></a>
+        &nbsp; | &nbsp;
+        <strong>Available for opportunities</strong>
+      </p>
+    </td>
+  </tr>
+</table>
 
-<p align="center">
-  <strong>Frontend Developer</strong>
-  &nbsp; | &nbsp;
-  React
-  &nbsp; | &nbsp;
-  Next.js
-  &nbsp; | &nbsp;
-  TypeScript
-</p>
+<table width="100%">
+  <tr>
+    <td width="25%" align="center">
+      <h2>2+</h2>
+      <sub>Public repositories</sub>
+    </td>
+    <td width="25%" align="center">
+      <h2>47</h2>
+      <sub>Contributions in 2026</sub>
+    </td>
+    <td width="25%" align="center">
+      <h2>1</h2>
+      <sub>Current streak</sub>
+    </td>
+    <td width="25%" align="center">
+      <h2>4</h2>
+      <sub>Longest streak</sub>
+    </td>
+  </tr>
+</table>
 
-<p align="center">
-  I build polished, responsive, and production-ready web interfaces.
-</p>
+<p align="right"><sub>Profile snapshot: July 2026</sub></p>
 
-<p align="center">
-  <a href="https://github.com/Rustambekov9545?tab=repositories"><strong>View repositories</strong></a>
-  &nbsp; | &nbsp;
-  <a href="mailto:abdullox.2117.ru@gmail.com"><strong>Contact me</strong></a>
-</p>
+<details open>
+  <summary><strong>Tech Stack</strong></summary>
+  <br />
+  <table width="100%">
+    <tr>
+      <td align="center"><kbd>TS</kbd><br /><sub>TypeScript</sub></td>
+      <td align="center"><kbd>RE</kbd><br /><sub>React</sub></td>
+      <td align="center"><kbd>NX</kbd><br /><sub>Next.js</sub></td>
+      <td align="center"><kbd>ND</kbd><br /><sub>Node.js</sub></td>
+      <td align="center"><kbd>TW</kbd><br /><sub>Tailwind</sub></td>
+      <td align="center"><kbd>CSS</kbd><br /><sub>CSS3</sub></td>
+      <td align="center"><kbd>HTML</kbd><br /><sub>HTML5</sub></td>
+      <td align="center"><kbd>GIT</kbd><br /><sub>Git</sub></td>
+      <td align="center"><kbd>FG</kbd><br /><sub>Figma</sub></td>
+      <td align="center"><kbd>VC</kbd><br /><sub>Vercel</sub></td>
+    </tr>
+  </table>
+</details>
+
+<details open>
+  <summary><strong>About My Work</strong></summary>
+  <br />
+  <table width="100%">
+    <tr>
+      <th align="left">Direction</th>
+      <th align="left">What I focus on</th>
+    </tr>
+    <tr>
+      <td><strong>Interface</strong></td>
+      <td>Responsive layouts, clear hierarchy, accessibility, and polished states.</td>
+    </tr>
+    <tr>
+      <td><strong>Architecture</strong></td>
+      <td>Reusable components, typed contracts, and maintainable project structure.</td>
+    </tr>
+    <tr>
+      <td><strong>Motion</strong></td>
+      <td>Subtle transitions that support the interface without slowing it down.</td>
+    </tr>
+    <tr>
+      <td><strong>Delivery</strong></td>
+      <td>Production checks, deployment preparation, and careful verification.</td>
+    </tr>
+  </table>
+</details>
+
+<details open>
+  <summary><strong>Selected Projects</strong></summary>
+  <br />
+  <table width="100%">
+    <tr>
+      <td>
+        <h3><a href="https://github.com/Rustambekov9545/My-works">My Works</a></h3>
+        <p>A collection of development projects and production work.</p>
+        <p><kbd>Projects</kbd> <kbd>Frontend</kbd> <kbd>Production</kbd></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h3><a href="https://github.com/Rustambekov9545/My-works/tree/main/Terralift">Terralift</a></h3>
+        <p>A full-stack corporate platform with managed content, catalog, projects, solutions, leads, and administration tools.</p>
+        <p><kbd>Next.js</kbd> <kbd>TypeScript</kbd> <kbd>Admin CMS</kbd></p>
+      </td>
+    </tr>
+  </table>
+</details>
+
+<details>
+  <summary><strong>Current Focus</strong></summary>
+  <br />
+
+  - Building accessible and responsive product interfaces
+  - Improving frontend architecture and reusable component systems
+  - Creating efficient interaction patterns
+  - Preparing applications for reliable production deployment
+</details>
 
 ---
 
-## Profile
-
-| | |
-|---|---|
-| **Role** | Frontend Developer |
-| **Specialization** | Responsive interfaces, component architecture, UI animation |
-| **Primary stack** | React, Next.js, TypeScript |
-| **Priorities** | Accessibility, performance, maintainability |
-| **Availability** | Open to interesting projects and collaboration |
-
-## About
-
-I develop interfaces that feel clear, fast, and predictable. My work focuses on reusable components, stable responsive layouts, thoughtful interaction states, and careful production delivery.
-
-I prefer practical engineering decisions: simple structure where possible, abstractions where they remove real complexity, and animation that supports the interface instead of distracting from it.
-
-## Tech Stack
-
-| Area | Technologies |
-|---|---|
-| **Frontend** | TypeScript, JavaScript, React, Next.js |
-| **Styling** | CSS, responsive layouts, design systems |
-| **Backend** | Node.js, REST APIs |
-| **Design** | Figma, UI prototyping |
-| **Tools** | Git, GitHub, Vercel |
-
-## Working Style
-
-| Principle | Approach |
-|---|---|
-| **UI** | Stable layouts, readable hierarchy, responsive details |
-| **Code** | Typed, maintainable, scoped changes, clean components |
-| **Motion** | Subtle animation using transform and opacity |
-| **Delivery** | Production checks, deployment notes, careful verification |
-
-## Projects
-
-### [My Works](https://github.com/Rustambekov9545/My-works)
-
-A collection of my development projects and production work.
-
-### [Terralift](https://github.com/Rustambekov9545/My-works/tree/main/Terralift)
-
-A full-stack corporate website with a managed catalog, projects, solutions, contact forms, leads, and an administration panel.
-
-## Current Focus
-
-- Building accessible and responsive product interfaces
-- Improving frontend architecture and reusable component systems
-- Creating smooth, efficient interaction patterns
-- Preparing applications for reliable production deployment
-
----
-
 <p align="center">
-  <a href="https://github.com/Rustambekov9545">GitHub profile</a>
+  <strong>Let us build something useful.</strong>
+  <br />
+  <a href="https://github.com/Rustambekov9545">GitHub</a>
   &nbsp; | &nbsp;
-  <a href="mailto:abdullox.2117.ru@gmail.com">abdullox.2117.ru@gmail.com</a>
+  <a href="mailto:abdullox.2117.ru@gmail.com">Email</a>
 </p>
