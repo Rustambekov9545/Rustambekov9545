@@ -87,7 +87,7 @@
   </defs>
 
   <rect width="1200" height="500" fill="#02070c"/>
-  <rect x="16" y="16" width="1168" height="468" rx="28" fill="url(#background)" stroke="#12642d" stroke-width="2.2" filter="url(#panelShadow)"/>
+  <rect x="16" y="16" width="1168" height="468" rx="28" fill="url(#background)" filter="url(#panelShadow)"/>
 
   <g clip-path="url(#panelClip)">
     <rect x="16" y="16" width="1168" height="468" fill="url(#rightGlow)"/>
