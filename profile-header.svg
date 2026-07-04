@@ -68,10 +68,9 @@
     <circle class="star" cx="986" cy="211" r="1.6" fill="#75ff9b"/>
   </g>
 
-  <text x="128" y="120" fill="#f5faf6" font-size="64" font-weight="750">D. ACE</text>
+  <text x="110" y="125" fill="#f5faf6" font-size="76" font-weight="750">D. ACE</text>
 
-  <text x="128" y="181" fill="#b6c2c8" font-size="18">I craft polished, fast, and predictable interfaces.</text>
-  <text x="128" y="215" fill="#b6c2c8" font-size="18">I care about component architecture, responsive layouts,</text>
-  <text x="128" y="249" fill="#b6c2c8" font-size="18">accessibility, smooth animation, and clean production delivery.</text>
+  <text x="110" y="196" fill="#ecfff2" font-size="30" font-weight="700">Fullstack Developer &amp; DevOps Engineer</text>
+  <text x="110" y="242" fill="#b9c8ce" font-size="20">Scalable products, automated delivery, reliable infrastructure.</text>
 
 </svg>
