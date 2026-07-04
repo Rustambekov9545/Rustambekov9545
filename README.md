@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img width="100%" alt="Abdulloh Rustambekov" src="https://capsule-render.vercel.app/api?type=waving&height=220&color=0:07130b,35:0f2f1b,70:1f7a32,100:39d353&text=Abdulloh%20Rustambekov&fontColor=f6fff7&fontSize=46&fontAlignY=36&desc=Frontend%20Developer%20%E2%80%A2%20React%20%E2%80%A2%20Next.js%20%E2%80%A2%20TypeScript&descAlignY=61&animation=fadeIn" />
+  <img width="100%" alt="Abdulloh Rustambekov" src="https://raw.githubusercontent.com/Rustambekov9545/Rustambekov9545/output/profile-header.svg" />
 
   <img alt="Typing intro" src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=18&duration=2600&pause=600&color=39D353&center=true&vCenter=true&width=900&lines=I+build+fast%2C+clean%2C+production-ready+interfaces.;React+%2B+Next.js+%2B+TypeScript+with+attention+to+details.;Green+commits%2C+smooth+motion%2C+stable+UI." />
 
@@ -71,20 +71,6 @@ const abdulloh = {
 <div align="center">
 
   <img alt="Streak stats" src="https://streak-stats.demolab.com?user=Rustambekov9545&background=0D1117&border=238636&stroke=39D353&ring=39D353&fire=7EE787&currStreakLabel=39D353&sideLabels=C9D1D9&dates=8B949E&sideNums=F0FFF4&currStreakNum=F0FFF4" />
-
-</div>
-
----
-
-## Contribution Snake
-
-<div align="center">
-
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Rustambekov9545/Rustambekov9545/output/github-contribution-grid-snake-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Rustambekov9545/Rustambekov9545/output/github-contribution-grid-snake.svg" />
-    <img alt="Contribution snake animation" src="https://raw.githubusercontent.com/Rustambekov9545/Rustambekov9545/output/github-contribution-grid-snake-dark.svg" />
-  </picture>
 
 </div>
 
