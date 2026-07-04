@@ -1,59 +1,83 @@
-<div align="center">
+<h1 align="center">Abdulloh Rustambekov</h1>
 
-  <img
-    width="100%"
-    alt="Abdulloh Rustambekov - Frontend Developer"
-    src="https://raw.githubusercontent.com/Rustambekov9545/Rustambekov9545/output/profile-header.svg"
-  />
+<p align="center">
+  <strong>Frontend Developer</strong>
+  &nbsp; | &nbsp;
+  React
+  &nbsp; | &nbsp;
+  Next.js
+  &nbsp; | &nbsp;
+  TypeScript
+</p>
 
-  <br />
-  <br />
+<p align="center">
+  I build polished, responsive, and production-ready web interfaces.
+</p>
 
-  <a href="https://github.com/Rustambekov9545?tab=repositories">
-    <img alt="View repositories" src="https://img.shields.io/badge/View_repositories-39d353?style=for-the-badge&logo=github&logoColor=06100a" />
-  </a>
-  <a href="mailto:abdullox.2117.ru@gmail.com">
-    <img alt="Contact me" src="https://img.shields.io/badge/Contact_me-0d171d?style=for-the-badge&logo=gmail&logoColor=39d353" />
-  </a>
+<p align="center">
+  <a href="https://github.com/Rustambekov9545?tab=repositories"><strong>View repositories</strong></a>
+  &nbsp; | &nbsp;
+  <a href="mailto:abdullox.2117.ru@gmail.com"><strong>Contact me</strong></a>
+</p>
 
-  <br />
-  <br />
+---
 
-  <img
-    width="100%"
-    alt="Live GitHub profile details"
-    src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Rustambekov9545&amp;theme=github_dark"
-  />
+## Profile
 
-  <br />
+| | |
+|---|---|
+| **Role** | Frontend Developer |
+| **Specialization** | Responsive interfaces, component architecture, UI animation |
+| **Primary stack** | React, Next.js, TypeScript |
+| **Priorities** | Accessibility, performance, maintainability |
+| **Availability** | Open to interesting projects and collaboration |
 
-  <img
-    width="100%"
-    alt="Live GitHub activity graph"
-    src="https://github-readme-activity-graph.vercel.app/graph?username=Rustambekov9545&amp;bg_color=050b0f&amp;color=c9d1d9&amp;line=39d353&amp;point=7ee787&amp;area=true&amp;hide_border=true"
-  />
+## About
 
-  <br />
+I develop interfaces that feel clear, fast, and predictable. My work focuses on reusable components, stable responsive layouts, thoughtful interaction states, and careful production delivery.
 
-  <img
-    width="100%"
-    alt="Live GitHub contribution streak"
-    src="https://streak-stats.demolab.com?user=Rustambekov9545&amp;hide_border=true&amp;background=050B0F&amp;ring=39D353&amp;fire=39D353&amp;currStreakLabel=39D353&amp;sideLabels=C9D1D9&amp;dates=8B949E&amp;sideNums=F0FFF4&amp;currStreakNum=F0FFF4"
-  />
-
-</div>
+I prefer practical engineering decisions: simple structure where possible, abstractions where they remove real complexity, and animation that supports the interface instead of distracting from it.
 
 ## Tech Stack
 
-<div align="center">
+| Area | Technologies |
+|---|---|
+| **Frontend** | TypeScript, JavaScript, React, Next.js |
+| **Styling** | CSS, responsive layouts, design systems |
+| **Backend** | Node.js, REST APIs |
+| **Design** | Figma, UI prototyping |
+| **Tools** | Git, GitHub, Vercel |
 
-  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-071016?style=for-the-badge&amp;logo=typescript&amp;logoColor=39d353" />
-  <img alt="React" src="https://img.shields.io/badge/React-071016?style=for-the-badge&amp;logo=react&amp;logoColor=39d353" />
-  <img alt="Next.js" src="https://img.shields.io/badge/Next.js-071016?style=for-the-badge&amp;logo=nextdotjs&amp;logoColor=39d353" />
-  <img alt="Node.js" src="https://img.shields.io/badge/Node.js-071016?style=for-the-badge&amp;logo=nodedotjs&amp;logoColor=39d353" />
-  <img alt="CSS" src="https://img.shields.io/badge/CSS-071016?style=for-the-badge&amp;logo=css&amp;logoColor=39d353" />
-  <img alt="Git" src="https://img.shields.io/badge/Git-071016?style=for-the-badge&amp;logo=git&amp;logoColor=39d353" />
-  <img alt="Figma" src="https://img.shields.io/badge/Figma-071016?style=for-the-badge&amp;logo=figma&amp;logoColor=39d353" />
-  <img alt="Vercel" src="https://img.shields.io/badge/Vercel-071016?style=for-the-badge&amp;logo=vercel&amp;logoColor=39d353" />
+## Working Style
 
-</div>
+| Principle | Approach |
+|---|---|
+| **UI** | Stable layouts, readable hierarchy, responsive details |
+| **Code** | Typed, maintainable, scoped changes, clean components |
+| **Motion** | Subtle animation using transform and opacity |
+| **Delivery** | Production checks, deployment notes, careful verification |
+
+## Projects
+
+### [My Works](https://github.com/Rustambekov9545/My-works)
+
+A collection of my development projects and production work.
+
+### [Terralift](https://github.com/Rustambekov9545/My-works/tree/main/Terralift)
+
+A full-stack corporate website with a managed catalog, projects, solutions, contact forms, leads, and an administration panel.
+
+## Current Focus
+
+- Building accessible and responsive product interfaces
+- Improving frontend architecture and reusable component systems
+- Creating smooth, efficient interaction patterns
+- Preparing applications for reliable production deployment
+
+---
+
+<p align="center">
+  <a href="https://github.com/Rustambekov9545">GitHub profile</a>
+  &nbsp; | &nbsp;
+  <a href="mailto:abdullox.2117.ru@gmail.com">abdullox.2117.ru@gmail.com</a>
+</p>
