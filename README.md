@@ -113,22 +113,47 @@
 
 ## Working Style
 
-<table>
+<div align="center">
+
+  <h3>Build clearly. Automate carefully. Deliver reliably.</h3>
+
+  <p>
+    I keep product quality, maintainable engineering, and dependable production delivery in the same workflow.
+  </p>
+
+  <img alt="UI Quality" src="https://img.shields.io/badge/UI_QUALITY-238636?style=for-the-badge&amp;logo=figma&amp;logoColor=white" />
+  <img alt="Clean Code" src="https://img.shields.io/badge/CLEAN_CODE-1f6feb?style=for-the-badge&amp;logo=typescript&amp;logoColor=white" />
+  <img alt="Smooth Motion" src="https://img.shields.io/badge/SMOOTH_MOTION-8957e5?style=for-the-badge&amp;logo=framer&amp;logoColor=white" />
+  <img alt="Reliable Delivery" src="https://img.shields.io/badge/RELIABLE_DELIVERY-d97706?style=for-the-badge&amp;logo=githubactions&amp;logoColor=white" />
+
+</div>
+
+<br />
+
+<table width="100%">
   <tr>
-    <td><strong>UI</strong></td>
-    <td>Stable layouts, readable hierarchy, responsive details.</td>
+    <td width="50%" valign="top">
+      <h3>Product UI</h3>
+      <p>Stable responsive layouts, readable hierarchy, accessible states, and carefully finished details.</p>
+      <p><code>Responsive</code> <code>Accessible</code> <code>Consistent</code></p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>Clean Architecture</h3>
+      <p>Typed contracts, focused components, clear ownership, and code that remains easy to change.</p>
+      <p><code>Typed</code> <code>Modular</code> <code>Maintainable</code></p>
+    </td>
   </tr>
   <tr>
-    <td><strong>Code</strong></td>
-    <td>Typed, maintainable, scoped changes, clean components.</td>
-  </tr>
-  <tr>
-    <td><strong>Motion</strong></td>
-    <td>Subtle animation with transform and opacity, no heavy effects.</td>
-  </tr>
-  <tr>
-    <td><strong>Delivery</strong></td>
-    <td>Production checks, deployment notes, and careful verification.</td>
+    <td width="50%" valign="top">
+      <h3>Purposeful Motion</h3>
+      <p>Subtle transitions that guide attention, improve feedback, and preserve interface performance.</p>
+      <p><code>Transform</code> <code>Opacity</code> <code>Performance</code></p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>Reliable Delivery</h3>
+      <p>Automated deployment, production checks, server configuration, monitoring, and careful verification.</p>
+      <p><code>CI/CD</code> <code>DevOps</code> <code>Production</code></p>
+    </td>
   </tr>
 </table>
 
