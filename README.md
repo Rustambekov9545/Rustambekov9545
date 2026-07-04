@@ -22,17 +22,49 @@
 
 ## About
 
-I am a fullstack developer and DevOps engineer focused on building reliable products from interface to infrastructure.  
-I care about application architecture, automation, performance, secure deployment, and clean production delivery.
+<div align="center">
 
-```ts
-const dace = {
-  role: "Fullstack Developer & DevOps Engineer",
-  focus: ["React", "Next.js", "Node.js", "Infrastructure"],
-  style: "clean code, automated delivery, reliable systems",
-  currentGoal: "build useful products with premium user experience",
-};
-```
+  <h2>D. ACE</h2>
+  <h3>Fullstack Developer &amp; DevOps Engineer</h3>
+
+  <p>
+    I build complete digital products and take them all the way from interface and API architecture to secure production deployment.
+  </p>
+
+  <img alt="Fullstack Developer" src="https://img.shields.io/badge/FULLSTACK_DEVELOPER-238636?style=for-the-badge&amp;logo=typescript&amp;logoColor=white" />
+  <img alt="DevOps Engineer" src="https://img.shields.io/badge/DEVOPS_ENGINEER-1f6feb?style=for-the-badge&amp;logo=docker&amp;logoColor=white" />
+  <img alt="Production Ready" src="https://img.shields.io/badge/PRODUCTION_READY-8957e5?style=for-the-badge&amp;logo=nginx&amp;logoColor=white" />
+
+</div>
+
+<br />
+
+<table width="100%">
+  <tr>
+    <td width="50%" valign="top">
+      <h3>Fullstack Development</h3>
+      <p>Responsive interfaces, backend services, API integration, data flows, and administration tools.</p>
+      <p><code>Frontend</code> <code>Backend</code> <code>API</code> <code>Database</code></p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>DevOps Engineering</h3>
+      <p>Linux servers, Docker environments, Nginx, SSL, automated delivery, and production operations.</p>
+      <p><code>Linux</code> <code>Docker</code> <code>Nginx</code> <code>CI/CD</code></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>System Architecture</h3>
+      <p>Maintainable application structure, typed contracts, performance, scalability, and secure configuration.</p>
+      <p><code>Architecture</code> <code>Security</code> <code>Performance</code></p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>Production Delivery</h3>
+      <p>Deployment validation, domain and HTTPS setup, monitoring, backups, and dependable releases.</p>
+      <p><code>Deploy</code> <code>HTTPS</code> <code>Monitoring</code> <code>Backup</code></p>
+    </td>
+  </tr>
+</table>
 
 ---
 
