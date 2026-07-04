@@ -22,14 +22,14 @@
 
 ## About
 
-I am a frontend developer focused on interfaces that feel polished, fast, and predictable.  
-I care about component architecture, responsive layouts, accessibility, smooth animation, and clean production delivery.
+I am a fullstack developer and DevOps engineer focused on building reliable products from interface to infrastructure.  
+I care about application architecture, automation, performance, secure deployment, and clean production delivery.
 
 ```ts
-const abdulloh = {
-  role: "Frontend Developer",
-  focus: ["React", "Next.js", "TypeScript", "UI architecture"],
-  style: "clean code, stable layouts, smooth motion",
+const dace = {
+  role: "Fullstack Developer & DevOps Engineer",
+  focus: ["React", "Next.js", "Node.js", "Infrastructure"],
+  style: "clean code, automated delivery, reliable systems",
   currentGoal: "build useful products with premium user experience",
 };
 ```
@@ -48,6 +48,9 @@ const abdulloh = {
   <img alt="Figma" src="https://img.shields.io/badge/Figma-0d1117?style=for-the-badge&logo=figma&logoColor=39d353&labelColor=0d1117" />
   <img alt="Git" src="https://img.shields.io/badge/Git-0d1117?style=for-the-badge&logo=git&logoColor=39d353&labelColor=0d1117" />
   <img alt="Vercel" src="https://img.shields.io/badge/Vercel-0d1117?style=for-the-badge&logo=vercel&logoColor=39d353&labelColor=0d1117" />
+  <img alt="Docker" src="https://img.shields.io/badge/Docker-0d1117?style=for-the-badge&logo=docker&logoColor=39d353&labelColor=0d1117" />
+  <img alt="Linux" src="https://img.shields.io/badge/Linux-0d1117?style=for-the-badge&logo=linux&logoColor=39d353&labelColor=0d1117" />
+  <img alt="Nginx" src="https://img.shields.io/badge/Nginx-0d1117?style=for-the-badge&logo=nginx&logoColor=39d353&labelColor=0d1117" />
 
 </div>
 
