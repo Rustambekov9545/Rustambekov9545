@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img width="100%" alt="Abdulloh Rustambekov" src="https://raw.githubusercontent.com/Rustambekov9545/Rustambekov9545/output/profile-header.svg" />
+  <img width="100%" alt="D. ACE" src="https://raw.githubusercontent.com/Rustambekov9545/Rustambekov9545/output/profile-header.svg" />
 
   <img alt="Typing intro" src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=18&duration=2600&pause=600&color=39D353&center=true&vCenter=true&width=900&lines=I+build+fast%2C+clean%2C+production-ready+interfaces.;React+%2B+Next.js+%2B+TypeScript+with+attention+to+details.;Green+commits%2C+smooth+motion%2C+stable+UI." />
 
