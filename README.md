@@ -161,6 +161,6 @@
 
 <div align="center">
 
-  <img width="100%" alt="Footer wave" src="https://capsule-render.vercel.app/api?type=waving&height=120&section=footer&color=0:39d353,60:238636,100:07130b" />
+  <img width="100%" alt="Animated footer waves" src="https://raw.githubusercontent.com/Rustambekov9545/Rustambekov9545/c170ff0/profile-footer.svg" />
 
 </div>
