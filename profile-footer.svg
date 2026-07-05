@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="180" viewBox="0 0 1200 180" role="img" aria-labelledby="title description">
+  <title id="title">Animated green profile footer</title>
+  <desc id="description">Transparent footer with layered flowing neon green waves.</desc>
+
+  <defs>
+    <linearGradient id="backFill" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#06371c" stop-opacity=".22"/>
+      <stop offset=".5" stop-color="#0c7d31" stop-opacity=".38"/>
+      <stop offset="1" stop-color="#1ac84c" stop-opacity=".5"/>
+    </linearGradient>
+    <linearGradient id="middleFill" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#052817" stop-opacity=".3"/>
+      <stop offset=".48" stop-color="#0b6d2c" stop-opacity=".58"/>
+      <stop offset="1" stop-color="#28dc59" stop-opacity=".72"/>
+    </linearGradient>
+    <linearGradient id="frontFill" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#061b12" stop-opacity=".45"/>
+      <stop offset=".42" stop-color="#0d5427" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#32e763" stop-opacity=".9"/>
+    </linearGradient>
+    <linearGradient id="lightStroke" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1bd34d" stop-opacity="0"/>
+      <stop offset=".24" stop-color="#36e963" stop-opacity=".46"/>
+      <stop offset=".58" stop-color="#8dff9f"/>
+      <stop offset=".82" stop-color="#3bea67" stop-opacity=".6"/>
+      <stop offset="1" stop-color="#1bd34d" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="softGlow" x="-30%" y="-300%" width="160%" height="700%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <clipPath id="footerClip">
+      <rect width="1200" height="180"/>
+    </clipPath>
+
+    <style>
+      .back-wave { animation: backDrift 11s ease-in-out infinite; }
+      .middle-wave { animation: middleDrift 8s ease-in-out infinite; }
+      .front-wave { animation: frontDrift 6.5s ease-in-out infinite; }
+      .light-one { stroke-dasharray: 190 74; animation: lightFlow 6s linear infinite; }
+      .light-two { stroke-dasharray: 120 92; animation: lightFlow 9s linear reverse infinite; }
+      @keyframes backDrift {
+        0%,100% { transform: translate(-28px, 3px); }
+        50% { transform: translate(28px, -7px); }
+      }
+      @keyframes middleDrift {
+        0%,100% { transform: translate(26px, -4px); }
+        50% { transform: translate(-32px, 8px); }
+      }
+      @keyframes frontDrift {
+        0%,100% { transform: translate(-18px, 5px); }
+        50% { transform: translate(24px, -5px); }
+      }
+      @keyframes lightFlow { to { stroke-dashoffset: -528; } }
+    </style>
+  </defs>
+
+  <g clip-path="url(#footerClip)">
+    <g class="back-wave">
+      <path d="M-180 76 C70 18 278 88 500 62 S885 101 1400 38 L1400 180 L-180 180 Z" fill="url(#backFill)"/>
+      <path class="light-two" d="M-180 76 C70 18 278 88 500 62 S885 101 1400 38" fill="none" stroke="url(#lightStroke)" stroke-width="1.4" opacity=".62"/>
+    </g>
+
+    <g class="middle-wave">
+      <path d="M-180 104 C62 42 304 132 536 89 S916 38 1400 83 L1400 180 L-180 180 Z" fill="url(#middleFill)"/>
+      <path class="light-one" d="M-180 104 C62 42 304 132 536 89 S916 38 1400 83" fill="none" stroke="url(#lightStroke)" stroke-width="2" filter="url(#softGlow)"/>
+    </g>
+
+    <g class="front-wave">
+      <path d="M-180 128 C82 64 337 153 596 108 S950 69 1400 116 L1400 180 L-180 180 Z" fill="url(#frontFill)"/>
+      <path class="light-two" d="M-180 128 C82 64 337 153 596 108 S950 69 1400 116" fill="none" stroke="url(#lightStroke)" stroke-width="1.6" opacity=".74"/>
+    </g>
+  </g>
+</svg>
